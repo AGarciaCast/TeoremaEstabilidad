@@ -32,19 +32,69 @@ Una de las formas de representar un espacio topológico es a través de la desco
 
 Los complejos simpliciales los podemos estudiar desde un enfoque geométrico y desde un enfoque combinatorio. Partiremos de la definición de complejo simplicial desde el punto de vista geométrico.
 
+\subsubsection*{combinaciones convexa}
+\subsubsection*{def simplice}
+\subsubsection*{caras y cocaras}
+\subsubsection*{def complejo simplicial}
+\subsubsection*{espacio subyacente y poliedros: compacidad, def triangulación}
+\subsubsection*{def subcomplejo}
+\subsubsection*{def j-esqueleto}
+\subsubsection*{def estrella y link}
+\subsubsection*{complejo simplicial abstracto: esquema de vertices, realización geométrica y teorema}
+\subsubsection*{def subdivisión de un complejo simplicial}
+\subsubsection*{subdivisión baricéntrica: def y lema}
+\subsubsection*{aplicaciones simpliciales y aproximaciones simpliciales}
+
+Desde el punto de vista computacional nos encontramos con el problema de que tenemos una representación de un espacio topológico a través de una discretización finita de los puntos de dicho espacio, y nuestro objetivo es poder recuperar las propiedades del espacio topológico original a partir de esta nube de puntos. Para ello usaremos complejos simpliciales asociados a dicha nube de puntos.
+
+\subsubsection*{def complejo de \v{C}ech}
+\subsubsection*{def complejo de Vietoris-Rips}
+\subsubsection*{def diagrama de Voronoi + triangulación Delonay}
+\subsubsection*{def alpha complejo}
+
+\subsection{Homología}
+Como se puede ver en [añadir cita] la homotopía es una gran herramienta algebraica para poder obtener propiedades de los espacios topológicos. Sin embargo, los métodos para el cálculo de la homotopía no son los mejores computacionalmente. Así pues, se propone la homología como formalismo algebraico, que aunque no es capaz de obtener tanta información topológica sobre el espacio como con otros formalismos, contiene algoritmos mucho más rápidos y eficientes.
 
 
+\subsubsection*{grupos de cadenas}
+\subsubsection*{operador borde: complejos de cadenas, ciclos y bordes}
+\subsubsection*{grupos de homología simplicial: definición, números de betti, caracteristica de euler, teorema de conexion y numeros de betti}
+\subsubsection*{aplicaciones inducidas para grupos de homología}
+
+\subsubsection*{Homología singular}
+Comentar existencia de la homología singular y el porqué se creó y que beneficios, pero debido a que el teorema de estabilidad parte de un espacio topológico triangulable no es necesario
 
 
+\textit{HERBERT EDELSBRUNNER AND JOHN HARER: PERSISTENT HOMOLOGY — A SURVEY\\}
+``REMARK 2.1. There are a variety of other homology theories defined in topology.
+Most notably singular homology has the advantage that it exists for arbitrary topological
+spaces and it is easy to define concepts like induced maps, prove that homotopy equivalent
+maps induce isomorphisms on homology, etc. However, in singular homology the chain
+groups are infinite-dimensional and therefore not directly suited to computational methods.
+Nevertheless, the reader should be aware of this theory. It justifies the common practice of
+talking about homology for spaces without an explicit triangulation. Most of the time, and
+certainly in low dimensions, singular and simplicial homology are equivalent theories.''
+
+\textit{Crossley, Martin D., Essential Topology. Springer-Verlag, London, 2005.\\}
+``For simplicial homology we supposed that our space had already been expressed as a simplicial complex, i.e., decomposed into a union of simplices. Some spaces cannot be expressed in such a way, and even those that can, can usually be expressed as a simplicial complex in many different ways. Choosing one way can obscure some details of the space. For these reasons “singular” homology was developed, which gets around this problem by, in a very loose sense, considering all possible simplicial decompositions.''
+
+\subsection{Persistencia}
+
+\subsubsection*{funciones reales}
+poder ver graficamente como a traves de las contraimagenes se generan diferentes componentes al pasar por puntos criticos
+\subsubsection*{funciones morse} 
+def variedad diferenciable, definición de las funciones morse, ver como la homología cambia al pasar por los puntos críticos y ver las nociones de nacimiento y muerte
+\subsubsection*{funciones tame}
+definicion función tame, subniveles, grupos de persistencia a partir de funciones tame, critical value lema,  numeros de betti de grupos de persistencia y su relación con las multiplicidades.
+
+Definición de diagrama de persistencia, k-triangle lemma
 
 
+\subsubsection*{persistencia en complejos simpliciales}
+particularizar lo visto en funciones tame pero con complejos simpliciales
 
-
-
-
-
-
-
+\subsubsection*{funciones PL}
+definición de las funciones pl, generación de filtraciones a partir del lower star filtration y estudio de los puntos criticos  de las funciones pl para comprobar que son funciones tame.
 
 
 
