@@ -1,20 +1,50 @@
 \chapter{Desarrollo}
-Capítulo dedicado a describir el desarrollo del Trabajo realizado. De acuerdo con el tutor, este capítulo puede tener distintas estructuras, e incluso pueden existir varios capítulos.
 
-Todos los capítulos deben empezar en una página nueva.
+\section{Conocimientos previos y definiciones}
+En esta sección se mostrarán las principales nociones de Topología Computacional, que nos darán el contexto y conocimientos necesarios para poder comprender el Teorema de Estabilidad y ser capaces de abordar su demostración.
 
-Los apartados dentro de los capítulos se numeran de forma jerárquica, pero siempre deben estar alineados al margen izquierdo. Ejemplo:
+\subsection{Motivación}
+La Topología se centra en en el estudio de las diversas propiedades de los espacios topológicos y las funciones continuas. Recordemos la definición formal de espacio topológico:
 
-\section{Apartado 1 de capítulo 2}
+\begin{definition}
+Sea X un conjunto y $\tau \subset \mathcal{P}(X)$ una colección de de X. Diremos que $\tau$ es una topología en X si satisface las siguientes propiedades:
 
-\subsection{Sección 1 de apartado 1 de capítulo 2}
+\begin{enumerate}
+\item $\emptyset$ y X son elementos de $\tau$.
+\item Si \{$U_{\lambda}$\}$_{\lambda\in\Lambda}$ es una familia de elementos de $\tau$ entonces
+\[
+\bigcup_{\lambda\in\Lambda} U_{\lambda}
+\]
+es un elemento de $\tau$ (La unión arbitraria de elementos de $\tau$ pertenece $\tau$).
+\item Si $U_{1}, ..., U_{n}$ son elementos de $\tau$, entonces 
+\[
+U_{1} \cap ... \cap U_{n}
+\]
+es un elemento de $\tau$ (La intersección finita de elementos de $\tau$ pertenece $\tau$).
+\end{enumerate}
+El par (X,$\tau$) se denomina \textbf{espacio topológico} y a los elementos de $\tau$ se denominan \textbf{abiertos} de X.
+\end{definition}
 
-\subsubsection{Sub sección 1}
+Mientras que en el subcampo de la Topología Computacional veremos como podemos hacer uso de diversos algoritmos para poder estudiar las propiedades de los espacios topológicos y ser capaces de resolver problemas topológicos computacionalmente. Para ello lo primero que necesitamos es una manera de representación de nuestros espacios topológicos, manteniendo sus propiedades topológicas.
 
-\subsubsection{Sub sección 2}
+\subsection{Complejos Simpliciales}
+Una de las formas de representar un espacio topológico es a través de la descomposición del mismo en piezas más sencillas. Una descomposición en un complejo si sus piezas son topologicamente simples y sus intersecciones son piezas de dimensión inferior del mismo tipo \cite{EH}. Dentro de los complejos se puede observar que hay una gran variedad de tipos, dandonos distintos grados de abstracción. Nosotros vamos a trabajar con los complejos simpliciales, ya que nos darán unas buenas capacidades de computación.
 
-\subsection{Sección 2 de apartado 1 de capítulo 2}
+Los complejos simpliciales los podemos estudiar desde un enfoque geométrico y desde un enfoque combinatorio. Partiremos de la definición de complejo simplicial desde el punto de vista geométrico.
 
-\section{Apartado 2 de capítulo 2}
 
-\section{Apartado 3 de capítulo 2}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
