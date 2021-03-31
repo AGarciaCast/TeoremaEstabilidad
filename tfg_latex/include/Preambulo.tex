@@ -13,6 +13,12 @@
 \decimalpoint
 \usepackage{graphicx}
 \usepackage{amsfonts,amsgen,amsmath,amssymb,amsthm}
+\usepackage{mathtools,bm}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+
 \usepackage[top=3cm, bottom=3cm, right=2.54cm, left=2.54cm]{geometry}
 \usepackage{afterpage}
 \usepackage{colortbl,longtable}
@@ -25,6 +31,11 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usetikzlibrary{automata}
+
+\usepackage{subcaption}
+
+\definecolor{greeo}{RGB}{37,211,102}
+\usetikzlibrary{patterns}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definición}[section]

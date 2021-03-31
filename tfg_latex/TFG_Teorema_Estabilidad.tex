@@ -14,32 +14,12 @@
 %%-----------------------------------------------
 %% Documento:
 \begin{document}
-\input{include/Portada}
-
-%%-----------------------------------------------
-%% Numeración romana:
-\frontmatter
-%%-----------------------------------------------
-\input{secciones/00_Resumen}
-\tableofcontents
-
-%%-----------------------------------------------
-%% Numeración arábiga:
-\mainmatter
-%%----------------------------------------------- 
-\input{secciones/01_Introduccion}
-
-\input{secciones/02_Desarrollo}
-
-\input{secciones/03_Resultados}
-
-\input{secciones/04_Bibliografia}
-\addcontentsline{toc}{chapter}{Bibliografía}
-%%-----------------------------------------------
-%% Anexos
-\appendix
-\clearpage 
-\addcontentsline{toc}{chapter}{Anexo}
-\input{secciones/05_Anexos}
-%%---------------------------------------------------------
+\ifdef{\desarrollo}
+{
+	\mainmatter
+	\input{secciones/02_Desarrollo}	
+	
+}{
+	\input{body}
+}
 \end{document}
