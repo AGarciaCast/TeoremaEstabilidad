@@ -7,26 +7,26 @@ En esta sección se mostrarán las principales nociones de Topología Computacio
 La Topología se centra en en el estudio de las diversas propiedades de los espacios topológicos y las funciones continuas. Mientras que en el subcampo de la Topología Computacional veremos como podemos hacer uso de diversos algoritmos para poder estudiar las propiedades de los espacios topológicos y ser capaces de resolver problemas topológicos computacionalmente. Para ello lo primero que necesitamos es una manera de representación de nuestros espacios topológicos, manteniendo sus propiedades topológicas.
 
 \subsection{Complejos Simpliciales}
-Una de las formas de representar un espacio topológico es a través de la descomposición del mismo en piezas más sencillas. Una descomposición en un complejo si sus piezas son topologicamente simples y sus intersecciones son piezas de dimensión inferior del mismo tipo \cite{EH}. Dentro de los complejos se puede observar que hay una gran variedad de tipos, dandonos distintos grados de abstracción. Nosotros vamos a trabajar con los complejos simpliciales, ya que nos darán unas buenas capacidades de computación.
+Una de las formas de representar un espacio topológico es a través de la descomposición del mismo en piezas más sencillas. Una descomposición en un complejo si sus piezas son topológicamente simples y sus intersecciones son piezas de dimensión inferior del mismo tipo \cite{EH}. Dentro de los complejos se puede observar que hay una gran variedad de tipos, dándonos distintos grados de abstracción. Nosotros vamos a trabajar con los complejos simpliciales, ya que nos darán unas buenas capacidades de computación.
 
 Los complejos simpliciales los podemos estudiar desde un enfoque geométrico y desde un enfoque combinatorio. Partiremos de la definición de complejo simplicial desde el punto de vista geométrico. Para ello recordaremos algunos conceptos de geometría afín.
 
 \begin{definition}
-El conjunto de puntos $\{u_0, u_1, ..., u_k\}$ de $\mathbb{R}^d$ es afínmente independiente si los vectores $\{\overrightarrow{u_0u_1}, ..., \overrightarrow{u_0u_k}\}$ son linealmente independientes.
+El conjunto de puntos $\{u_0, u_1, ..., u_k\}$ de $\mathbb{R}^d$ es \emph{afínmente independiente} si los vectores $\{\overrightarrow{u_0u_1}, ..., \overrightarrow{u_0u_k}\}$ son linealmente independientes.
 \end{definition}
 
 \begin{definition}
-Diremos que $x \in \mathbb{R}^d$ es combinación convexa de los puntos $u_0, u_1, ..., u_k$ si $x = \sum_{i=0}^{k} \lambda_i u_i$ con $\lambda_i \geq 0 \ \forall i \in \{0,...,k\}$ y $\sum_{i=0}^{k} \lambda_i = 1$.
+Diremos que $x \in \mathbb{R}^d$ es \emph{combinación convexa} de los puntos $u_0, u_1, ..., u_k$ si $x = \sum_{i=0}^{k} \lambda_i u_i$ con $\lambda_i \geq 0 \ \forall i \in \{0,...,k\}$ y $\sum_{i=0}^{k} \lambda_i = 1$.
 \end{definition}
 
-Llameremos \textbf{envolvente convexa} de $u_0, u_1, ..., u_k$, denotado por $conv\{u_0, u_1, ..., u_k\}$, al conjunto de todas las combinaciones convexas de dichos puntos. Y haciendo uso de este conjunto podremos definir nuestras piezas de la descomposición de la siguiente manera:
+Llameremos \emph{envolvente convexa} de $u_0, u_1, ..., u_k$, denotado por $conv\{u_0, u_1, ..., u_k\}$, al conjunto de todas las combinaciones convexas de dichos puntos. Y haciendo uso de este conjunto podremos definir nuestras piezas de la descomposición de la siguiente manera:
 
 \begin{definition}
-Un $\bm{k}$\textbf{\textit{-símplice}} $\sigma$ en $\mathbb{R}^d$ con $d \geq k$ es la envolvente convexa de $k+1$ puntos afínmente independientes  $u_0, u_1, ..., u_k \in \mathbb{R}^d$, es decir,
+Un \emph{$k$\textit{-símplice}} $\sigma$ en $\mathbb{R}^d$ con $d \geq k$ es la envolvente convexa de $k+1$ puntos afínmente independientes  $u_0, u_1, ..., u_k \in \mathbb{R}^d$, es decir,
 $\sigma \coloneqq conv\{u_0, u_1, ..., u_k\}$
 \end{definition}
 
-Diremos que el $k$-símplice $\sigma$ tiene dimensión $k$ y llamaremos \textbf{vértices de} $\bm{\sigma}$ a los puntos $u_0, u_1, ..., u_k$.
+Diremos que el $k$-símplice $\sigma$ tiene dimensión $k$ y llamaremos \emph{vértices de $\sigma$} a los puntos $u_0, u_1, ..., u_k$.
 
 \begin{figure}[h]
 \centering
@@ -53,13 +53,17 @@ Diremos que el $k$-símplice $\sigma$ tiene dimensión $k$ y llamaremos \textbf{
 \centering
 	\begin{tikzpicture}[thick, scale=3]
     	\tikzstyle{point}=[circle,thick,draw=black,fill=black,inner sep=0pt,minimum width=4pt,minimum height=4pt]
-    	\node (a)[point] at (0,0) {};
-    	\node (b)[point] at (1,0) {};
-    	\node (c)[point] at (0.6,0.5) {};
+    	\coordinate (a) at (0,0);
+    	\coordinate (b) at (1,0);
+    	\coordinate (c) at (0.6,0.5);
 
-    	\draw[fill=greeo,opacity=0.6] (a.center) -- (b.center) -- (c.center) -- cycle;
+    	\draw[fill=greeo,opacity=0.6] (a) -- (b) -- (c) -- cycle;
  
-    	\draw (a.center) -- (b.center) -- (c.center)  --cycle;
+    	\draw (a) -- (b) -- (c)  --cycle;
+    	
+    	\node ()[point] at (a) {};
+    	\node ()[point] at (b) {};
+    	\node ()[point] at (c) {};
 	\end{tikzpicture}
 	\caption{2-símplice}\label{ref:2simp}
 \end{subfigure}\hspace{0.05\textwidth}
@@ -68,29 +72,46 @@ Diremos que el $k$-símplice $\sigma$ tiene dimensión $k$ y llamaremos \textbf{
 	\begin{tikzpicture}[thick,scale=3]
     	\tikzstyle{point}=[circle,thick,draw=black,fill=black,inner sep=0pt,minimum width=4pt,minimum height=4pt]
 
-	\node (A1)[point] at (0,0) {};
-	\node (A3)[point] at (1,0) {};
-	\node (A4)[point] at (0.4,-0.3) {};
-	\node (B1)[point] at (0.5,0.5) {};
+	\coordinate (A1) at (0,0);
+	\coordinate (A3) at (1,0);
+	\coordinate (A4) at (0.4,-0.3);
+	\coordinate (B1) at (0.5,0.5);
 
 	\draw[thick,dashed,opacity=0.6] (A1) -- (A3);
-	\draw[fill=greeo,opacity=0.6] (A1.center) -- (A4.center) -- (B1.center) -- cycle;
-	\draw[fill=greeo,opacity=0.6] (A3.center) -- (A4.center) -- (B1.center) -- cycle;
+	\draw[fill=greeo,opacity=0.6] (A1) -- (A4) -- (B1) -- cycle;
+	\draw[fill=greeo,opacity=0.6] (A3) -- (A4) -- (B1) -- cycle;
 
 	\draw (A1) -- (B1)  -- (A3) -- (A4) --(A1) --cycle;
+	
+	\node ()[point] at (A1) {};
+	\node ()[point] at (A3) {};
+	\node ()[point] at (A4) {};
+	\node ()[point] at (B1) {};
 	\end{tikzpicture}
 	\caption{3-símplice}\label{ref:3simp}
 \end{subfigure}
 \caption{Representación de los símplices de dimensión 0, 1, 2 y 3}
 \end{figure}
 
-Se puede observar que cualquier subconjunto de los vértices de $\sigma$ será afínmente independiente y por lo tanto definirá un símplice $\tau$. De esta forma diremos que $\bm{\tau}$ \textbf{es una cara de} $\bm{\sigma}$ si es una convinación convexa de un subconjunto no vacío de los vértices de $\sigma$, y lo denotaremos por $\tau \leq \sigma$. Si el subconjunto es propio, diremos que $\bm{\tau}$ \textbf{es cara propia de} $\bm{\sigma}$, y lo denotaremos por $\tau < \sigma$. Por otro lado, diremos que $\bm{\sigma}$ \textbf{es cocara (propia) de} $\bm{\tau}$ si $\sigma \geq \tau$ ($\sigma > \tau$).
+Se puede observar que cualquier subconjunto de los vértices de $\sigma$ será afínmente independiente y por lo tanto definirá un símplice $\tau$. De esta forma diremos que \emph{$\tau$ es una cara de $\sigma$}  si es una combinación convexa de un subconjunto no vacío de los vértices de $\sigma$, y lo denotaremos por $\tau \leq \sigma$. Si el subconjunto es propio, diremos que \emph{$\tau$ es cara propia de $\sigma$}, y lo denotaremos por $\tau < \sigma$. Por otro lado, diremos que \emph{$\sigma$ es cocara (propia) de $\tau$}  si $\sigma \geq \tau$ ($\sigma > \tau$).
 
-Una vez que ya conocemos las piezas de nuestra descomposicón vamos a ver como tenemos que unirlas y cuales son las principales propiedades de los complejos resultantes.\\
+Haciendo uso de de la definición de caras de un símplice $\sigma$ podemos definir \emph{el borde y el interior} de $\sigma$.
+
+\begin{definition}
+Sea $\sigma$ un símplice. Entonces
+\begin{itemize}
+	\item Se define el \emph{borde de $\sigma$} como \[bd \ \sigma = \bigcup_{\tau<\sigma}\tau\]
+	\item Se define el \emph{interior de $\sigma$} como \[int\ \sigma= \sigma - bd\ \sigma\]
+\end{itemize}
+\end{definition}
+
+Debido a la definición del símplice como la envolvente convexa de un conjunto de puntos afínmente independientes, un punto $x \in \sigma$ pertenece al interior de $\sigma$ si y sólo si todos sus coeficientes $\lambda_i$ de la combinación convexa son positivos.
+
+Una vez que ya conocemos las piezas de nuestra descomposición vamos a ver como tenemos que unirlas y cuales son las principales propiedades de los complejos resultantes.\\
 Como ya hemos visto al principio de la sección, para que una descomposición sea un complejo sus piezas tienen que ser topológicamente simples y sus intersecciones tienen que ser piezas de dimensión inferior del mismo tipo. Es por esto que la manera que tendremos que unir unos símplices con otros por sus caras.
 
 \begin{definition}
-Un \textbf{complejo simplicial} es una colección finita de símplices $K$ que satisface las siguientes propiedades:
+Un \emph{complejo simplicial} es una colección finita de símplices $K$ que satisface las siguientes propiedades:
 \begin{enumerate}
 	\item Si $\sigma \in K$ y $\tau \leq \sigma$ entonces $\tau \in K$.
 	\item Si $\sigma_0,\sigma_1 \in K$ y $\sigma_0 \cap \sigma_1 \neq \emptyset$ entonces $\sigma_0 \cap \sigma_1 \leq \sigma_i$ para $i = 1,2$.
@@ -107,38 +128,45 @@ Un ejemplo de complejo simplicial es lo que se muestra en la figura \ref{ref:com
 \begin{tikzpicture}[thick,scale=3]
     	\tikzstyle{point}=[circle,thick,draw=black,fill=black,inner sep=0pt,minimum width=4pt,minimum height=4pt]
 
+	\coordinate (x) at (0,0);
 
-	\node (x)[point] at (0,0) {};
+	\coordinate (A1) at (1,0);
+	\coordinate (A3) at (2, 0.1);
+	\coordinate (A4) at (1.4,-0.3);
+	\coordinate (B1) at (1.5,0.5);
 
-	\node (A1)[point] at (1,0) {};
-	\node (A3)[point] at (2, 0.1) {};
-	\node (A4)[point] at (1.4,-0.3) {};
-	\node (B1)[point] at (1.5,0.5) {};
-
-    \node (b)[point] at (3,0) {};
-    \node (c)[point] at (2.6,-0.5) {};
+    \coordinate (b) at (3,0);
+    \coordinate (c) at (2.6,-0.5);
     
-    \node (a1)[point] at (3.4,0.12) {};
-    \node (b1)[point] at (4,0) {};
-    \node (c1)[point] at (3.8,0.3) {};
+    \coordinate (a1) at (3.4,0.12);
+    \coordinate (b1) at (4,0);
+    \coordinate (c1) at (3.8,0.3);
     
-    \node (y)[point] at (3.5,-0.4) {};
-
-    \draw[fill=greeo,opacity=0.6] (a1.center) -- (b1.center) -- (c1.center) -- cycle;
-    \draw (a1.center) -- (b1.center) -- (c1.center)  --cycle;
-
+    \coordinate (y) at (3.5,-0.4);
+	
 	\draw[thick,dashed,opacity=0.6] (A1) -- (A3);
+    \draw[fill=greeo,opacity=0.6] (a1) -- (b1) -- (c1) -- cycle;
+	\draw[fill=greeo,opacity=0.6] (A1) -- (A4) -- (B1) -- cycle;
+	\draw[fill=greeo,opacity=0.6] (A3) -- (A4) -- (B1) -- cycle;
 
-	\draw[fill=greeo,opacity=0.6] (A1.center) -- (A4.center) -- (B1.center) -- cycle;
-	\draw[fill=greeo,opacity=0.6] (A3.center) -- (A4.center) -- (B1.center) -- cycle;
-
+	\draw (a1) -- (b1) -- (c1)  --cycle;	
 	\draw (A1) -- (B1)  -- (A3) -- (A4) --(A1) --cycle;
+	\draw (x) -- (A1) --cycle;	
+	\draw (A3) -- (b) -- (c)  --cycle;	
+	\draw (b1) -- (y) --cycle;
 	
-	\draw (x.center) -- (A1.center) --cycle;	
-	\draw (A3.center) -- (b.center) -- (c.center)  --cycle;	
+	\node ()[point] at (x) {};
+	\node ()[point] at (A1) {};
+	\node ()[point] at (A3) {};
+	\node ()[point] at (A4) {};
+	\node ()[point] at (B1) {};
+    \node ()[point] at (b) {};
+    \node ()[point] at (c) {};
+    \node ()[point] at (a1) {};
+    \node ()[point] at (b1) {};
+    \node ()[point] at (c1) {};
+    \node ()[point] at (y) {};	
 	
-	\draw (b1.center) -- (y.center) --cycle;
-		
 	\end{tikzpicture}
 \caption{Ejemplo de complejo simplicial}
 \label{ref:comp1}
@@ -148,50 +176,288 @@ Un ejemplo de complejo simplicial es lo que se muestra en la figura \ref{ref:com
 \centering
 \begin{tikzpicture}[thick]
     \tikzstyle{point}=[circle,thick,draw=black,fill=black,inner sep=0pt,minimum width=4pt,minimum height=4pt]
-    \node (a)[point] at (0,0) {};
-    \node (b)[point] at (3,0) {};
-    \node (c)[point] at (2,2) {};
+    \coordinate (a) at (0,0);
+    \coordinate (b) at (3,0);
+    \coordinate (c) at (2,2);
 
     \begin{scope}[yshift=2cm]
-    \node (d)[point] at (1,1) {};
-    \node (e)[point] at (0,2) {};
-    \node (f)[point] at (4,2) {};
+    	\coordinate (d) at (1,1);
+    	\coordinate (e) at (0,2);
+    	\coordinate (f) at (4,2);
     \end{scope}
 
-    \draw[fill=greeo,opacity=0.6] (a.center) -- (b.center) -- (c.center) -- cycle;
-    \draw[fill=greeo,opacity=0.6] (d.center) -- (e.center) -- (f.center) -- cycle;
-    \node (p)[point] at (1.5,0.5) {};
+	\coordinate (p) at (1.5,0.5);
+
+    \draw[fill=greeo,opacity=0.6] (a) -- (b) -- (c) -- cycle;
+    \draw[fill=greeo,opacity=0.6] (d) -- (e) -- (f) -- cycle;
+    
  
-    \draw (p.center) -- (d.center);
-    \draw (a.center) -- (b.center) -- (c.center)  --cycle;
-    \draw (d.center) -- (e.center) -- (f.center) -- cycle;
+    \draw (p) -- (d) --cycle;
+    \draw (a) -- (b) -- (c)  --cycle;
+    \draw (d) -- (e) -- (f) -- cycle;
+    
+	\node ()[point] at (a) {};
+    \node ()[point] at (b) {};
+    \node ()[point] at (c) {};
+    \node ()[point] at (d) {};
+    \node ()[point] at (e) {};
+    \node ()[point] at (f) {};
+    \node ()[point] at (p) {};    
 \end{tikzpicture}
 \caption{Ejemplo de conjunto de símplices que no cumplen las condiciones de complejo simplicial}
 \label{ref:noComp}
 \end{figure}
 
-El \textbf{espacio subyacente} de un complejo simplicial $K$, denotado $\abs{K}$, es la unión de los símplices de $K$ con la topología heredada del $\mathbb{R}^d$ donde viven sus símplices. Este espacio subyacente también es llamado \textbf{poliedro}. Como se puede observar, el espacio subyacente  de un complejo simplicial es compacto, el cual es un resultado que nos será necesario para la demostración del Teorema de Estabilidad.
+El \emph{espacio subyacente} de un complejo simplicial $K$, denotado $\abs{K}$, es la unión de los símplices de $K$ con la topología heredada del $\mathbb{R}^d$ donde viven sus símplices. Este espacio subyacente también es llamado \emph{poliedro}. Como se puede observar, el espacio subyacente  de un complejo simplicial es compacto, el cual es un resultado que nos será necesario para la demostración del Teorema de Estabilidad.
+
+Dada esta definición del espacio subyacente de un complejo simplicial podemos conocer cuales son los  subconjuntos abiertos y cerrados de $\abs{K}$.
+\begin{proposition}
+Sea $K$ un complejo simplicial y $A \subset \abs{K}$ un subconjunto. Entonces $A$ es un abierto (cerrado) en $K$ si y sólo si para cada $\sigma \in K$, $A \cap \abs{\sigma}$ es un abierto (cerrado) de $\abs{\sigma}$.
+\end{proposition}
 
 Una vez que conocemos como se definen los complejos simpliciales y su correspondiente topología, vamos a ver como vincular un espacio topológico con un complejo simplicial. Para ello haremos uso de las triangulaciones:
 
 \begin{definition}
-Una \textbf{triangulación} de un espacio topológico $X$ es un par $(K, h)$ donde $K$ es un complejo simplicial y $h: X \longrightarrow \abs{K}$ es un homeomorfismo ($h$ continua, biyectiva y $h^{-1}$ continua).
+Una \emph{triangulación} de un espacio topológico $X$ es un par $(K, h)$ donde $K$ es un complejo simplicial y $h: X \longrightarrow \abs{K}$ es un homeomorfismo ($h$ continua, biyectiva y $h^{-1}$ continua).
 \end{definition}
-Diremos que un espacio topológico es \textbf{triangulable} si admite una triangulación. Y por tanto, los espacios $\abs{K}$ y $X$ son iguales (topologicamente hablando).
+Diremos que un espacio topológico es \emph{triangulable} si admite una triangulación. Y por tanto, los espacios $\abs{K}$ y $X$ son iguales (topológicamente hablando).
 
 También nos será de utilidad poder estudiar los complejos simpliciales contenidos en otro complejo simplicial.
 \begin{definition}
-Un \textbf{subcomplejo} $L$ de un complejo simplicial $K$ es un complejo simplicial $L \subseteq K$.
+Un \emph{subcomplejo} $L$ de un complejo simplicial $K$ es un complejo simplicial $L \subseteq K$.
 \end{definition}
 
-Un subcomplejo de gran interés son los $\bm{j}$\textbf{-esqueletos}, definidos de la siguiente forma: \[K^{(j)} = \{\sigma \in K : dim\ \sigma\ \leq j\}\]
+Un subcomplejo de gran interés son los \emph{$j$-esqueletos}, definidos de la siguiente forma: \[K^{(j)} = \{\sigma \in K : dim\ \sigma\ \leq j\}\]
 
-Otro subconjunto de símplices que nos será de gran ayuda más adelante es la \textbf{estrella de un símplice} $\bm{\tau}$, la cual consiste de las cocaras de $\tau$, denotado por $St(\tau)$. Este conjunto no será siempre un complejo simplicial, así que se define la \textbf{estrella cerrada} $\overline{St}(\tau)$ como el menor subcomplejo de $K$ que contiene a $St(\tau)$. Adicionalmente, se define el \textbf{link} de $\tau$ como: $Lk(\tau) = \{\tau \in \overline{St}(\tau): \sigma \cap \tau = \emptyset\}$.
+Otro subconjunto de símplices que nos será de gran ayuda más adelante es la \emph{estrella de un símplice $\tau$}, la cual consiste de las cocaras de $\tau$, denotado por $St(\tau)$. Este conjunto no será siempre un complejo simplicial, así que se define la \emph{estrella cerrada} $\overline{St}(\tau)$ como el menor subcomplejo de $K$ que contiene a $St(\tau)$. Adicionalmente, se define el \emph{link} de $\tau$ como: $Lk(\tau) = \{\tau \in \overline{St}(\tau): \sigma \cap \tau = \emptyset\}$.
 
-\subsubsection*{complejo simplicial abstracto: esquema de vertices, realización geométrica y teorema}
-\subsubsection*{def subdivisión de un complejo simplicial}
-\subsubsection*{subdivisión baricéntrica: def y lema}
-\subsubsection*{aplicaciones simpliciales y aproximaciones simpliciales}
+\subsubsection*{Complejos simpliciales abstractos}
+Una vez que ya conocemos los complejos simpliciales desde el punto de vista geométrico, vamos a abordarlos desde un enfoque combinatorio, el cual nos será de gran ayuda para poder programar los complejos simpliciales.
+
+\begin{definition}
+Un \emph{complejo simplicial abstracto $A$} es una colección finita de conjuntos finitos tal que si $\alpha \in A$ y $\beta \subset \alpha$ entonces $\beta \in A$.
+\end{definition}
+De esta forma se cumple que
+\begin{itemize}
+	\item Los conjuntos en $A$ no vacíos se denominan \emph{símplices abstractos}.
+	\item La \emph{dimensión} de un símplice abstracto $\alpha \in A$ es $dim\ \alpha = card(\alpha) - 1$. Y la dimensión del complejo es el máximo de las dimensiones de sus símplices.
+	\item Una \emph{cara} de $\alpha \in A$ es cualquier subconjunto no vacío de $\beta \subset \alpha$.
+	\item El \emph{conjunto de vértices} de $A$ es la unión de todos sus símplices.
+	\item Un \emph{subcomplejo $B$} de un complejo simplicial abstracto $A$ es un complejo simplicial abstracto $B \subset A$.
+\end{itemize}
+
+\textbf{Ejemplo}\\
+Un ejemplo de complejo simplicial abstracto es el siguiente conjunto 
+
+\begin{gather*}
+A = \{\{0\},\{1\},\{2\},\{3\},\{4\},\{5\},\{6\},\{0,1\},\{1,2\},\{1,3\},\{1,4\},\{2,3\},\{2,4\},\{3,4\},\{4,5\},\\
+\{4,6\},\{5,6\},\{1,2,3\},\{1,2,4\},\{1,3,4\},\{2,3,4\},\{1,2,3,4\}\}
+\end{gather*}
+
+Donde el conjunto de vértices es: $Vert\ A = \{0, 1, 2, 3, 4, 5, 6\}$.
+
+\begin{definition}
+Sean $A$ y $B$ dos complejos simpliciales abstractos. Diremos que $A$ y $B$ son \emph{isomorfos} si existe una biyección \[b:Vert\ A \longrightarrow Vert\ B\] tal que $\alpha \in A \Leftrightarrow b(\alpha) \in B$.
+\end{definition}
+De esta forma podremos ver si varios complejos simpliciales abstractos realmente representan el mismo complejo abstracto. Sin embargo, lo que más nos interesaría es ver si un complejo simplicial abstracto puede representar correctamente un complejo simplicial (definido geométricamente) y viceversa. 
+
+Siempre podremos generar complejos simpliciales abstractos a partir de un complejo simplicial (geométrico) de la siguiente forma:
+\begin{definition}
+Sea $K$ un complejo simplicial y $V$ el conjunto de vértices de $K$. Llamaremos \emph{esquema de vértices} al complejo simplicial abstracto $A$ formado por todos aquellos subconjuntos de $V$ que generan símplices en $K$.
+\end{definition}
+
+Y bajo ciertas cirscunstancias podremos hacer el paso opuesto de construir un complejo simplicial (geométrico) a partir de otro abstracto:
+\begin{definition}
+Sean $A$ un complejo simplicial abstracto y $K$ un complejo simplicial. Diremos que $K$ es una \emph{realización geométrica} de $A$, si $A$ es isomorfo al esquema de vértices de $K$.
+\end{definition}
+
+\begin{theorem}
+Todo complejo simplicial abstracto de dimensión $d$ admite una realización geométrica en $\mathbb{R}^{2d + 1}$.
+\end{theorem}
+
+Así pues, garantizamos los complejos simpliciales abstractos como una representación fiel de un complejo simplicial (geométrico).
+
+\subsubsection*{Aplicaciones simpliciales}
+\subsubsection*{Subdivisiones}
+Veremos que hay ocasiones que nos interesará poder ir haciendo los símplices de nuestro complejo simplicial más pequeños, pero conservando el espacio topológico. Por esta razón, definimos \emph{subdivisión de un complejo simplicial} de la siguiente manera:
+\begin{definition}
+Sea $K$ un complejo simplicial. Diremos que un complejo simplicial $L$ es una \emph{subdivisión} de $K$ si:
+\begin{itemize}
+	\item $\abs{K}=\abs{L}$.
+	\item Cada símplice de $L$ está contenido en un símplice de $K$.
+\end{itemize}
+\end{definition}
+
+Hay muchas maneras de obtener subdivisiones de un complejo simplicial, pero nosotros nos centraremos en la \emph{subdivisión baricéntrica}, denotado por $L =$ Sd$K$. Para la construcción de esta subdivisión, tenemos que definir el \emph{baricentro} de un símplice y el \emph{cono} de un símplice de vértice $v$.
+
+\begin{definition}
+Sea $\sigma$ un $k$-símplice, tal que $\sigma = conv\{v_0, v_1, ..., v_k\}$. Llamaremos \emph{baricentro} de $\sigma$ al punto
+\[
+b_\sigma = \sum_{i=0}^{k} \frac{v_i}{k+1}\ \in int\ \sigma
+\]
+\end{definition}
+
+\begin{definition}
+Sea $\sigma$ un $k$-símplice, tal que $\sigma = conv\{v_0, v_1, ..., v_k\}$ y $v$ un punto no contenido en el subespacio afín generado por $\{v_0, v_1, ..., v_k\}$. Se define el \emph{cono} de $\sigma$ con vértice $v$ y se denota por $\sigma*v$ como el $k+1$-símplice generado por $\{v,v_0, v_1, ..., v_k\}$.
+\end{definition}
+
+Sea $K$ un complejo simplicial. Se define la \emph{subdivisión baricéntrica} de $K$ como el complejo simplicial Sd$K$ que se construye inductivamente sobre el $j$-esqueleto como sigue:
+\begin{enumerate}
+	\item Sd$K^{(0)} = K^{(0)}$.
+	\item Sd$K^{(j)}$ es la unión de Sd$K^{(j-1)}$ con el conjunto de todos los símplices de la forma $b_\sigma*\tau$, donde $\sigma$ es un $j$-símplice y $\tau$ es cualquier símplice de Sd$K^{(j-1)}$ contenido en una cara de $\sigma$.
+\end{enumerate}
+En la figura \ref{ref:subBar} se muestra la primera y segunda subdivisión baricéntrica de un complejo simplicial.
+
+
+\begin{figure}[h]
+
+\centering
+\begin{subfigure}[b]{0.3\textwidth}
+\centering
+	\begin{tikzpicture}[thick, scale=4]
+    	\tikzstyle{point0}=[circle,thick,draw=black,fill=black,inner sep=0pt,minimum width=4pt,minimum height=4pt]
+    	
+    	\coordinate (a) at (0,0);
+    	\coordinate (b) at (1,0);
+    	\coordinate (c) at (0.5,0.7);
+
+    	\draw[fill=greeo,opacity=0.6] (a) -- (b) -- (c) -- cycle;
+ 
+    	\draw (a) -- (b) -- (c)  --cycle;
+    	
+    	\node ()[point0] at (a) {};
+    	\node ()[point0] at (b) {};
+    	\node ()[point0] at (c) {};
+	\end{tikzpicture}
+	\caption{2-símplice}\label{ref:2simpBar}
+\end{subfigure}\hspace{0.02\textwidth}
+\begin{subfigure}[b]{0.3\textwidth}
+\centering
+	\begin{tikzpicture}[thick, scale=4]
+    	\tikzstyle{point0}=[circle,thick,draw=black,fill=black,inner sep=0pt,minimum width=4pt,minimum height=4pt]
+    	\tikzstyle{point1}=[circle,thick,draw=black,fill=red,inner sep=0pt,minimum width=4pt,minimum height=4pt]
+    	
+    	\coordinate (a) at (0,0);
+    	\coordinate (b) at (1,0);
+    	\coordinate (c) at (0.5,0.7);
+    	\coordinate (d) at (0.25,0.35);
+    	\coordinate (e) at (0.5,0);
+    	\coordinate (f) at (0.75,0.35);
+    	\coordinate (g) at (0.5,0.23);
+
+		\draw[fill=greeo,opacity=0.6] (a) -- (b) -- (c) -- cycle;
+		
+    	\draw (a) -- (b) -- (c)  --cycle;
+    	\draw (a) -- (f) --cycle;
+    	\draw (c) -- (e) --cycle;
+    	\draw (d) -- (b) --cycle;
+    	
+		\node ()[point0] at (a) {};
+		\node ()[point0] at (b) {};
+		\node ()[point0] at (c) {};   
+    	\node ()[point1] at (d) {};
+    	\node ()[point1] at (e) {};
+    	\node ()[point1] at (f) {};
+    	\node ()[point1] at (e) {};
+    	\node ()[point1] at (g) {};
+	\end{tikzpicture}
+	\caption{Primera subdivisión baricéntrica}\label{ref:1SubBar}
+\end{subfigure}\hspace{0.02\textwidth}
+\begin{subfigure}[b]{0.3\textwidth}
+\centering
+	\begin{tikzpicture}[thick, scale=4]
+    	\tikzstyle{point0}=[circle,thick,draw=black,fill=black,inner sep=0pt,minimum width=4pt,minimum height=4pt]
+    	\tikzstyle{point1}=[circle,thick,draw=black,fill=red,inner sep=0pt,minimum width=4pt,minimum height=4pt]
+    	\tikzstyle{point2}=[circle,thick,draw=black,fill=blue,inner sep=0pt,minimum width=4pt,minimum height=4pt]
+    	
+    	\coordinate (a) at (0,0);
+    	\coordinate (b) at (1,0);
+    	\coordinate (c) at (0.5,0.7);
+    	\coordinate (d) at (0.25,0.35);
+    	\coordinate (e) at (0.5,0);
+    	\coordinate (f) at (0.75,0.35);
+    	\coordinate (g) at (0.5,0.23);
+    	\coordinate (h) at (0.38,0.53);
+    	\coordinate (i) at (0.5,0.47);
+    	\coordinate (j) at (0.63,0.53);
+    	\coordinate (k) at (0.38,0.29);
+    	\coordinate (l) at (0.63,0.29);
+    	\coordinate (m) at (0.42,0.43);
+    	\coordinate (n) at (0.58,0.43);
+    	\coordinate (o) at (0.13,0.18);
+    	\coordinate (p) at (0.25,0.12);
+    	\coordinate (q) at (0.5,0.12);
+    	\coordinate (r) at (0.25,0);
+    	\coordinate (s) at (0.25,0.19);
+    	\coordinate (t) at (0.33,0.08);
+    	\coordinate (u) at (0.88,0.18);
+    	\coordinate (v) at (0.75,0.12);
+    	\coordinate (w) at (0.75,0);
+    	\coordinate (x) at (0.67,0.08);
+    	\coordinate (y) at (0.75,0.19);
+
+		\draw[fill=greeo,opacity=0.6] (a) -- (b) -- (c) -- cycle;
+		
+    	\draw (a) -- (b) -- (c)  --cycle;
+    	\draw (a) -- (f) --cycle;
+    	\draw (c) -- (e) --cycle;
+    	\draw (d) -- (b) --cycle;
+    	\draw (c) -- (k) --cycle;
+    	\draw (g) -- (h) --cycle;
+    	\draw (d) -- (i) --cycle;
+    	\draw (c) -- (l) --cycle;
+    	\draw (g) -- (j) --cycle;
+    	\draw (f) -- (i) --cycle;
+    	\draw (a) -- (k) --cycle;
+    	\draw (d) -- (p) --cycle;
+    	\draw (g) -- (o) --cycle;
+    	\draw (g) -- (r) --cycle;
+    	\draw (e) -- (p) --cycle;
+    	\draw (a) -- (q) --cycle;
+    	\draw (e) -- (v) --cycle;
+    	\draw (b) -- (q) --cycle;
+    	\draw (g) -- (w) --cycle;
+    	\draw (b) -- (l) --cycle;
+    	\draw (g) -- (u) --cycle;
+    	\draw (f) -- (v) --cycle;
+    	
+		\node ()[point0] at (a) {};
+		\node ()[point0] at (b) {};
+		\node ()[point0] at (c) {};   
+    	\node ()[point1] at (d) {};
+    	\node ()[point1] at (e) {};
+    	\node ()[point1] at (f) {};
+    	\node ()[point1] at (e) {};
+    	\node ()[point1] at (g) {};
+    	\node ()[point1] at (f) {};
+    	\node ()[point1] at (g) {};
+    	\node ()[point2] at (h) {};
+    	\node ()[point2] at (i) {};
+    	\node ()[point2] at (j) {};
+    	\node ()[point2] at (k) {};
+    	\node ()[point2] at (l) {};
+    	\node ()[point2] at (m) {};
+    	\node ()[point2] at (n) {};
+    	\node ()[point2] at (o) {};
+    	\node ()[point2] at (p) {};
+    	\node ()[point2] at (q) {};
+    	\node ()[point2] at (r) {};
+    	\node ()[point2] at (s) {};
+    	\node ()[point2] at (t) {};
+    	\node ()[point2] at (u) {};
+    	\node ()[point2] at (v) {};
+    	\node ()[point2] at (w) {};
+    	\node ()[point2] at (x) {};
+    	\node ()[point2] at (y) {};
+	\end{tikzpicture}
+	\caption{Segunda subdivisión baricéntrica}\label{ref:2SubBar}
+\end{subfigure}
+\caption{Primera y segunda subdivisión baricéntrica de un 2-símplice}
+\label{ref:subBar}
+\end{figure}
+
+
+\subsubsection*{Aproximaciones simpliciales}
 
 Desde el punto de vista computacional nos encontramos con el problema de que tenemos una representación de un espacio topológico a través de una discretización finita de los puntos de dicho espacio, y nuestro objetivo es poder recuperar las propiedades del espacio topológico original a partir de esta nube de puntos. Para ello usaremos complejos simpliciales asociados a dicha nube de puntos.
 
@@ -206,7 +472,7 @@ Como se puede ver en [añadir cita] la homotopía es una gran herramienta algebr
 
 \subsubsection*{grupos de cadenas}
 \subsubsection*{operador borde: complejos de cadenas, ciclos y bordes}
-\subsubsection*{grupos de homología simplicial: definición, números de betti, caracteristica de euler, teorema de conexion y numeros de betti}
+\subsubsection*{grupos de homología simplicial: definición, números de betti, característica de euler, teorema de conexión y números de betti}
 \subsubsection*{aplicaciones inducidas para grupos de homología}
 
 \subsubsection*{Homología singular}
@@ -229,11 +495,11 @@ certainly in low dimensions, singular and simplicial homology are equivalent the
 \subsection{Persistencia}
 
 \subsubsection*{funciones reales}
-poder ver graficamente como a traves de las contraimagenes se generan diferentes componentes al pasar por puntos criticos
+poder ver gráficamente como a través de las contraimagenes se generan diferentes componentes al pasar por puntos críticos
 \subsubsection*{funciones morse} 
 def variedad diferenciable, definición de las funciones morse, ver como la homología cambia al pasar por los puntos críticos y ver las nociones de nacimiento y muerte
 \subsubsection*{funciones tame}
-definicion función tame, subniveles, grupos de persistencia a partir de funciones tame, critical value lema,  numeros de betti de grupos de persistencia y su relación con las multiplicidades.
+definición función tame, subniveles, grupos de persistencia a partir de funciones tame, critical value lema,  números de betti de grupos de persistencia y su relación con las multiplicidades.
 
 Definición de diagrama de persistencia, k-triangle lemma
 
@@ -242,7 +508,7 @@ Definición de diagrama de persistencia, k-triangle lemma
 particularizar lo visto en funciones tame pero con complejos simpliciales
 
 \subsubsection*{funciones PL}
-definición de las funciones pl, generación de filtraciones a partir del lower star filtration y estudio de los puntos criticos  de las funciones pl para comprobar que son funciones tame.
+definición de las funciones pl, generación de filtraciones a partir del lower star filtration y estudio de los puntos críticos  de las funciones pl para comprobar que son funciones tame.
 
 
 
