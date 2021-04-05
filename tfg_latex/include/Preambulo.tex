@@ -18,7 +18,16 @@
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}{Proposición}[section]
 
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Observación}
 
 \usepackage[top=3cm, bottom=3cm, right=2.54cm, left=2.54cm]{geometry}
 \usepackage{afterpage}
@@ -36,15 +45,8 @@
 \usepackage{subcaption}
 
 \definecolor{greeo}{RGB}{37,211,102}
+\definecolor{redp}{RGB}{255,153,153}
 \usetikzlibrary{patterns}
-
-\theoremstyle{definition}
-\newtheorem{definition}{Definición}[section]
-\newtheorem{proposition}{Proposición}[section]
-\newtheorem{theorem}{Teorema}[section]
-
-\newtheorem*{remark}{Observación}
-
 %%-----------------------------------------------
 \usepackage{fancyhdr}
 \pagestyle{fancy}
