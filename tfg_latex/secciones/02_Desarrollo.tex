@@ -225,7 +225,7 @@ Sea $K$ un complejo simplicial y $A \subset \abs{K}$ un subconjunto. Entonces $A
 \end{proposition}
 
 \begin{definition}
-Una \emph{triangulación} de un espacio topológico $X$ es un par $(K, h)$ donde $K$ es un complejo simplicial y $h: X \longrightarrow \abs{K}$ es un homeomorfismo ($h$ continua, biyectiva y $h^{-1}$ continua).
+Una \emph{triangulación} de un espacio topológico $X$ es un par $(K, h)$ donde $K$ es un complejo simplicial y $h: X \to \abs{K}$ es un homeomorfismo ($h$ continua, biyectiva y $h^{-1}$ continua).
 \end{definition}
 Diremos que un espacio topológico es \emph{triangulable} si admite una triangulación.
 
@@ -265,7 +265,7 @@ Donde el conjunto de vértices es: $\text{Vert }A = \{0, 1, 2, 3, 4, 5, 6\}$.
 \end{exmp}
 
 \begin{definition}
-Sean $A$ y $B$ dos complejos simpliciales abstractos. Diremos que $A$ y $B$ son \emph{isomorfos} si existe una biyección \[b:\text{Vert }A \longrightarrow \text{Vert }B\] tal que $\alpha \in A$ si y sólo si $b(\alpha) \in B$.
+Sean $A$ y $B$ dos complejos simpliciales abstractos. Diremos que $A$ y $B$ son \emph{isomorfos} si existe una biyección \[b:\text{Vert }A \to \text{Vert }B\] tal que $\alpha \in A$ si y sólo si $b(\alpha) \in B$.
 \end{definition}
 
 Cada complejo geométrico induce de manera natural un complejo abstracto de la siguiente forma:
@@ -298,14 +298,14 @@ se denominan \emph{coordenadas baricéntricas} de $x$ en $K$.
 Haremos uso de estas coordenadas para construir una función, lineal a trozos inducida por una función entre los vértices de dos complejos simpliciales, denominada \emph{aplicación de vértices}
 
 \begin{definition}
-Sean $K$ y $L$ complejos simpliciales y $\varphi:\text{Vert }K \longrightarrow \text{Vert }L$ una aplicación. Diremos que $\varphi$ es una \emph{aplicación de vértices} si satisface que para cada $\sigma \in K$ su imagen $\varphi(\sigma) \in L$.
+Sean $K$ y $L$ complejos simpliciales y $\varphi:\text{Vert }K \to \text{Vert }L$ una aplicación. Diremos que $\varphi$ es una \emph{aplicación de vértices} si satisface que para cada $\sigma \in K$ su imagen $\varphi(\sigma) \in L$.
 \end{definition}
 
-Una aplicación de vértices $\varphi:\text{Vert }K \longrightarrow \text{Vert }L$ induce una aplicación, lineal a trozos $f: \abs{K} \longrightarrow \abs{L}$ dada por
+Una aplicación de vértices $\varphi:\text{Vert }K \to \text{Vert }L$ induce una aplicación, lineal a trozos $f: \abs{K} \to \abs{L}$ dada por
 \[
 f(x) = f\left ( \sum_{i=0}^{n} b_i(x) u_i \right ) =  \sum_{i=0}^{n} b_i(x)u_i
 \]
-a la que llamaremos \emph{aplicación simplicial} asociada a $\varphi$. Para enfatizar que es una aplicación lineal en cada símplice del complejo, se suele notar la aplicación de la siguiente forma $f: K \longrightarrow L$. 
+a la que llamaremos \emph{aplicación simplicial} asociada a $\varphi$. Para enfatizar que es una aplicación lineal en cada símplice del complejo, se suele notar la aplicación de la siguiente forma $f: K \to L$. 
 
 \subsubsection*{Subdivisiones}
 Veremos que hay ocasiones que nos interesará controlar el tamaño de los símplices de nuestro complejo simplicial conservando el espacio subyacente. Por esta razón, se introduce la noción de \emph{subdivisión de un complejo simplicial}.
@@ -552,12 +552,12 @@ es un entorno abierto de $v$ en $\abs{K}$ al que llamaremos \emph{entorno estrel
 
 Así pues, definimos una aproximación simplicial de la siguiente forma:
 \begin{definition}
-Sean $K$ y $L$ complejos simpliciales, $g: \abs{K} \longrightarrow \abs{L}$ una aplicación continua y  $f: K \longrightarrow L$ una aplicación simplicial. Diremos que $f$ es una \emph{aproximación simplicial} de $g$ si verifica la \emph{condición de estrella}, es decir, si para cada vértice $v \in K$ se tiene que $g(N(v)) \subset N(f(v))$.
+Sean $K$ y $L$ complejos simpliciales, $g: \abs{K} \to \abs{L}$ una aplicación continua y  $f: K \to L$ una aplicación simplicial. Diremos que $f$ es una \emph{aproximación simplicial} de $g$ si verifica la \emph{condición de estrella}, es decir, si para cada vértice $v \in K$ se tiene que $g(N(v)) \subset N(f(v))$.
 \end{definition}
 
 Además, la condición de estrella será una condición suficiente para garantizar la existencia de una aproximación simplicial:
 \begin{lemma}
-Sean $K$ y $L$ complejos simpliciales, $g: \abs{K} \longrightarrow \abs{L}$ una aplicación continua que satisface la condición de estrella. Entonces $g$ tiene una aproximación simplicial $f: K \longrightarrow L$ \cite{libroEH}.
+Sean $K$ y $L$ complejos simpliciales, $g: \abs{K} \to \abs{L}$ una aplicación continua que satisface la condición de estrella. Entonces $g$ tiene una aproximación simplicial $f: K \to L$ \cite{libroEH}.
 \end{lemma}
 
 En la figura \ref{ref:aproxSimp} podemos ver un ejemplo de aproximación simplicial de una aplicación continua.
@@ -572,7 +572,7 @@ En la figura \ref{ref:aproxSimp} podemos ver un ejemplo de aproximación simplic
 \begin{theorem}[Aproximación simplicial]
 \label{ref:teoremaAproximacionSimplicial}
 \begin{sloppypar}
-Sean $K$ y $L$ complejos simpliciales, ${g: \abs{K} \longrightarrow \abs{L}}$ una aplicación continua. Entonces existe $n \in \mathbb{N}$ tal que $g$ tiene una aproximación simplicial ${f: \textit{Sd}^{n}\ K \longrightarrow L}$  \cite{libroEH}.
+Sean $K$ y $L$ complejos simpliciales, ${g: \abs{K} \to \abs{L}}$ una aplicación continua. Entonces existe $n \in \mathbb{N}$ tal que $g$ tiene una aproximación simplicial ${f: \textit{Sd}^{n}\ K \to L}$  \cite{libroEH}.
 \end{sloppypar}
 \end{theorem}
 
@@ -775,7 +775,7 @@ Sea $p$ un número entero y $\sigma \in K$ un $p$-símplice $\sigma = [v_0, v_1,
 donde $\hat{v}_j$ denota que $v_j$ se omite.
 \end{definition}
 
-En general, dada una $p$-cadena $c =\sum a_i\sigma_i$, se define su borde mediante la extensión lineal como  $\partial_p c= \sum_{j=0}^{p} a_i \partial_p \sigma_i$. Como consecuencia, el borde define una aplicación lineal $\partial_p: \text{C}_p \longrightarrow \text{C}_{p-1}$ entre espacios vectoriales de cadenas denominada \emph{operador borde}. Para simplificar la notación suele omitirse el subíndice $p$ del operador borde, ya que siempre coincide con la dimensión de la cadena a la que se le aplica.
+En general, dada una $p$-cadena $c =\sum a_i\sigma_i$, se define su borde mediante la extensión lineal como  $\partial_p c= \sum_{j=0}^{p} a_i \partial_p \sigma_i$. Como consecuencia, el borde define una aplicación lineal $\partial_p: \text{C}_p \to \text{C}_{p-1}$ entre espacios vectoriales de cadenas denominada \emph{operador borde}. Para simplificar la notación suele omitirse el subíndice $p$ del operador borde, ya que siempre coincide con la dimensión de la cadena a la que se le aplica.
 
 \begin{exmp}
 Sea la $2$-cadena $c = [0,1] + [4,5]$, entonces el borde de $c$ es:
@@ -924,7 +924,7 @@ Además, como $\text{Z}_p$, $\text{B}_p$ y $\text{H}_p$ son espacios vectoriales
 \subsubsection*{Aplicaciones inducidas}
 Veremos que una aplicación simplicial entre espacios subyacentes de dos complejos simpliciales lleva ciclos a ciclos y bordes a bordes. Luego, esta aplicación induce una aplicación entre grupos de homología.
 
-Sean $K$ y $L$ complejos simpliciales y $f: K \longrightarrow L$ una aplicación simplicial. Para cada $p$-símplice $\sigma^p$ se define
+Sean $K$ y $L$ complejos simpliciales y $f: K \to L$ una aplicación simplicial. Para cada $p$-símplice $\sigma^p$ se define
 \[
 f_{\#}(\sigma^p) = 
 \begin{cases}
@@ -933,18 +933,18 @@ f(\sigma^p)	& \text{ si } \text{dim } f(\sigma^p) = p \\
 \end{cases}
 \]
 
-Puesto que los símplices forman una base de los espacios vectoriales $\text{C}_p(K)$ y $\text{C}_p(L)$, mediante una extensión lineal se obtiene una aplicación lineal $f_{\#}: \text{C}_p(K) \longrightarrow \text{C}_p(L)$.
+Puesto que los símplices forman una base de los espacios vectoriales $\text{C}_p(K)$ y $\text{C}_p(L)$, mediante una extensión lineal se obtiene una aplicación lineal $f_{\#}: \text{C}_p(K) \to \text{C}_p(L)$.
 
 \begin{property}
 Sean $\partial_K$ y $\partial_L$ los operadores borde de $K$ y $L$ respectivamente. Entonces $f_{\#}\circ \partial_K = \partial_L \circ f_{\#}$ \cite{libroEH}.
 \end{property}
-La propiedad anterior garantiza que $f_{\#}(\text{Z}_p(K)) \subset \text{Z}_p(L)$ y $f_{\#}(\text{B}_p(K)) \subset \text{B}_p(L)$. Por tanto $f_{\#}$ induce una aplicación lineal $f_{*}: \text{H}_p(K) \longrightarrow \text{H}_p(L)$, que denominaremos \emph{homomorfismo inducido por $f$}.
+La propiedad anterior garantiza que $f_{\#}(\text{Z}_p(K)) \subset \text{Z}_p(L)$ y $f_{\#}(\text{B}_p(K)) \subset \text{B}_p(L)$. Por tanto $f_{\#}$ induce una aplicación lineal $f_{*}: \text{H}_p(K) \to \text{H}_p(L)$, que denominaremos \emph{homomorfismo inducido por $f$}.
 
 Utilizando aproximaciones simpliciales podemos ver que aplicaciones continuas entre poliedros inducen aplicaciones lineales en homología. Para ello definiremos el siguiente operador:
 
 \begin{definition}
 \begin{sloppypar}
-Sea $K$ un complejo simplicial y consideremos la aplicación ${\lambda: \text{C}_p(K) \longrightarrow \text{C}_p(\text{Sd}^n\ K)}$ definida sobre los $p$-símplices como
+Sea $K$ un complejo simplicial y consideremos la aplicación ${\lambda: \text{C}_p(K) \to \text{C}_p(\text{Sd}^n\ K)}$ definida sobre los $p$-símplices como
 \[
 \lambda_p(\sigma^p) = \sum_{\tau^p \in \text{Sd}^n\ \sigma^p} \tau^p
 \]
@@ -953,15 +953,15 @@ La aplicación $\lambda_p$ se denomina \emph{operador subdivisión}.
 \end{definition}
 
 \begin{sloppypar}
-Sean $K$ y $L$ complejos simpliciales y ${f: \abs{K} \longrightarrow \abs{L}}$ una aplicación continua y ${g: \text{Sd}^n\ K \longrightarrow L}$ una aproximación simplicial de $f$. Se define el \emph{homomorfismo inducido} por la aplicación $f$ como la aplicación lineal ${f_{*}: \text{H}_p(K) \longrightarrow \text{H}_p(L)}$ dada por
+Sean $K$ y $L$ complejos simpliciales y ${f: \abs{K} \to \abs{L}}$ una aplicación continua y ${g: \text{Sd}^n\ K \to L}$ una aproximación simplicial de $f$. Se define el \emph{homomorfismo inducido} por la aplicación $f$ como la aplicación lineal ${f_{*}: \text{H}_p(K) \to \text{H}_p(L)}$ dada por
 \[
 f_{*} = g_{*} \circ \lambda_{p*}
 \]
-Donde $g_{*}$ es el homomorfismo inducido por $g$ y ${\lambda_{p*}: \text{H}_p(K) \longrightarrow \text{H}_p(\text{Sd}^n\ K)}$ es el isomorfismo inducido por $\lambda_p$.
+Donde $g_{*}$ es el homomorfismo inducido por $g$ y ${\lambda_{p*}: \text{H}_p(K) \to \text{H}_p(\text{Sd}^n\ K)}$ es el isomorfismo inducido por $\lambda_p$.
 \end{sloppypar}
 
 \begin{theorem}\label{ref:teoremaHomomorfismoInducido}
-Sean $K$ y $L$ dos complejos simpliciales y $f: \abs{K} \longrightarrow \abs{L}$ un homeomorfismo. Entonces $f_{*}: \text{H}_p(K) \longrightarrow \text{H}_p(L)$ es un isomorfismo para todo $p$.
+Sean $K$ y $L$ dos complejos simpliciales y $f: \abs{K} \to \abs{L}$ un homeomorfismo. Entonces $f_{*}: \text{H}_p(K) \to \text{H}_p(L)$ es un isomorfismo para todo $p$.
 \end{theorem}
 
 
@@ -1012,7 +1012,7 @@ Además, para el \textit{teorema de estabilidad} no nos hará falta hacer uso de
 Introduciremos el concepto de persistencia primero para funciones de una variable. Después veremos en el caso de funciones morse, luego profundizaremos en el caso de los complejos simpliciales y por último para funciones tame. En esta sección seguiré \cite{articuloPersistenciaEH} como referencia.
 
 \subsubsection*{Funciones reales de una variable}
-Sea $f: \mathbb{R} \longrightarrow \mathbb{R}$ una función suave. Recordemos que $x$ es un \emph{punto crítico} y $f(x)$ un \emph{valor crítico de $f$} si $f'(x)=0$. Además, un punto crítico $x$ es \emph{no degenerado} si $f''(x) \neq 0$. Así pues, supongamos que $f$ sólo contiene puntos críticos no degenerados con valores críticos distintos.
+Sea $f: \mathbb{R} \to \mathbb{R}$ una función suave. Recordemos que $x$ es un \emph{punto crítico} y $f(x)$ un \emph{valor crítico de $f$} si $f'(x)=0$. Además, un punto crítico $x$ es \emph{no degenerado} si $f''(x) \neq 0$. Así pues, supongamos que $f$ sólo contiene puntos críticos no degenerados con valores críticos distintos.
 
 Si consideramos el \emph{conjunto de subnivel} $\mathbb{R}_t=f^{-1}(-\infty, t]$ para cada $t \in \mathbb{R}$, entonces veremos que a medida que incrementemos $t$, el número de componentes conexas de $\mathbb{R}_t$ permanecerá constate hasta que pasemos por un $t_0$ valor crítico de $f$. Como podemos ver en la figura \ref{ref:subnivelR}, cuando pasamos por un mínimo local se crea una nueva componente conexa y cuando pasamos por un máximo local se combinan dos componentes conexas en una.
 
@@ -1044,14 +1044,14 @@ Vamos a generalizar lo visto con funciones de una variable en $\mathbb{R}$ a fun
 \begin{definition}
 Una \emph{variedad diferenciable} un espacio topológico $\mathbb{M}$ que satisface:
 \begin{enumerate}
-	\item $\mathbb{M}$ es Hausdorff.
-	\item $\mathbb{M}$ es segundo numerable.
+	\item $\mathbb{M}$ es Hausdorff ($T_2$).
+	\item $\mathbb{M}$ es segundo numerable, es decir, su topología tiene una base numerable.
 	\item Todo punto de $\mathbb{M}$ posee un entorno homomorfo a $\mathbb{R}^n$.
 	\item Todo punto de $\mathbb{M}$ posee un entorno abierto difeomorfo a $\mathbb{R}^n$.
 \end{enumerate}
 \end{definition}
 
-Sea $f: \mathbb{M} \longrightarrow \mathbb{R}$ una aplicación suave. En este caso, un \emph{punto crítico} es un punto $p \in \mathbb{M}$ tal que $\dfrac{\partial f}{\partial x_i}(p)=0$ para $i = 1, ..., n$. Un punto crítico $p$ es \emph{no degenerado} si la matriz Hessiana de las segundas derivadas parciales,
+Sea $f: \mathbb{M} \to \mathbb{R}$ una aplicación suave. En este caso, un \emph{punto crítico} es un punto $p \in \mathbb{M}$ tal que $\dfrac{\partial f}{\partial x_i}(p)=0$ para $i = 1, ..., n$. Un punto crítico $p$ es \emph{no degenerado} si la matriz Hessiana de las segundas derivadas parciales,
 \[
 (H_f)_{i,j}=\left(\dfrac{\partial^2 f}{\partial x_i \partial x_j}\right)_{i,j}
 \]
@@ -1065,7 +1065,7 @@ es no singular. Si $p$ es un punto crítico no degenerado se define su \emph{ín
 \end{figure}
 
 \begin{definition}
-Sea $f: \mathbb{M} \longrightarrow \mathbb{R}$ una aplicación diferenciable. Diremos que $f$ es una \emph{función Morse} si todos sus puntos críticos son no degenerados y tienen distintos valores críticos.
+Sea $f: \mathbb{M} \to \mathbb{R}$ una aplicación diferenciable. Diremos que $f$ es una \emph{función Morse} si todos sus puntos críticos son no degenerados y tienen distintos valores críticos.
 \end{definition}
 
 \begin{sloppypar}
@@ -1089,11 +1089,11 @@ La persistencia nos dará un emparejamiento de algunos de los puntos críticos p
 Si $\alpha$ nace en $\mathbb{M}_i$ y muere al entrar $\mathbb{M}_j$, entonces emparejaremos sus puntos críticos correspondientes, $x$ e $y$, y diremos que su persistencia es $j-i$ ó $f(y)-f(x)$ según convenga. Esta persistencia es codificada a través de los \emph{diagramas de persistencia}, $\text{Dgm}_p(f)$, representando cada emparejamiento de un punto crítico positivo de índice $p$ con un punto crítico negativo de índice $p+1$ añadiendo el punto $(f(x),f(y))$ al diagrama. Al igual que hicimos en el caso de funciones reales de una variable, añadiremos los puntos de la diagonal en el diagrama de persistencia.
 
 \subsubsection*{Funciones tame}
-Se puede comprobar que las funciones Morse sobre variedades diferenciables limitarán demasiado para algunas aplicaciones. Es por ello que consideraremos un tipo de función $f: \mathbb{X} \longrightarrow \mathbb{R}$, donde $f$ y $\mathbb{X}$ cumplen una serie de propiedades menos restrictivas. Empezaremos extendiendo la noción de punto crítico de la siguiente forma:
+Se puede comprobar que las funciones Morse sobre variedades diferenciables limitarán demasiado para algunas aplicaciones. Es por ello que consideraremos un tipo de función $f: \mathbb{X} \to \mathbb{R}$, donde $f$ y $\mathbb{X}$ cumplen una serie de propiedades menos restrictivas. Empezaremos extendiendo la noción de punto crítico de la siguiente forma:
 
 \begin{definition}
 \begin{sloppypar}
-Sea $\mathbb{X}$ un espacio topológico, $f$ una función real en $\mathbb{X}$ y ${\mathbb{X}_t=f^{-1}(-\infty, t]}$ el conjunto de subnivel definido para el valor $t$. Un \emph{valor crítico de homología} de $f$ es un número real $a$ para el cual existe un entero $k$ tal que para todo $\epsilon > 0$ lo suficientemente pequeño, la función $\text{H}_k(\mathbb{X}_{a-\epsilon}) \longrightarrow \text{H}_k(\mathbb{X}_{a+\epsilon})$ inducida por la inclusión, $\mathbb{X}_{a-\epsilon} \subseteq \mathbb{X}_{a+\epsilon}$, no es un isomorfismo.
+Sea $\mathbb{X}$ un espacio topológico, $f$ una función real en $\mathbb{X}$ y ${\mathbb{X}_t=f^{-1}(-\infty, t]}$ el conjunto de subnivel definido para el valor $t$. Un \emph{valor crítico de homología} de $f$ es un número real $a$ para el cual existe un entero $k$ tal que para todo $\epsilon > 0$ lo suficientemente pequeño, la función $\text{H}_k(\mathbb{X}_{a-\epsilon}) \to \text{H}_k(\mathbb{X}_{a+\epsilon})$ inducida por la inclusión, $\mathbb{X}_{a-\epsilon} \subseteq \mathbb{X}_{a+\epsilon}$, no es un isomorfismo.
 \end{sloppypar}
 \end{definition}
 
@@ -1101,12 +1101,21 @@ En otras palabras, los valores críticos de homología son los niveles en los cu
 
 
 \begin{definition}
-Una función $f: \mathbb{X} \longrightarrow \mathbb{R}$ es \emph{tame} si los grupos de homología de cada subnivel son finito-dimensionales y tienen un número finito de valores críticos de homología.
+Una función $f: \mathbb{X} \to \mathbb{R}$ es \emph{tame} si los grupos de homología de cada subnivel son finito-dimensionales y tienen un número finito de valores críticos de homología.
 \end{definition}
 
 \begin{sloppypar}
-En particular, las funciones morse sobre variedades compactas son funciones tame, porque poseen un número finito de puntos críticos. Para poder simplificar la notación, para cada entero $k$ fijo, escribimos ${F_x = \text{H}_k(f^{-1}(-\infty, x])}$, y para $x < y$, denotamos como ${\tensor*{f}{*^{y}_{x}}: F_x \longrightarrow F_y}$ la aplicación lineal inducida por la inclusión $\mathbb{X}_{a-\epsilon} \subseteq \mathbb{X}_{a+\epsilon}$. Una vez definida la notación, observaremos el lema \ref{ref:lemaValCritico}, el cual nos será de gran ayuda para la demostración del \emph{teorema de estabilidad}.
+En particular, las funciones morse sobre variedades compactas son funciones tame, porque poseen un número finito de puntos críticos. Para poder simplificar la notación, para cada entero $k$ fijo, escribimos ${F_x = \text{H}_k(f^{-1}(-\infty, x])}$, y para $x < y$, denotamos como ${\tensor*{f}{*^{y}_{x}}: F_x \to F_y}$ la aplicación lineal inducida por la inclusión $\mathbb{X}_{x} \subseteq \mathbb{X}_{y}$. Una vez definida la notación, observaremos el lema \ref{ref:lemaValCritico}, el cual nos será de gran ayuda para la demostración del \emph{teorema de estabilidad}.
 \end{sloppypar}
+
+\begin{property}
+La familia de aplicaciones $(F_{x}^{y})_{x \leq y}$ satisface las siguientes propiedades:
+\begin{itemize}
+	\item $f_{x}^{x}= \text{id}_{F_x}$.
+	\item $f_{m}^{y} \circ f_{x}^{m} = f_{x}^{y}$, con $x \leq m \leq y$.
+\end{itemize}
+\end{property}
+
 
 \begin{lemma}[Lema del valor crítico]
 \label{ref:lemaValCritico}
@@ -1122,16 +1131,129 @@ Por inducción sobre las funciones no isomorfas de la composición, obtenemos un
 por lo que, aplicando el principio de intervalos encajados en $\mathbb{R}$, sabemos que su intersección es un punto $a \in \mathbb{R}$, que verifica que $f_{a-\epsilon}^{a+\epsilon}$ no es un isomorfismo para todo $\epsilon > 0$. Luego, el punto $a$ es un valor crítico de homología en $[x, y]$, contradiciendo nuestra hipótesis inicial.
 \end{proof}
 
+\begin{definition}
+Sea ${f_{x}^{y}: F_x \to F_y}$ la aplicación lineal inducida por la inclusión $\mathbb{X}_{x} \subseteq \mathbb{X}_{y}$. Se define los \emph{grupos de homología persistente} como la imagen de $F_x$ en $F_y$ de la aplicación $f_{x}^{y}$, es decir,
+\[
+F_{x}^{y} = \text{im } f_{x}^{y}
+\]
+Los correspondientes \emph{números de Betti persistentes} se definen como los rangos de estos grupos, es decir, $\beta_{x}^{y} = \text{dim } F_{x}^{y}$, para todo $-\infty \leq x \leq y \leq + \infty$. 
+\end{definition}
+Por convención, se establece que $F_{x}^{y}= \{0\}$ cuando $x$ ó $y$ son infinito. El grupo de homología persistente consiste de las clases que han nacido antes de $x$ y siguen vivas en $y$.
 
-definición función tame, subniveles, grupos de persistencia a partir de funciones tame, critical value lema,  números de betti de grupos de persistencia y su relación con las multiplicidades.
 
-Definición de diagrama de persistencia, k-triangle lemma
+\begin{remark}
+Si analizamos las aplicaciones $f_{x}^{y}$, observamos que el $\text{ker } f_{x}^{y}$ son aquellos elementos $\gamma \in F_x$ tales que $f_{x}^{y}(\gamma)=0$. Esto significa que si $c$ es un ciclo representando a $\gamma$, $c \in \text{B}_k(\mathbb{X}_y)$. Como consecuencia
+\[
+\text{ker } f_{x}^{y} = \dfrac{\text{Z}_k(\mathbb{X}_x) \cap \text{B}_k(\mathbb{X}_y)}{\text{B}_k(\mathbb{X}_x)}
+\]
+para cada dimensión $k$ fija. 
+\end{remark}
+
+Sea $f: \mathbb{X} \to \mathbb{R}$ una función tame, $(a_i)_{i=1..n}$ sus valores críticos homológicos y se considera la secuencia entrelazada $(b_i)_{i=0..n}$, tal que $b_{i-1} < a_{i} < b_{i}$ para $1 \leq i \leq n$. Para capturar la homología que existe en el principio y el final establecemos $b_{-1} = a_0 = -\infty$ y $b_{n+1} = a_{n+1} = +\infty$. Entonces,
+\begin{definition}
+Se define la multiplicidad del par $(a_i, a_j)$ como
+\[
+\mu_{i}^{j} = \beta_{b_{i-1}}^{b_j} - \beta_{b_i}^{b_j} +  \beta_{b_i}^{b_{j-1}} - \beta_{b_{i-1}}^{b_{j-1}} \text{, para todo } i, j \in \mathbb{Z} \text{ tal que } 0 \leq i < j \leq n+1
+\]
+\end{definition}
+
+Podemos visualizar la multiplicidad, $\mu_{i}^{j}$, como se muestra en la figura \ref{ref:multiplicidadDiagrama}. Donde, considerando $\beta_{x}^{y}$ como una función sobre el plano real extendido $\overline{\mathbb{R}}^2$, donde $\overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty, +\infty\}$; entonces, $\mu_{i}^{j}$ es la suma alternada de los número de Betti persistentes en las esquinas del cuadrado $[b_{i-1}, b_i]\times[b_{j-1}, b_j]$.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.5\textwidth]{include/figuras/multiplicidadEsquinas.png} 
+\caption{La multiplicidad del punto $(a_i, a_j)$ es la suma alternada de los número de Betti persistentes en las esquinas del cuadrado $[b_{i-1}, b_i]\times[b_{j-1}, b_j]$. Fuente: \cite{Cohen-Steiner2007}}
+\label{ref:multiplicidadDiagrama}
+\end{figure}
+
+\begin{remark}
+Si $x$ y $x'$ se encuentran dentro del intervalo $(a_i, a_{i+1})$, y $y$ e $y'$ en el intervalo $(a_{j-1}, a_j)$, entonces $\beta_{x}^{y} = \beta_{x'}^{y}$. Este resultado se sigue de que, debido al \emph{Lema del valor crítico}, $F_{x}^{y}$ y $F_{x'}^{y'}$ son isomorfos.
+\end{remark}
+
+\begin{definition}
+El \emph{diagrama de persistencia} $\text{Dgm}(f) \subset \overline{\mathbb{R}}^2$ de $f$ es el multiconjunto de puntos $(a_i, a_j)$ con multiplicidad $\mu_{i}^{j}$ para todo $0 \leq i < j \leq n+1$, unión los puntos de la diagonal, $\Delta=\{(x, y) \in \overline{\mathbb{R}}^2 \mid y = x\}$, con multiplicidad infinito.
+\end{definition}
+
+Denotaremos por $\#(A)$ la \emph{multiplicidad total} de un multiconjunto $A$, el cual, por definición es la suma de las multiplicidades de los elementos de $A$. Por lo tanto, la multiplicidad total del diagrama de persistencia menos la diagonal es
+\[
+\#(\text{Dgm}(f) \setminus \Delta) = \sum_{i < j} \mu_{i}^{j}
+\]
+la cual es llamada \emph{tamaño} del diagrama de persistencia.
+
+Denotaremos el cuadrante superior izquierda cerrado con vértice en el punto $(x, y)$ como $Q_{x}^{y} = [-\infty, x] \times [y, \infty]$.
+
+\begin{lemma}[Lema del $k$-Triángulo]
+Sea $f$ una función tame y suponemos que $x < y$ son diferentes de los valores críticos homológicos de $f$. Entonces la multiplicidad total del diagrama de persistencia en en cuadrante superior izquierda con vértice $(x, y)$ es
+\[
+\#(Dgm(f) \cap Q_{x}^{y})= \beta_{x}^{y}
+\]
+\end{lemma}
+
+\begin{proof}
+Podemos asumir sin perder generalidad, que $x = b_i$ y $y = b_{j-1}$. Por definición, la multiplicidad total en el cuadrante superior izquierda es igual a la suma de las multiplicidades de los puntos contenidos en dicho cuadrante, luego
+\[
+\#(Dgm(f) \cap Q_{x}^{y}) = \sum_{k \leq i} \sum_{l > j}  \mu_{k}^{l} =
+\sum_{k \leq i} \sum_{l > j} (\beta_{b_{k-1}}^{b_l} - \beta_{b_k}^{b_l} + \beta_{b_k}^{b_{l-1}} - \beta_{b_{k-1}}^{b_{l-1}})
+\]
+Como se muestra en la figura \ref{ref:multiplicidadDiagrama}, cuando se suman las multiplicidades, ocurre la cancelación entre signos positivos y negativos de las esquinas de los cuadrados. Entonces:
+\begin{gather*}
+\#(Dgm(f) \cap Q_{x}^{y}) = \beta_{b_{-1}}^{b_{n+1}} - \beta_{b_{i}}^{b_{n+1}} + \beta_{b_i}^{b_{j-1}} - \beta_{b_{-1}}^{b_{j-1}} =\\
+= \beta_{-\infty}^{+\infty} - \beta_{b_{i}}^{+\infty} + \beta_{b_i}^{b_{j-1}} - \beta_{-\infty}^{b_{j-1}} = \beta_{b_i}^{b^{j-1}} = \beta_{x}^{y}
+\end{gather*}
+ya que $F_{x}^{y}= \{0\}$ cuando $x$ ó $y$ son infinito, y por lo tanto su dimensión, es decir, su número de Betti persistente, es cero.
+\end{proof}
+
+Este lema nos garantiza que el diagrama de persistencia codifica toda la información sobre los grupos de homología persistente \cite{libroEH}.
+
+\subsubsection*{Persistencia en complejos simpliciales}
+Veremos que podemos particularizar la persistencia vista para funciones tame a complejos simpliciales. Para ello utilizaremos las \emph{filtraciones} de un complejo simplicial como conjuntos de subnivel.
+
+\begin{definition}
+Sea un complejo simplicial $K$ y $f: K \to \mathbb{R}$ una función. Entonces, $f$ será \emph{monótona} si $f(\sigma) \leq f(\tau)$ si $\sigma$ es una cara de $\tau$.
+\end{definition}
+\begin{sloppypar}
+La monotonía de $f$ garantiza que para cada $a \in \mathbb{R}$, el conjunto de subnivel ${K(a) = f^{-1}(-\infty,a]}$ es un subcomplejo de $K$.
+\end{sloppypar}
 
 
-\subsubsection*{persistencia en complejos simpliciales}
-particularizar lo visto en funciones tame pero con complejos simpliciales
+\begin{definition}
+Sean $a_1 < a_2 < ... < a_n$ los valores que toma la función en los símplices y sea $a_0 = -\infty$. Entonces $f$ induce una \emph{filtración}
+\[
+\emptyset = K_0 \subset K_1 \subset ... \subset K_n = K, \text{ con } K_i=K(a_i)
+\]
+\end{definition}
+Estas filtraciones pueden ser obtenidas de diversas formas. Ya hemos visto como obtener los complejos de \v{C}ech y alpha complejos, y más adelante veremos como obtener los conjuntos de subnivel a a partir de la filtración de la estrella inferior de una función PL.
 
-\subsubsection*{funciones PL}
+De esta forma, al igual que vimos en las funciones Morse, una clase de homología $\alpha$ nace en $K_i$ si no está en la imagen de la función inducida por la inclusión $K_{i-1} \subset K_i$. Además, una clase $\alpha$ que nace en $K_i$ muere al entrar en $K_j$ si la imagen de la función inducida por $K_{i-1} \subset K_{j-1}$ no contiene la imagen de $\alpha$, pero la imagen de la función inducida por $K_{i-1} \subset K_j$ sí.
+
+Introduciremos los grupos de homología persistente, reduciendo la notación de la siguiente forma: $F_i = F_{b_i}$, $F_{i}^{j}=F_{b_i}^{b_j}$ y $\beta_{i}^{j}=\beta_{b_i}^{b_j}$. Así podemos redefinir la noción de nacimiento y muerte de una clase de homología como sigue
+\begin{itemize}
+	\item Una clase $\gamma \in F_i$ \emph{nace} en $K_i$ si $\gamma \notin F_{i-1}^{i}$.
+	\item Una clase $\gamma \in F_i$ nacida en $K_i$ \emph{muere} al entrar en $K_j$ si $f_{i}^{j-1}(\gamma)\notin F_{i-1}^{j-1}$, pero $f_{i}^{j}(\gamma)\notin F_{i-1}^{j}$. 
+\end{itemize} 
+
+\begin{definition}
+Sea $\gamma$ una clase de homología que nace en $K_i$ y muere al entrar en $K_j$. Se define la \emph{persistencia} de $\gamma$ como $\text{pers}(\gamma)= a_j - a_i$. Asimismo, la diferencia $j-i$ se denomina \emph{índice de persistencia} de la clase $\gamma$. Si una clase $\gamma$ nace en $K_i$ pero nunca muere, entonces diremos que su persistencia, al igual que su índice, es infinito.
+\end{definition}
+
+Siguiendo esta notación, se define la multiplicidad como
+\[
+\mu_{i}^{j} = (\beta_{i}^{j-1}-\beta_{i}^{j})-(\beta_{i-1}-\beta_{i-1}^{i})
+\]
+Donde a $\beta_{i}^{j-1}$ se puede interpretar como el número de clases de homología que están vivas en $K_i$ y siguen vivas en $K_{j-1}$. Por lo tanto, la primera diferencia de la igualdad se interpreta como el número de clases independientes que están vivas en $K_i$ y mueren en $K_j$; mientras que la segunda diferencia son el número de clases independientes que nacen antes de $K_i$ y mueren en $K_j$. En conclusión, la multiplicidad, $\mu_{i}^{j}$, se interpreta como el número de clases de homología que nacen en $K_i$ y mueren en $K_j$.
+
+Cada punto $(a_i, a_j)$ representa $\mu_{i}^{j}$ clases de homología independientes cuya persistencia coincide con la distancia del punto $(a_i, a_j)$ a su proyección vertical sobre la diagonal $\Delta$. Por razones técnicas, los puntos de la diagonal se añaden al diagrama de persistencia con multiplicidad infinito.
+
+Adicionalmente de los diagramas de persistencia, podemos codificar la información sobre la homología persistente a través de los denominados \emph{códigos de barras}. Estas representaciones se pueden obtener a partir del diagrama de persistencia dibujando por cada punto $(a_i, a_j)$ con $a_i < a_j$ de dicho diagrama $\mu_{i}^{j}$ intervalos semiabiertos $[a_i, a_j)$, como se muestra en la figura \ref{ref:codigoBarras}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.35\textwidth]{include/figuras/The-Persistence-Diagram-Associated-to-a-Barcode.png} 
+\caption{Código de barras asociado a un diagrama de persistencia. Fuente: \cite{articuloJustin}}
+\label{ref:codigoBarras}
+\end{figure}
+
+\subsubsection*{Funciones PL}
 definición de las funciones pl, generación de filtraciones a partir del lower star filtration y estudio de los puntos críticos  de las funciones pl para comprobar que son funciones tame.
 
 
