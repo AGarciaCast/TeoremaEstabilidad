@@ -576,13 +576,133 @@ Sean $K$ y $L$ complejos simpliciales, ${g: \abs{K} \to \abs{L}}$ una aplicació
 \end{sloppypar}
 \end{theorem}
 
-\subsubsection*{Complejos simpliciales de nubes de puntos}
+\subsection{Complejos simpliciales de nubes de puntos}
 Desde el punto de vista computacional nos encontramos con el problema de que tenemos una representación de un espacio topológico a través de una discretización finita de los puntos de dicho espacio, y nuestro objetivo es poder recuperar propiedades del espacio topológico original a partir de esta nube de puntos. Para ello asociaremos complejos simpliciales a dicha nube de puntos.
 
-\subsubsection*{def complejo de \v{C}ech}
-\subsubsection*{def complejo de Vietoris-Rips}
-\subsubsection*{def diagrama de Voronoi + triangulación Delonay}
-\subsubsection*{def alpha complejo}
+\subsubsection*{Complejo de \v{C}ech}
+El complejo de \v{C}ech se define a partir de la intersección de una colección de circunferencias. Por lo que primero estudiaremos como podemos obtener un complejo simplicial a partir de la intersección de una colección finita de conjuntos.
+
+\begin{definition}
+Sea $F$ una colección finita de conjuntos. Se define el \emph{nervio} de F como el complejo simplicial abstracto
+\[
+\text{Nrv }F= \left\{ X \subseteq F \mid \bigcap X \neq \emptyset \right\}
+\]
+\end{definition}
+
+Consideramos el caso particular en el que los conjuntos de la familia son las bolas cerradas $\overline{B}_r(x)= \{y\in \mathbb{R}^d \mid d(x,y) \leq r\}$ en $\mathbb{R}^d$.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.5\textwidth]{include/figuras/Cech.png} 
+\caption{Complejo de \v{C}ech para un conjunto de nueve puntos y un radio $r$. Fuente: \cite{libroEH}}
+\label{ref:cech}
+\end{figure}
+
+\begin{definition}
+Sea $S\subset \mathbb{R}^d$ un conjunto finito de puntos. Llamaremos \emph{complejo de \v{C}ech} de $S$ de radio $r$ al complejo simplicial abstracto
+\[
+\text{\v{C}ech}(r)=\left\{\sigma \subset S \mid \bigcap_{u \in \sigma} \overline{B}_r(u)\neq \emptyset \right\}
+\]
+\end{definition}
+
+El complejo de \v{C}ech es isomorfo al nervio del conjunto de las bolas cerradas de radio $r$ centrada en los puntos de $S$. En la figura \ref{ref:cech} podemos observar un ejemplo de complejo de \v{C}ech.
+
+Podemos comprobar \cite{libroEH} que para valores de $r$ lo suficientemente grandes, $\text{\v{C}ech}(r)$ es un símplice de dimensión $\text{card}(S)-1$. Lo cual, va a hacer que el complejo de \v{C}ech sea poco eficiente desde el punto de vista computacional.\\
+Además, en general, el complejo de \v{C}ech de un conjunto de puntos $S \subset \mathbb{R}^d$ no posee una realización geométrica en $\mathbb{R}^d$.
+
+
+
+\subsubsection*{Complejo de Vietoris-Rips}
+
+\begin{definition}
+Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos. Llamamos \emph{complejo de Vietoris-Rips} de $S$ de radio $r$ al complejo simplicial abstracto
+\[
+\text{VR}(r) = \{\sigma \subseteq  S \mid \text{diam } \sigma \leq 2r\}
+\]
+\end{definition}
+
+En la figura \ref{ref:vr} podemos observar como se generan los diversos complejos de VR a medida que se va aumentando el radio.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.9\textwidth]{include/figuras/vr.png} 
+\caption{Complejos de Vietoris-Rips para un conjunto de siete puntos a medida que aumentamos el radio de izquierda a derecha. Fuente: \cite{Ulmer2019}}
+\label{ref:vr}
+\end{figure}
+
+Sea $\sigma \subset S$, entonces $\text{diam } \sigma = \max\limits_{u, v \in \sigma} d(u,v)$. Esta observación garantiza que $\sigma \in \text{VR}(r)$ si y sólo si todas sus aristas están en $\text{VR}(r)$. Dicho de otro modo, $\text{VR}(r)$ está completamente determinado por su $1$-esqueleto. Esto hace que el complejo de Vietoris-Rips sea mucho más eficiente que el complejo de \v{C}ech desde el punto de vista computacional. Sin embargo, al igual que ocurre con el complejo de \v{C}ech, no admite una realización geométrica en $\mathbb{R}^d$.
+
+Por otro lado, el complejo de Vietoris-Rips no es el nervio de ningún recubrimiento. Sin embargo, el siguiente resultado garantiza que el complejo de VR aproxima al complejo de \v{C}ech.
+
+\begin{lemma}[Lema de Vietoris-Rips]
+\label{ref:lemaVR}
+Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos y sea $r \geq 0$. Entonces,
+\[
+\text{\v{C}ech}(r) \subset \text{VR}(r) \subset \text{\v{C}ech}(\sqrt{2}r)
+\]
+\end{lemma}
+
+La demostración al lema \ref{ref:lemaVR} se puede encontrar en \cite{libroEH}.
+
+\subsubsection*{Complejo de Delaunay}
+En esta sección introduciremos construcciones geométricas que nos limitarán la dimensión de los símplices que obtenemos del nervio de una colección finita de conjuntos.
+
+\begin{definition}
+Sea $S \subset \mathbb{R}^d$ un conjunto finito. Se define la \emph{celda de Voronoi} de un punto $u \in S$ como el conjunto de los puntos
+\[
+V_u = \{ x \in \mathbb{R}^d \mid d(x,u) \leq d(x,v) \forall v \in S\}
+\]
+La colección de las celdas de Voronoi de los puntos de $S$ se denomina \emph{diagrama de Voronoi} de $S$.
+\end{definition}
+
+En la figura \ref{ref:vor-del} se puede ver el diagrama de Voronoi de un conjuntos de puntos. Nótese que las celdas de Voronoi recubren todo el espacio.
+
+\begin{definition}
+Sea $S \subset \mathbb{R}^d$ un conjunto finito. Se define el \emph{complejo de Delaunay} de $S$ como el complejo simplicial abstracto 
+\[
+\text{Del} = \left\{\sigma \subseteq S \mid \bigcap_{u \in \sigma}V_u \neq \emptyset \right\}
+\] 
+\end{definition}
+
+El complejo de Delaunay es un complejo isomorfo al nervio del diagrama de Voronoi. Además, si los puntos de $S$ están en posición general, se obtiene una realización del complejo de Delauney en $\mathbb{R}^d$ considerando envolventes convexas de los símplices abstractos. Esta realización geométrica se denomina \emph{triangulación de Delaunay}.
+
+\begin{figure}[!ht]
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{include/figuras/voronoi.png} 
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{include/figuras/delaunay.png} 
+\end{subfigure}
+\caption{A la izquierda tenemos el Diagrama de Voronoi de un conjunto de nueve puntos en el plano, y a la derecha triangulación de Delaunay superpuesta al diagrama de Voronoi. Fuente: \cite{libroEH}}
+\label{ref:vor-del}
+\end{figure}
+
+\subsubsection*{Alfa complejo}
+Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos y $r \geq 0$. Para cada $u \in S$ consideramos la región $R_u(r)= \overline{B}_r(u) \cap V_u$, es decir, la intersección de la región de Voronoi de $u$ con la bola cerrada de centro $u$ y radio $r$.
+
+\begin{definition}
+Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos y $r \geq 0$.Se define el \emph{Alfa complejo} de radio $r$ asociado a $S$ como el complejo simplicial abstracto
+\[
+\text{Alpha}(r)=\left\{\sigma \in S \mid \bigcap_{u \in \sigma}R_u(r) \neq \emptyset \right\}
+\]
+\end{definition}
+
+En la figura \ref{ref:alpha} se puede observar la unión de dichas regiones y su correspondiente alfa complejo. Se puede observar que el alfa complejo es isomorfo al nervio de la colección formada por los $R_u(r)$.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.5\textwidth]{include/figuras/alpha.png} 
+\caption{Unión de las regiones $R_u(r)$ asociadas a un radio $r$ y un conjunto finito de puntos $S$. El correspondiente alfa complejo es superpuesto a esta unión de regiones. Fuente: \cite{libroEH}}
+\label{ref:alpha}
+\end{figure}
+
+Puesto que $R_u(r) \subset \overline{B}_r(u)$ para cada $u \in S$, se tiene que $\text{Alpha}(r) \subset \text{\v{C}ech}(r)$. Del mismo modo, dado que $R_u(r) \subset V_u$ para cada $u \in S$, se tiene que $\text{Alpha}(r) \subset \text{Del}(S)$.
+
+Además el alfa complejo tiene menos símplices que el complejo de \v{C}ech. Y como es un subcomplejo del complejo de Delaunay, admite de manera natural una realización en $\mathbb{R}^d$. Por lo que hace que los alfa complejos sean una buena opción desde el punto de vista computacional.
+
 
 \subsection{Homología}
 Como se puede ver en [añadir cita] la homotopía es una potente herramienta algebraica para poder obtener propiedades de los espacios topológicos. Sin embargo, los métodos para el cálculo de la homotopía no son manejables computacionalmente. Así pues, se propone la homología como formalismo algebraico, que, aunque no es capaz de obtener tanta información topológica sobre el espacio como con otros formalismos, es muy computable.
@@ -1222,7 +1342,7 @@ Sean $a_1 < a_2 < ... < a_n$ los valores que toma la función en los símplices 
 \emptyset = K_0 \subset K_1 \subset ... \subset K_n = K, \text{ con } K_i=K(a_i)
 \]
 \end{definition}
-Estas filtraciones pueden ser obtenidas de diversas formas. Ya hemos visto como obtener los complejos de \v{C}ech y alpha complejos, y más adelante veremos como obtener los conjuntos de subnivel a a partir de la filtración de la estrella inferior de una función PL.
+Estas filtraciones pueden ser obtenidas de diversas formas. Por un lado, podremos obtener filtraciones variando el radio de los complejos de \v{C}ech, Vietoris-Rips y alfa complejos; y más adelante veremos como obtener filtraciones de complejos simpliciales más generales a partir de la filtración de las estrellas inferiores de una función PL.
 
 De esta forma, al igual que vimos en las funciones Morse, una clase de homología $\alpha$ nace en $K_i$ si no está en la imagen de la función inducida por la inclusión $K_{i-1} \subset K_i$. Además, una clase $\alpha$ que nace en $K_i$ muere al entrar en $K_j$ si la imagen de la función inducida por $K_{i-1} \subset K_{j-1}$ no contiene la imagen de $\alpha$, pero la imagen de la función inducida por $K_{i-1} \subset K_j$ sí.
 
@@ -1242,10 +1362,6 @@ Siguiendo esta notación, se define la multiplicidad como
 \]
 Donde a $\beta_{i}^{j-1}$ se puede interpretar como el número de clases de homología que están vivas en $K_i$ y siguen vivas en $K_{j-1}$. Por lo tanto, la primera diferencia de la igualdad se interpreta como el número de clases independientes que están vivas en $K_i$ y mueren en $K_j$; mientras que la segunda diferencia son el número de clases independientes que nacen antes de $K_i$ y mueren en $K_j$. En conclusión, la multiplicidad, $\mu_{i}^{j}$, se interpreta como el número de clases de homología que nacen en $K_i$ y mueren en $K_j$.
 
-Cada punto $(a_i, a_j)$ representa $\mu_{i}^{j}$ clases de homología independientes cuya persistencia coincide con la distancia del punto $(a_i, a_j)$ a su proyección vertical sobre la diagonal $\Delta$. Por razones técnicas, los puntos de la diagonal se añaden al diagrama de persistencia con multiplicidad infinito.
-
-Adicionalmente de los diagramas de persistencia, podemos codificar la información sobre la homología persistente a través de los denominados \emph{códigos de barras}. Estas representaciones se pueden obtener a partir del diagrama de persistencia dibujando por cada punto $(a_i, a_j)$ con $a_i < a_j$ de dicho diagrama $\mu_{i}^{j}$ intervalos semiabiertos $[a_i, a_j)$, como se muestra en la figura \ref{ref:codigoBarras}.
-
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.35\textwidth]{include/figuras/The-Persistence-Diagram-Associated-to-a-Barcode.png} 
@@ -1253,8 +1369,50 @@ Adicionalmente de los diagramas de persistencia, podemos codificar la informaci�
 \label{ref:codigoBarras}
 \end{figure}
 
+Cada punto $(a_i, a_j)$ representa $\mu_{i}^{j}$ clases de homología independientes cuya persistencia coincide con la distancia del punto $(a_i, a_j)$ a su proyección vertical sobre la diagonal $\Delta$. Por razones técnicas, los puntos de la diagonal se añaden al diagrama de persistencia con multiplicidad infinito.
+
+Adicionalmente de los diagramas de persistencia, podemos codificar la información sobre la homología persistente a través de los denominados \emph{códigos de barras}. Estas representaciones se pueden obtener a partir del diagrama de persistencia dibujando por cada punto $(a_i, a_j)$ con $a_i < a_j$ de dicho diagrama $\mu_{i}^{j}$ intervalos semiabiertos $[a_i, a_j)$, como se muestra en la figura \ref{ref:codigoBarras}.
+
 \subsubsection*{Funciones PL}
-definición de las funciones pl, generación de filtraciones a partir del lower star filtration y estudio de los puntos críticos  de las funciones pl para comprobar que son funciones tame.
+Un caso especial de las funciones tame son las \emph{funciones lineales a trozos} (en inglés: \emph{piecewise linear function}) la cuales asocian el espacio subyacente de un complejo simplicial a valores reales.
+
+\begin{definition}
+Sea $K$ un complejo simplicial con valores reales asignados en todos sus vértices. Se define la función lineal a trozos $f: \abs{K} \to \mathbb{R}$ como la extensión linear de los valores de los vértices sobre los símplices, es decir,
+\[
+f(x)=\sum_{i} b_i(x)f(u_i)
+\]
+donde $u_i$ son los vértices de $K$ y $b_i(x)$ son las coordenadas baricéntricas de $x$.
+\end{definition}
+Por simplicidad se asume que $f\vert_{\text{Vert }K}$ es inyectiva. Reindexando los vértices de forma que $f(u_i) < f(u_2) < ... < f(u_n)$, definimos $K_i$ como el subcomplejo  definifo por los primero $i$ vértices.
+
+\begin{definition}
+La \emph{estrella inferior} es el subconjunto de símplices para los cuales $u_i$ es el vértice de mayor valor de $f$:
+\[
+\text{St}\_u_i = \{\sigma \in \text{St }u_i \mid x \in \sigma \Rightarrow f(x) \leq f(u_i)\}
+\] 
+\end{definition}
+
+Como ocurría con la estrella, la estrella inferior generalmente no es un subcomplejo. Añadiendo las caras restantes al conjunto, obtenemos la \emph{estrella inferior cerrada}, la cual es un subcomplejo de $K$. Debido a la asunción de la inyectividad de la restricción de $f$ a sus vértices, cada símplice tiene un único vértice con valor máximo, y por tanto pertenece a una única estrella inferior. Luego, $K_i$ es la unión de las primeras $i$ estrellas inferiores; obteniendo la siguiente filtración de $K$:
+
+\begin{definition}
+Sea $K$ un complejo simplicial con valores reales asignados en todos sus vértices y $f$ una función PL sobre $K$. Entonces definimos la \emph{filtración de las estrellas inferiores de $f$} como la cadena de complejos $\emptyset = K_0 \subseteq K_1 \subseteq ... \subseteq K_n = K$, donde $K_i=K_{i-1} \cup \text{St}\_u_i$. 
+\end{definition}
+
+Esta filtración cumple las siguientes propiedades:
+\begin{property}
+$K_i$ tiene el mismo tipo de homotopía que el subnivel $\abs{K}_t=f^{-1}(-\infty, t]$, para todo $f(u_i) \leq t < f(u_{i+1})$ \cite{libroEH}.
+\end{property}
+
+\begin{property}
+\begin{sloppypar}
+La la variación de la homología en los conjuntos de subnivel ${\abs{K}_t=f^{-1}(-\infty, t]}$ es la misma que la homología de la filtración de las estrellas inferiores de $f$.
+\end{sloppypar}
+\end{property}
+
+\begin{property}
+Sea $\mathbb{X}$ un espacio topológico triangulable. Entonces podemos aproximar toda función tame en $\mathbb{X}$ a partir de una función PL en su triangulación \cite{articuloPersistenciaEH}.
+\end{property}
+
 
 
 
