@@ -1,0 +1,29 @@
+
+\section{Implementaciones y cálculos}
+En esta sección daremos algunas evidencias computacionales de la estabilidad de los diagramas de persistencias, centrándonos filtraciones de complejos simpliciales asociadas a nubes de puntos con un cierto ruido. Para ello comenzaremos estudiando posibles algoritmos para calcular tanto la \emph{distancia Hausdorff} como la \emph{distancia bottleneck}. 
+\subsection{Cálculo de la distancia Hausdorff}
+\begin{algorithm}
+\caption{Cálculo de la distancia Hausdorff directa}\label{euclid}
+\begin{algorithmic}[1]
+\Require Dos conjuntos finitos de puntos $A$ y $B$
+\Ensure Distancia Hausdorff directa entre $A$ y $B$
+\State $cmax\gets 0$
+\For{$x \in A$}
+	\State $cmin\gets \infty$
+	\For{$y \in B$}\Comment{Calculamos $d_\infty(x, B)=\inf_{y \in B} d_\infty(x,y)$}
+		\State $d\gets \norm{x-y}_\infty$
+		\If{$d < cmin$}
+			\State $cmin\gets d$
+		\EndIf
+	\EndFor
+	\If{$cmin > cmax$}\Comment{Recalculamos el supremo}
+		\State $cmax\gets cmin$
+	\EndIf
+\EndFor
+\State \textbf{return} $cmax$
+\end{algorithmic}
+\end{algorithm}
+\subsection{Cálculo de la distancia bottleneck}
+
+\subsection{Pruebas}
+\todo{Subsección por hacer}
