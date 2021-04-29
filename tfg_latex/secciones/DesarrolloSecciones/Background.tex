@@ -3,7 +3,7 @@
 En esta sección se introducirán las nociones topológicas básicas para hacer autocontenido este trabajo. Dichas nociones nos darán el contexto y conocimientos necesarios para poder profundizar en el \emph{Teorema de Estabilidad} y ser capaces de abordar su demostración.
 
 \subsection{Complejos Simpliciales}
-Una forma de representar algunos espacios topológicos es a través de su descomposición en piezas más sencillas. Una descomposición de estas características se denomina complejo si sus piezas son topológicamente simples y sus intersecciones son piezas del mismo tipo, pero de dimensión inferior \cite{libroEH}. Existe una gran variedad de complejos con distintos grados de abstracción. En este trabajo nos centraremos en los complejos simpliciales, que permiten representar una gran variedad de espacios y son especialmente adecuados para cuestiones computacionales.
+Unas forma de representar algunos espacios topológicos es a través de su descomposición en piezas más sencillas. Una descomposición de estas características se denomina complejo si sus piezas son topológicamente simples y sus intersecciones son piezas del mismo tipo, pero de dimensión inferior \cite{libroEH}. Existe una gran variedad de complejos con distintos grados de abstracción. En este trabajo nos centraremos en los complejos simpliciales, que permiten representar una gran variedad de espacios y son especialmente adecuados para cuestiones computacionales.
 
 Los complejos simpliciales pueden ser estudiados desde un enfoque geométrico y desde un enfoque combinatorio. Partiremos de la definición de complejo simplicial desde el punto de vista geométrico. Para ello recordaremos algunos conceptos de geometría afín.
 
@@ -26,7 +26,7 @@ Haciendo uso de este conjunto podremos definir nuestras piezas de la descomposic
 
 \begin{definition}
 Un \emph{$k$\textit{-símplice}} $\sigma$ en $\mathbb{R}^d$ con $d \geq k$ es la envolvente convexa de $k+1$ puntos afínmente independientes  $u_0, u_1, ..., u_k \in \mathbb{R}^d$, es decir,
-$\sigma \coloneqq \text{conv}\{u_0, u_1, ..., u_k\}$
+$\sigma \coloneqq \text{conv}\{u_0, u_1, ..., u_k\}$.
 \end{definition}
 
 Diremos que el $k$-símplice $\sigma$ tiene dimensión $k$ y llamaremos \emph{vértices de $\sigma$} a los puntos $u_0, u_1, ..., u_k$.
@@ -103,8 +103,8 @@ Haciendo uso de la definición de caras de un símplice $\sigma$ podemos definir
 \begin{definition}
 Sea $\sigma$ un símplice. Entonces
 \begin{itemize}
-	\item Se define el \emph{borde de $\sigma$} como \[\text{bd } \sigma = \bigcup_{\tau<\sigma}\tau\]
-	\item Se define el \emph{interior de $\sigma$} como \[\text{int }\sigma= \sigma - \text{bd }\sigma\]
+	\item Se define el \emph{borde de $\sigma$} como \[\text{bd } \sigma = \bigcup_{\tau<\sigma}\tau\,.\]
+	\item Se define el \emph{interior de $\sigma$} como \[\text{int }\sigma= \sigma - \text{bd }\sigma\,.\]
 \end{itemize}
 \end{definition}
 
@@ -219,8 +219,7 @@ El \emph{espacio subyacente} de un complejo simplicial $K$, denotado $\abs{K}$, 
 \end{definition}
 Como se puede observar, el espacio subyacente  de un complejo simplicial es compacto, siendo unión finita de símplices. El siguiente resultado caracteriza los abiertos y cerrados del espacio subyacente $\abs{K}$ de un complejo simplicial $K$.
 
-\begin{proposition}
-\cite[p.~150]{libroEH}
+\begin{proposition}[\cite{libroEH}]
 Sea $K$ un complejo simplicial y $A \subset \abs{K}$ un subconjunto. Entonces $A$ es un abierto (cerrado) en $K$ si y sólo si para cada $\sigma \in K$, $A \cap \abs{\sigma}$ es un abierto (cerrado) de $\abs{\sigma}$.
 \end{proposition}
 
@@ -234,7 +233,7 @@ También nos será de utilidad poder estudiar los complejos simpliciales conteni
 Un \emph{subcomplejo} $L$ de un complejo simplicial $K$ es un complejo simplicial $L \subseteq K$.
 \end{definition}
 
-Un subcomplejo de gran interés son los \emph{$j$-esqueletos}, definidos de la siguiente forma: \[K^{(j)} = \{\sigma \in K \mid dim\ \sigma\ \leq j\}\]
+Un subcomplejo de gran interés son los \emph{$j$-esqueletos}, definidos de la siguiente forma: \[K^{(j)} = \{\sigma \in K \mid dim\ \sigma\ \leq j\}\,.\]
 
 Otro subconjunto de símplices que nos será de gran ayuda más adelante es la \emph{estrella de un símplice $\tau$}, la cual consiste de las cocaras de $\tau$, denotado por St $\tau$. Este conjunto no será siempre un complejo simplicial, así que se define la \emph{estrella cerrada} $\overline{\text{St}}\ \tau$ como el menor subcomplejo de $K$ que contiene a St $\tau$. Adicionalmente, se define el \emph{link} de $\tau$ como: $\text{Lk }\tau = \{v \in \overline{\text{St}}\ \tau \mid v \cap \tau = \emptyset\}$.
 
@@ -258,7 +257,7 @@ Un ejemplo de complejo simplicial abstracto es el siguiente conjunto
 
 \begin{gather*}
 A = \{\{0\},\{1\},\{2\},\{3\},\{4\},\{5\},\{6\},\{0,1\},\{1,2\},\{1,3\},\{1,4\},\{2,3\},\{2,4\},\{3,4\},\{4,5\},\\
-\{4,6\},\{5,6\},\{1,2,3\},\{1,2,4\},\{1,3,4\},\{2,3,4\},\{1,2,3,4\}\}
+\{4,6\},\{5,6\},\{1,2,3\},\{1,2,4\},\{1,3,4\},\{2,3,4\},\{1,2,3,4\}\}\,.
 \end{gather*}
 
 Donde el conjunto de vértices es: $\text{Vert }A = \{0, 1, 2, 3, 4, 5, 6\}$.
@@ -278,8 +277,8 @@ Y bajo ciertas circunstancias podremos hacer el paso opuesto de construir un com
 Sean $A$ un complejo simplicial abstracto y $K$ un complejo simplicial. Diremos que $K$ es una \emph{realización geométrica} de $A$, si $A$ es isomorfo al esquema de vértices de $K$.
 \end{definition}
 
-\begin{theorem}
-Todo complejo simplicial abstracto de dimensión $d$ admite una realización geométrica en $\mathbb{R}^{2d + 1}$ \cite{libroEH}.
+\begin{theorem}[\cite{libroEH}]
+Todo complejo simplicial abstracto de dimensión $d$ admite una realización geométrica en $\mathbb{R}^{2d + 1}$.
 \end{theorem}
 
 Así pues, los complejos simpliciales abstractos son una representación fiel de un complejo simplicial (geométrico).
@@ -322,7 +321,7 @@ Hay muchas maneras de obtener subdivisiones de un complejo simplicial, pero un t
 \begin{definition}
 Sea $\sigma$ un $k$-símplice, tal que $\sigma = \text{conv}\{v_0, v_1, ..., v_k\}$. Llamaremos \emph{baricentro} de $\sigma$ al punto
 \[
-b_\sigma = \sum_{i=0}^{k} \frac{v_i}{k+1}\ \in \text{int }\sigma
+b_\sigma = \sum_{i=0}^{k} \frac{v_i}{k+1}\ \in \text{int }\sigma\,.
 \]
 \end{definition}
 
@@ -487,13 +486,13 @@ En la figura \ref{ref:subBar} se muestra la primera y segunda subdivisión baric
 
 Recordemos que el \emph{diámetro} de un subconjunto $A \subset \mathbb{R}^d$ es el supremo sobre las distancias entre sus puntos. 
 
-\begin{lemma}
-Si $\sigma$ es un $k$-símplice, entonces el diámetro de cada símplice en la subdivisión baricéntrica de $\sigma$ es como máximo $\frac{k}{k+1}\text{diam }\sigma$ \cite{libroEH}. 
+\begin{lemma}[\cite{libroEH}]
+Si $\sigma$ es un $k$-símplice, entonces el diámetro de cada símplice en la subdivisión baricéntrica de $\sigma$ es como máximo $\frac{k}{k+1}\text{\rm diam }\sigma$.
 \end{lemma}
 
 De forma que gracias al lema anterior podremos hacer el diámetro de los símplices de los complejos simpliciales tan pequeño como queramos, ya que el diámetro de los símplices de la $n$-ésima subdivisión baricéntrica del complejo simplicial $K$, denotado por $\text{Sd}^nK = \text{Sd}(\text{Sd}^{n - 1}K)$, es 
 \[
-\left ( \frac{k}{k+1} \right )^n \text{diam } \sigma  \underset{n \to \infty}{\longrightarrow} 0,\ con\ \sigma \in K \text{ y } k = \text{dim } \sigma
+\left ( \frac{k}{k+1} \right )^n \text{diam } \sigma  \underset{n \to \infty}{\longrightarrow} 0 \text{, con } \sigma \in K \text{ y } k = \text{dim } \sigma\,.
 \]
 
 \subsubsection*{Aproximaciones simpliciales}
@@ -556,8 +555,8 @@ Sean $K$ y $L$ complejos simpliciales, $g: \abs{K} \to \abs{L}$ una aplicación 
 \end{definition}
 
 Además, la condición de estrella será una condición suficiente para garantizar la existencia de una aproximación simplicial:
-\begin{lemma}
-Sean $K$ y $L$ complejos simpliciales, $g: \abs{K} \to \abs{L}$ una aplicación continua que satisface la condición de estrella. Entonces $g$ tiene una aproximación simplicial $f: K \to L$ \cite{libroEH}.
+\begin{lemma}[\cite{libroEH}]
+Sean $K$ y $L$ complejos simpliciales, $g: \abs{K} \to \abs{L}$ una aplicación continua que satisface la condición de estrella. Entonces $g$ tiene una aproximación simplicial $f: K \to L$.
 \end{lemma}
 
 En la figura \ref{ref:aproxSimp} podemos ver un ejemplo de aproximación simplicial de una aplicación continua.
@@ -569,10 +568,10 @@ En la figura \ref{ref:aproxSimp} podemos ver un ejemplo de aproximación simplic
 \label{ref:aproxSimp}
 \end{figure}
 
-\begin{theorem}[Aproximación simplicial]
+\begin{theorem}[Aproximación simplicial \cite{libroEH}]
 \label{ref:teoremaAproximacionSimplicial}
 \begin{sloppypar}
-Sean $K$ y $L$ complejos simpliciales, ${g: \abs{K} \to \abs{L}}$ una aplicación continua. Entonces existe $n \in \mathbb{N}$ tal que $g$ tiene una aproximación simplicial ${f: {\rm Sd}^{n}\ K \to L}$  \cite{libroEH}.
+Sean $K$ y $L$ complejos simpliciales, ${g: \abs{K} \to \abs{L}}$ una aplicación continua. Entonces existe $n \in \mathbb{N}$ tal que $g$ tiene una aproximación simplicial ${f: \text{\rm Sd}^{n}\ K \to L}$.
 \end{sloppypar}
 \end{theorem}
 
@@ -580,12 +579,12 @@ Sean $K$ y $L$ complejos simpliciales, ${g: \abs{K} \to \abs{L}}$ una aplicació
 Desde el punto de vista computacional nos encontramos con el problema de que tenemos una representación de un espacio topológico a través de una discretización finita de los puntos de dicho espacio, y nuestro objetivo es poder recuperar propiedades del espacio topológico original a partir de esta nube de puntos. Para ello asociaremos complejos simpliciales a dicha nube de puntos.
 
 \subsubsection*{Complejo de \v{C}ech}
-El complejo de \v{C}ech se define a partir de la intersección de una colección de circunferencias. Por lo que primero estudiaremos como podemos obtener un complejo simplicial a partir de la intersección de una colección finita de conjuntos.
+El complejo de \v{C}ech se define a partir de la intersección de una colección de bolas cerradas. La idea que subyace a esta construcción es la del nervio de una colección, que se introduce a continuación.
 
 \begin{definition}
 Sea $F$ una colección finita de conjuntos. Se define el \emph{nervio} de F como el complejo simplicial abstracto
 \[
-{\rm Nrv}\ F= \left\{ X \subseteq F \mid \bigcap X \neq \emptyset \right\}
+{\rm Nrv}\ F= \left\{ X \subseteq F \mid \bigcap X \neq \emptyset \right\}\,.
 \]
 \end{definition}
 
@@ -601,13 +600,13 @@ Consideramos el caso particular en el que los conjuntos de la familia son las bo
 \begin{definition}
 Sea $S\subset \mathbb{R}^d$ un conjunto finito de puntos. Llamaremos \emph{complejo de \v{C}ech} de $S$ de radio $r$ al complejo simplicial abstracto
 \[
-\text{\v{C}ech}(r)=\left\{\sigma \subset S \mid \bigcap_{u \in \sigma} \overline{B}_r(u)\neq \emptyset \right\}
+\text{\v{C}ech}(r)=\left\{\sigma \subset S \mid \bigcap_{u \in \sigma} \overline{B}_r(u)\neq \emptyset \right\}\,.
 \]
 \end{definition}
 
-El complejo de \v{C}ech es isomorfo al nervio del conjunto de las bolas cerradas de radio $r$ centrada en los puntos de $S$. En la figura \ref{ref:cech} podemos observar un ejemplo de complejo de \v{C}ech.
+El complejo de \v{C}ech es isomorfo al nervio de la colección de las bolas cerradas de radio $r$ centrada en los puntos de $S$. En la figura \ref{ref:cech} podemos observar un ejemplo de complejo de \v{C}ech.
 
-Podemos comprobar \cite{libroEH} que para valores de $r$ lo suficientemente grandes, $\text{\v{C}ech}(r)$ es un símplice de dimensión $\text{card}(S)-1$. Lo cual, va a hacer que el complejo de \v{C}ech sea poco eficiente desde el punto de vista computacional.\\
+Podemos comprobar \cite{libroEH} que para valores de $r$ lo suficientemente grandes, $\text{\v{C}ech}(r)$ es un símplice de dimensión $\text{card}(S)-1$, por lo que el complejo de \v{C}ech es poco eficiente desde el punto de vista computacional.\\
 Además, en general, el complejo de \v{C}ech de un conjunto de puntos $S \subset \mathbb{R}^d$ no posee una realización geométrica en $\mathbb{R}^d$.
 
 
@@ -617,8 +616,9 @@ Además, en general, el complejo de \v{C}ech de un conjunto de puntos $S \subset
 \begin{definition}
 Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos. Llamamos \emph{complejo de Vietoris-Rips} de $S$ de radio $r$ al complejo simplicial abstracto
 \[
-\text{VR}(r) = \{\sigma \subseteq  S \mid \text{diam } \sigma \leq 2r\}
+\text{VR}(r) = \{\sigma \subseteq  S \mid \textrm{diam } \sigma \leq 2r\}
 \]
+donde $\textrm{diam } \sigma$ denota el diámetro del subconjunto $\sigma$.
 \end{definition}
 
 En la figura \ref{ref:vr} podemos observar como se generan los diversos complejos de VR a medida que se va aumentando el radio.
@@ -630,19 +630,20 @@ En la figura \ref{ref:vr} podemos observar como se generan los diversos complejo
 \label{ref:vr}
 \end{figure}
 
-Sea $\sigma \subset S$, entonces $\text{diam } \sigma = \max\limits_{u, v \in \sigma} d(u,v)$. Esta observación garantiza que $\sigma \in \text{VR}(r)$ si y sólo si todas sus aristas están en $\text{VR}(r)$. Dicho de otro modo, $\text{VR}(r)$ está completamente determinado por su $1$-esqueleto. Esto hace que el complejo de Vietoris-Rips sea mucho más eficiente que el complejo de \v{C}ech desde el punto de vista computacional. Sin embargo, al igual que ocurre con el complejo de \v{C}ech, no admite una realización geométrica en $\mathbb{R}^d$.
+
+Sea $\sigma \subset S$, entonces recordamos que el diámetro se define como
+\[\textrm{diam } \sigma = \max_{u, v \in \sigma} d(u,v)\,.\]
+Esta observación garantiza que $\sigma \in \text{VR}(r)$ si y sólo si todas sus aristas están en $\text{VR}(r)$. Dicho de otro modo, $\text{VR}(r)$ está completamente determinado por su $1$-esqueleto. Esto hace que el complejo de Vietoris-Rips sea mucho más eficiente que el complejo de \v{C}ech desde el punto de vista computacional. Sin embargo, al igual que ocurre con el complejo de \v{C}ech, no admite una realización geométrica en $\mathbb{R}^d$.
 
 Por otro lado, el complejo de Vietoris-Rips no es el nervio de ningún recubrimiento. Sin embargo, el siguiente resultado garantiza que el complejo de VR aproxima al complejo de \v{C}ech.
 
-\begin{lemma}[Lema de Vietoris-Rips]
+\begin{lemma}[Lema de Vietoris-Rips \cite{libroEH}]
 \label{ref:lemaVR}
 Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos y sea $r \geq 0$. Entonces,
 \[
-\text{\v{C}ech}(r) \subset \text{VR}(r) \subset \text{\v{C}ech}(\sqrt{2}r)
+\text{\rm \v{C}ech}(r) \subset \text{\rm VR}(r) \subset \text{\rm \v{C}ech}(\sqrt{2}r)\,.
 \]
 \end{lemma}
-
-La demostración al lema \ref{ref:lemaVR} se puede encontrar en \cite{libroEH}.
 
 \subsubsection*{Complejo de Delaunay}
 En esta sección introduciremos construcciones geométricas que nos limitarán la dimensión de los símplices que obtenemos del nervio de una colección finita de conjuntos.
@@ -650,7 +651,7 @@ En esta sección introduciremos construcciones geométricas que nos limitarán l
 \begin{definition}
 Sea $S \subset \mathbb{R}^d$ un conjunto finito. Se define la \emph{celda de Voronoi} de un punto $u \in S$ como el conjunto de los puntos
 \[
-V_u = \{ x \in \mathbb{R}^d \mid d(x,u) \leq d(x,v) \forall v \in S\}
+V_u = \{ x \in \mathbb{R}^d \mid d(x,u) \leq d(x,v) \text{, para todo } v \in S\}\,.
 \]
 La colección de las celdas de Voronoi de los puntos de $S$ se denomina \emph{diagrama de Voronoi} de $S$.
 \end{definition}
@@ -660,9 +661,14 @@ En la figura \ref{ref:vor-del} se puede ver el diagrama de Voronoi de un conjunt
 \begin{definition}
 Sea $S \subset \mathbb{R}^d$ un conjunto finito. Se define el \emph{complejo de Delaunay} de $S$ como el complejo simplicial abstracto 
 \[
-\text{Del} = \left\{\sigma \subseteq S \mid \bigcap_{u \in \sigma}V_u \neq \emptyset \right\}
+\text{Del} = \left\{\sigma \subseteq S \mid \bigcap_{u \in \sigma}V_u \neq \emptyset \right\}\,.
 \] 
 \end{definition}
+
+\begin{definition}[\cite{yale2014geometry}]
+Un conjunto de puntos en un espacio afín $d$-dimensional está en \emph{posición general} si ningún subconjunto de $k$ puntos está contenido en un subespacio afín $(k-2)$-dimensional, para $k = 2, 3, ..., d + 1$.
+\end{definition}
+
 
 El complejo de Delaunay es un complejo isomorfo al nervio del diagrama de Voronoi. Además, si los puntos de $S$ están en posición general, se obtiene una realización del complejo de Delauney en $\mathbb{R}^d$ considerando envolventes convexas de los símplices abstractos. Esta realización geométrica se denomina \emph{triangulación de Delaunay}.
 
@@ -686,7 +692,7 @@ Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos y $r \geq 0$. Para cad
 \begin{definition}
 Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos y $r \geq 0$.Se define el \emph{Alfa complejo} de radio $r$ asociado a $S$ como el complejo simplicial abstracto
 \[
-\text{Alpha}(r)=\left\{\sigma \in S \mid \bigcap_{u \in \sigma}R_u(r) \neq \emptyset \right\}
+\text{Alpha}(r)=\left\{\sigma \in S \mid \bigcap_{u \in \sigma}R_u(r) \neq \emptyset \right\}\,.
 \]
 \end{definition}
 
@@ -705,7 +711,7 @@ Además el alfa complejo tiene menos símplices que el complejo de \v{C}ech. Y c
 
 
 \subsection{Homología}
-Como se puede ver en \cite{Hatcher}, la homotopía es una potente herramienta algebraica para poder obtener propiedades de los espacios topológicos. Sin embargo, los métodos para el cálculo de la homotopía no son manejables computacionalmente. Así pues, se propone la homología como formalismo algebraico, que, aunque no es capaz de obtener tanta información topológica sobre el espacio como con otros formalismos, es muy computable.
+Como se puede ver en \cite{Hatcher}, la homotopía es una herramienta algebraica para poder obtener propiedades de los espacios topológicos. Sin embargo, los métodos para el cálculo de la homotopía no son manejables computacionalmente. Así pues, se propone la homología como formalismo algebraico, que, aunque no es capaz de obtener tanta información topológica sobre el espacio como con otros formalismos, es muy computable.
 
 Comenzaremos estudiando los diversos grupos que están involucrados en la definición de la homología.
 
@@ -878,7 +884,7 @@ Escribiremos los símplices como la lista de sus vértices, $\sigma = [u_0, u_1,
 
 Dadas dos $p$-cadenas $c = \sum a_i\sigma_i$ y $c' = \sum b_i\sigma_i$, se define su suma como
 \[
-c + c' = \sum (a_i + b_i)\sigma_i
+c + c' = \sum (a_i + b_i)\sigma_i\,.
 \]
 Las $p$-cadenas con la operación suma $+$ forman el \emph{grupo de $p$-cadenas} denotado por $(\text{C}_p,+)$, pero como la operación se sobrentiende, se suele nombrar como $\text{C}_p=\text{C}_p(K)$.
 
@@ -900,7 +906,7 @@ En general, dada una $p$-cadena $c =\sum a_i\sigma_i$, se define su borde median
 \begin{exmp}
 Sea la $2$-cadena $c = [0,1] + [4,5]$, entonces el borde de $c$ es:
 \[
-\partial c = \partial [0,1] + \partial [4,5] = [0] + [1] + [4] + [5]
+\partial c = \partial [0,1] + \partial [4,5] = [0] + [1] + [4] + [5]\,.
 \]
 \end{exmp}
 
@@ -993,8 +999,8 @@ El $1$-ciclo que habíamos destacado en azul en la figura \ref{ref:1-ciclo} es u
 
 Probaremos que los $p$-bordes son $p$-ciclos, como ocurre en el ejemplo. Para ello enunciaremos el siguiente lema.
 
-\begin{lemma}[Lema fundamental de la homología]
-$\partial_p \partial_{p+1} c = 0$ para todo entero $p$ y toda $(p + 1)$-cadena $c$ \cite{libroEH}.
+\begin{lemma}[Lema fundamental de la homología \cite{libroEH}]
+$\partial_p \partial_{p+1} c = 0$ para todo entero $p$ y toda $(p + 1)$-cadena $c$.
 \end{lemma}
 
 Se sigue que $\text{B}_p$ es un subespacio vectorial de $\text{Z}_p$, es decir $\text{B}_p \subset \text{Z}_p$. Además, podemos definir el \emph{complejo de cadenas} asociado a un complejo simplicial $K$ como la sucesión de grupos de cadenas conectados por los operadores borde
@@ -1018,7 +1024,7 @@ La idea general de los grupos de homología es poder encontrar los agujeros a pa
 \begin{definition}
 Dado un complejo simplicial $K$ se define su \emph{grupo de homología $p$-dimensional} como el cociente
 \[
-\text{H}_p(K)=\dfrac{\text{Z}_p}{\text{B}_p}
+\text{H}_p(K)=\dfrac{\text{Z}_p}{\text{B}_p}\,.
 \]
 El \emph{número de Betti $p$-dimensional $\beta_p(K)$} como la dimensión de $\text{H}_p(K)$. 
 \end{definition}
@@ -1028,21 +1034,21 @@ Luego los elementos $z \in \text{H}_P = \text{H}_p(K)$ son de la forma $z = c + 
 \begin{definition}
 Diremos que dos ciclos $c_1, c_2 \in \text{Z}_p$ son \emph{homólogos} si existe $b \in \text{B}_p$ tal que 
 \[
-c_1 = c_2 + b
+c_1 = c_2 + b\,.
 \]
 \end{definition}
 
 Como $\text{H}_p(K)$ es un grupo finito, por el \emph{teorema de Lagrange} sabemos que el número de clases de homología es
 \[
-\text{ord } \text{H}_p(K) = \dfrac{\text{ord }  \text{Z}_p}{\text{ord } \text{B}_p}
+\text{ord } \text{H}_p(K) = \dfrac{\text{ord }  \text{Z}_p}{\text{ord } \text{B}_p}\,.
 \]
 Además, como $\text{Z}_p$, $\text{B}_p$ y $\text{H}_p$ son espacios vectoriales sobre $\mathbb{Z}_2$ se sigue que 
 \[
-\beta_p = \text{dim } \text{H}_p = \text{dim } \text{Z}_p - \text{dim } \text{B}_p
+\beta_p = \text{dim } \text{H}_p = \text{dim } \text{Z}_p - \text{dim } \text{B}_p\,.
 \] 
 
 \subsubsection*{Aplicaciones inducidas}
-Veremos que una aplicación simplicial entre espacios subyacentes de dos complejos simpliciales lleva ciclos a ciclos y bordes a bordes. Luego, esta aplicación induce una aplicación entre grupos de homología.
+Veremos que una aplicación simplicial entre dos complejos simpliciales lleva ciclos a ciclos y bordes a bordes. Luego, esta aplicación induce una aplicación entre grupos de homología.
 
 Sean $K$ y $L$ complejos simpliciales y $f: K \to L$ una aplicación simplicial. Para cada $p$-símplice $\sigma^p$ se define
 \[
@@ -1055,8 +1061,8 @@ f(\sigma^p)	& \text{ si } \text{dim } f(\sigma^p) = p \\
 
 Puesto que los símplices forman una base de los espacios vectoriales $\text{C}_p(K)$ y $\text{C}_p(L)$, mediante una extensión lineal se obtiene una aplicación lineal $f_{\#}: \text{C}_p(K) \to \text{C}_p(L)$.
 
-\begin{property}
-Sean $\partial_K$ y $\partial_L$ los operadores borde de $K$ y $L$ respectivamente. Entonces $f_{\#}\circ \partial_K = \partial_L \circ f_{\#}$ \cite{libroEH}.
+\begin{property}[\cite{libroEH}]
+Sean $\partial_K$ y $\partial_L$ los operadores borde de $K$ y $L$ respectivamente. Entonces $f_{\#}\circ \partial_K = \partial_L \circ f_{\#}$.
 \end{property}
 La propiedad anterior garantiza que $f_{\#}(\text{Z}_p(K)) \subset \text{Z}_p(L)$ y $f_{\#}(\text{B}_p(K)) \subset \text{B}_p(L)$. Por tanto $f_{\#}$ induce una aplicación lineal $f_{*}: \text{H}_p(K) \to \text{H}_p(L)$, que denominaremos \emph{homomorfismo inducido por $f$}.
 
@@ -1066,7 +1072,7 @@ Utilizando aproximaciones simpliciales podemos ver que aplicaciones continuas en
 \begin{sloppypar}
 Sea $K$ un complejo simplicial y consideremos la aplicación ${\lambda: \text{C}_p(K) \to \text{C}_p(\text{Sd}^n\ K)}$ definida sobre los $p$-símplices como
 \[
-\lambda_p(\sigma^p) = \sum_{\tau^p \in \text{Sd}^n\ \sigma^p} \tau^p
+\lambda_p(\sigma^p) = \sum_{\tau^p \in \text{Sd}^n \sigma^p} \tau^p\,.
 \]
 La aplicación $\lambda_p$ se denomina \emph{operador subdivisión}.
 \end{sloppypar} 
@@ -1075,13 +1081,13 @@ La aplicación $\lambda_p$ se denomina \emph{operador subdivisión}.
 \begin{sloppypar}
 Sean $K$ y $L$ complejos simpliciales y ${f: \abs{K} \to \abs{L}}$ una aplicación continua y ${g: \text{Sd}^n\ K \to L}$ una aproximación simplicial de $f$. Se define el \emph{homomorfismo inducido} por la aplicación $f$ como la aplicación lineal ${f_{*}: \text{H}_p(K) \to \text{H}_p(L)}$ dada por
 \[
-f_{*} = g_{*} \circ \lambda_{p*}
+f_{*} = g_{*} \circ \lambda_{p*}\,.
 \]
 Donde $g_{*}$ es el homomorfismo inducido por $g$ y ${\lambda_{p*}: \text{H}_p(K) \to \text{H}_p(\text{Sd}^n\ K)}$ es el isomorfismo inducido por $\lambda_p$.
 \end{sloppypar}
 
 \begin{theorem}\label{ref:teoremaHomomorfismoInducido}
-Sean $K$ y $L$ dos complejos simpliciales y $f: \abs{K} \to \abs{L}$ un homeomorfismo. Entonces $f_{*}: \text{H}_p(K) \to \text{H}_p(L)$ es un isomorfismo para todo $p$.
+Sean $K$ y $L$ dos complejos simpliciales y $f: \abs{K} \to \abs{L}$ un homeomorfismo. Entonces $f_{*}: \text{\rm H}_p(K) \to \text{\rm H}_p(L)$ es un isomorfismo para todo $p$.
 \end{theorem}
 
 
@@ -1096,8 +1102,8 @@ La característica de Euler de un complejo simplicial $K$ es
 donde $s_p = \text{dim } \text{C}_p(K)$.
 \end{definition}
 La podremos calcular a partir de los números de Betti:
-\begin{theorem}
-$\chi(K) = \sum_{p=0}^{\text{dim } K} (-1)^p \beta_p(K)$ \cite{libroEH}.
+\begin{theorem}[\cite{libroEH}]
+$\chi(K) = \sum_{p=0}^{\text{\rm dim } K} (-1)^p \beta_p(K)$.
 \end{theorem}
 
 Por el teorema \ref{ref:teoremaHomomorfismoInducido} sabemos que si los espacios subyacentes de dos complejos simpliciales son homeomorfos, entonces sus grupos de homología son isomorfos, y por tanto tendrán la misma dimensión.
@@ -1124,7 +1130,7 @@ El \emph{Teorema de dualidad de Alexander} \cite{libroEH} nos permite interpreta
 \end{itemize}
 
 \subsubsection*{Homología singular}
-Hay una gran variedad de teorías de homología en topología. La homología que hemos definido es la \emph{homología simplicial}, la cual supone que nuestro espacio ya está expresado como el poliedro subyacente de un complejo simplicial. La \emph{homología singular} generaliza la homología simplicial y permite estudiar otros espacios no triangulables \cite{Crossley_2005}. Este tipo de homología tiene la ventaja que existe para cualquier espacio topológico y que facilita definir conceptos como las aplicaciones inducidas. Sin embargo, los grupos de cadenas singulares tienen dimensión infinita, lo que hace que no sea una buena opción desde el punto de vista computacional. Cabe destacar que, en la mayoría de los casos, sobre todo en dimensiones bajas, la homología singular y simplicial son teorías equivalentes \cite{articuloPersistenciaEH}.
+Hay una gran variedad de teorías de homología en topología. La homología que hemos definido, denominada \emph{homología simplicial}, supone que nuestro espacio está expresado como el poliedro subyacente de un complejo simplicial. La \emph{homología singular} generaliza la homología simplicial y permite estudiar otros espacios no triangulables \cite{Crossley_2005}. Este tipo de homología tiene la ventaja que existe para cualquier espacio topológico y que facilita definir conceptos como las aplicaciones inducidas. Sin embargo, los grupos de cadenas singulares tienen dimensión infinita, lo que hace que no sea una buena opción desde el punto de vista computacional. Cabe destacar que, sobre poliedros ambas teorías coinciden \cite{articuloPersistenciaEH}.
 
 Además, para el \textit{teorema de estabilidad} no nos hará falta hacer uso de la homología singular, ya que se parte de la hipótesis de que el espacio es triangulable.
 
@@ -1212,19 +1218,20 @@ Se puede comprobar que las funciones Morse sobre variedades diferenciables limit
 
 \begin{definition}
 \begin{sloppypar}
-Sea $\mathbb{X}$ un espacio topológico, $f$ una función real en $\mathbb{X}$ y ${\mathbb{X}_t=f^{-1}(-\infty, t]}$ el conjunto de subnivel definido para el valor $t$. Un \emph{valor crítico de homología} de $f$ es un número real $a$ para el cual existe un entero $k$ tal que para todo $\epsilon > 0$ lo suficientemente pequeño, la función $\text{H}_k(\mathbb{X}_{a-\epsilon}) \to \text{H}_k(\mathbb{X}_{a+\epsilon})$ inducida por la inclusión, $\mathbb{X}_{a-\epsilon} \subseteq \mathbb{X}_{a+\epsilon}$, no es un isomorfismo.
+Sea $\mathbb{X}$ un espacio topológico, $f$ una función real en $\mathbb{X}$ y ${\mathbb{X}_t=f^{-1}(-\infty, t]}$ el conjunto de subnivel definido para el valor $t$. Un \emph{valor crítico de homología} de $f$ es un número real $a$ para el cual existe un entero $k$ tal que para todo $\epsilon > 0$ lo suficientemente pequeño, el homomorfismo $\text{H}_k(\mathbb{X}_{a-\epsilon}) \to \text{H}_k(\mathbb{X}_{a+\epsilon})$ \footnotemark \ inducido por la inclusión, $\mathbb{X}_{a-\epsilon} \subseteq \mathbb{X}_{a+\epsilon}$, no es un isomorfismo.
 \end{sloppypar}
 \end{definition}
 
-En otras palabras, los valores críticos de homología son los niveles en los cuales cambia la homología de los conjuntos de subnivel. Como ya hemos visto, en el caso de las funciones Morse, estos puntos críticos de homología coinciden con los valores críticos de la función.
+\footnotetext{En esta sección consideraremos la \emph{homología singular} como teoría de homología, dado que los espacios topológicos $\mathbb{X}$ no requieren ser triangulables.}
 
+En otras palabras, los valores críticos de homología son los niveles en los cuales la homología de los conjuntos de subnivel cambia. Como ya hemos visto, en el caso de las funciones Morse, estos puntos críticos de homología coinciden con los valores críticos de la función.
 
 \begin{definition}
-Una función $f: \mathbb{X} \to \mathbb{R}$ es \emph{tame} si los grupos de homología de cada subnivel son finito-dimensionales y tienen un número finito de valores críticos de homología.
+Una función $f: \mathbb{X} \to \mathbb{R}$ es \emph{tame} si los grupos de homología de cada conjunto de subnivel son finito-dimensionales y $f$ posee un número finito de valores críticos de homología.
 \end{definition}
 
 \begin{sloppypar}
-En particular, las funciones morse sobre variedades compactas son funciones tame, porque poseen un número finito de puntos críticos. Para poder simplificar la notación, para cada entero $k$ fijo, escribimos ${F_x = \text{H}_k(f^{-1}(-\infty, x])}$, y para $x < y$, denotamos como ${\tensor*{f}{*^{y}_{x}}: F_x \to F_y}$ la aplicación lineal inducida por la inclusión $\mathbb{X}_{x} \subseteq \mathbb{X}_{y}$. Una vez definida la notación, observaremos el lema \ref{ref:lemaValCritico}, el cual nos será de gran ayuda para la demostración del \emph{teorema de estabilidad}.
+En particular, las funciones Morse sobre variedades compactas son funciones tame, ya que la compacidad y el carácter aislado de los puntos críticos garantizan que estas funciones posean un número finito de puntos críticos. Para simplificar la notación, para cada entero $k$ fijo, escribimos ${F_x = \text{H}_k(f^{-1}(-\infty, x])}$, y para $x < y$, denotamos como ${\tensor*{f}{*^{y}_{x}}: F_x \to F_y}$ la aplicación lineal inducida por la inclusión $\mathbb{X}_{x} \subseteq \mathbb{X}_{y}$. Una vez establecida la notación, probaremos el lema \ref{ref:lemaValCritico}, que nos será de gran ayuda para la demostración del \emph{teorema de estabilidad}.
 \end{sloppypar}
 
 \begin{property}
@@ -1242,18 +1249,18 @@ Si un intervalo cerrado $[x, y]$ no contiene ningún valor crítico de homologí
 \end{lemma}
 
 \begin{proof}
-Sea $m = \dfrac{x+y}{2}$, tenemos que $f_{x}^{y}=f_{m}^{y} \circ f_{x}^{m}$. Supongamos que $f_{x}^{y}$ no es un isomorfismo; por lo tanto, al menos una de las funciones $f_{m}^{y}$ y $f_{x}^{m}$ no es un isomorfismo.\\
-Por inducción sobre las funciones no isomorfas de la composición, obtenemos una sucesión de intervalos encajados cerrados y acotados, $I_n=[x_n,y_n]$, tal que
+Sea $m = (x+y)/2$, tenemos que $f_{x}^{y}=f_{m}^{y} \circ f_{x}^{m}$. Supongamos que $f_{x}^{y}$ no es un isomorfismo. Entonces, al menos una de las funciones $f_{m}^{y}$ y $f_{x}^{m}$ no es un isomorfismo.\\
+Repitiendo este argumento sobre las funciones no isomorfas de la composición obtenemos una sucesión de intervalos encajados cerrados y acotados, $I_n=[x_n,y_n]$, con
 \[
-\lim_{x\to\infty} \abs{y_n - x_n} = 0 \text{ y } f_{x_n}^{y_n} \text{ no es un isomorfismo para todo  } n \in \mathbb{N}
+\lim_{x\to\infty} \abs{y_n - x_n} = 0 \text{ y tal que } f_{x_n}^{y_n} \text{ no es un isomorfismo para todo  } n \in \mathbb{N}
 \]
 por lo que, aplicando el principio de intervalos encajados en $\mathbb{R}$, sabemos que su intersección es un punto $a \in \mathbb{R}$, que verifica que $f_{a-\epsilon}^{a+\epsilon}$ no es un isomorfismo para todo $\epsilon > 0$. Luego, el punto $a$ es un valor crítico de homología en $[x, y]$, contradiciendo nuestra hipótesis inicial.
 \end{proof}
 
 \begin{definition}
-Sea ${f_{x}^{y}: F_x \to F_y}$ la aplicación lineal inducida por la inclusión $\mathbb{X}_{x} \subseteq \mathbb{X}_{y}$. Se define los \emph{grupos de homología persistente} como la imagen de $F_x$ en $F_y$ de la aplicación $f_{x}^{y}$, es decir,
+Sea ${f_{x}^{y}: F_x \to F_y}$ la aplicación lineal inducida por la inclusión $\mathbb{X}_{x} \subseteq \mathbb{X}_{y}$. Se definen los \emph{grupos de homología persistente} como la imagen de $F_x$ en $F_y$ de la aplicación $f_{x}^{y}$, es decir,
 \[
-F_{x}^{y} = \text{im } f_{x}^{y}
+F_{x}^{y} = \text{im } f_{x}^{y}\,.
 \]
 Los correspondientes \emph{números de Betti persistentes} se definen como los rangos de estos grupos, es decir, $\beta_{x}^{y} = \text{dim } F_{x}^{y}$, para todo $-\infty \leq x \leq y \leq + \infty$. 
 \end{definition}
@@ -1268,11 +1275,11 @@ Si analizamos las aplicaciones $f_{x}^{y}$, observamos que el $\text{ker } f_{x}
 para cada dimensión $k$ fija. 
 \end{remark}
 
-Sea $f: \mathbb{X} \to \mathbb{R}$ una función tame, $(a_i)_{i=1..n}$ sus valores críticos homológicos y se considera la secuencia entrelazada $(b_i)_{i=0..n}$, tal que $b_{i-1} < a_{i} < b_{i}$ para $1 \leq i \leq n$. Para capturar la homología que existe en el principio y el final establecemos $b_{-1} = a_0 = -\infty$ y $b_{n+1} = a_{n+1} = +\infty$. Entonces,
+Sea $f: \mathbb{X} \to \mathbb{R}$ una función tame, $(a_i)_{i=1..n}$ sus valores críticos homológicos y se considera la secuencia entrelazada $(b_i)_{i=0..n}$, tal que $b_{i-1} < a_{i} < b_{i}$ para $1 \leq i \leq n$. Para capturar la homología a lo largo de todo el proceso hacemos $b_{-1} = a_0 = -\infty$ y $b_{n+1} = a_{n+1} = +\infty$. Entonces,
 \begin{definition}
 Se define la multiplicidad del par $(a_i, a_j)$ como
 \[
-\mu_{i}^{j} = \beta_{b_{i-1}}^{b_j} - \beta_{b_i}^{b_j} +  \beta_{b_i}^{b_{j-1}} - \beta_{b_{i-1}}^{b_{j-1}} \text{, para todo } i, j \in \mathbb{Z} \text{ tal que } 0 \leq i < j \leq n+1
+\mu_{i}^{j} = \beta_{b_{i-1}}^{b_j} - \beta_{b_i}^{b_j} +  \beta_{b_i}^{b_{j-1}} - \beta_{b_{i-1}}^{b_{j-1}} \text{, para todo } i, j \in \mathbb{Z} \text{ tal que } 0 \leq i < j \leq n+1\,.
 \]
 \end{definition}
 
@@ -1286,37 +1293,37 @@ Podemos visualizar la multiplicidad, $\mu_{i}^{j}$, como se muestra en la figura
 \end{figure}
 
 \begin{remark}
-Si $x$ y $x'$ se encuentran dentro del intervalo $(a_i, a_{i+1})$, y $y$ e $y'$ en el intervalo $(a_{j-1}, a_j)$, entonces $\beta_{x}^{y} = \beta_{x'}^{y}$. Este resultado se sigue de que, debido al \emph{Lema del valor crítico}, $F_{x}^{y}$ y $F_{x'}^{y'}$ son isomorfos.
+Si $x$ y $x'$ se encuentran dentro del intervalo $(a_i, a_{i+1})$, e $y$ e $y'$ en el intervalo $(a_{j-1}, a_j)$, entonces $\beta_{x}^{y} = \beta_{x'}^{y}$. Este resultado se sigue de en consecuencia del \emph{Lema del valor crítico}, que garantiza que $F_{x}^{y}$ y $F_{x'}^{y'}$ son isomorfos.
 \end{remark}
 
 \begin{definition}
 El \emph{diagrama de persistencia} $\text{Dgm}(f) \subset \overline{\mathbb{R}}^2$ de $f$ es el multiconjunto de puntos $(a_i, a_j)$ con multiplicidad $\mu_{i}^{j}$ para todo $0 \leq i < j \leq n+1$, unión los puntos de la diagonal, $\Delta=\{(x, y) \in \overline{\mathbb{R}}^2 \mid y = x\}$, con multiplicidad infinito.
 \end{definition}
 
-Denotaremos por $\#(A)$ la \emph{multiplicidad total} de un multiconjunto $A$, el cual, por definición es la suma de las multiplicidades de los elementos de $A$. Por lo tanto, la multiplicidad total del diagrama de persistencia menos la diagonal es
+Denotaremos por $\#(A)$ la \emph{multiplicidad total} de un multiconjunto $A$, que, por definición es la suma de las multiplicidades de los elementos de $A$. Por tanto, la multiplicidad total del diagrama de persistencia menos la diagonal es
 \[
-\#(\text{Dgm}(f) \setminus \Delta) = \sum_{i < j} \mu_{i}^{j}
+\#(\text{Dgm}(f) \setminus \Delta) = \sum_{i < j} \mu_{i}^{j}\,.
 \]
-la cual es llamada \emph{tamaño} del diagrama de persistencia.
+Esta multiplicidad se denomina \emph{tamaño} del diagrama de persistencia.
 
 Denotaremos el cuadrante superior izquierda cerrado con vértice en el punto $(x, y)$ como $Q_{x}^{y} = [-\infty, x] \times [y, \infty]$.
 
 \begin{lemma}[Lema del $k$-Triángulo]
-Sea $f$ una función tame y suponemos que $x < y$ son diferentes de los valores críticos homológicos de $f$. Entonces la multiplicidad total del diagrama de persistencia en en cuadrante superior izquierda con vértice $(x, y)$ es
+Sea $f$ una función tame y $x < y$ diferentes de los valores críticos homológicos de $f$. Entonces, la multiplicidad total del diagrama de persistencia en el cuadrante superior izquierdo con vértice $(x, y)$ es
 \[
-\#({\rm Dgm}(f) \cap Q_{x}^{y})= \beta_{x}^{y}
+\#(\text{\rm Dgm}(f) \cap Q_{x}^{y})= \beta_{x}^{y}\,.
 \]
 \end{lemma}
 
 \begin{proof}
-Podemos asumir sin perder generalidad, que $x = b_i$ y $y = b_{j-1}$. Por definición, la multiplicidad total en el cuadrante superior izquierda es igual a la suma de las multiplicidades de los puntos contenidos en dicho cuadrante, luego
+Podemos asumir sin pérdida de generalidad que $x = b_i$ y $y = b_{j-1}$. Por definición, la multiplicidad total en el cuadrante superior izquierdo es igual a la suma de las multiplicidades de los puntos contenidos en dicho cuadrante, luego
 \[
-\#(Dgm(f) \cap Q_{x}^{y}) = \sum_{k \leq i} \sum_{l > j}  \mu_{k}^{l} =
-\sum_{k \leq i} \sum_{l > j} (\beta_{b_{k-1}}^{b_l} - \beta_{b_k}^{b_l} + \beta_{b_k}^{b_{l-1}} - \beta_{b_{k-1}}^{b_{l-1}})
+\#(\text{\rm Dgm}(f) \cap Q_{x}^{y}) = \sum_{k \leq i} \sum_{l > j}  \mu_{k}^{l} =
+\sum_{k \leq i} \sum_{l > j} (\beta_{b_{k-1}}^{b_l} - \beta_{b_k}^{b_l} + \beta_{b_k}^{b_{l-1}} - \beta_{b_{k-1}}^{b_{l-1}})\,.
 \]
 Como se muestra en la figura \ref{ref:multiplicidadDiagrama}, cuando se suman las multiplicidades, ocurre la cancelación entre signos positivos y negativos de las esquinas de los cuadrados. Entonces:
 \begin{gather*}
-\#(Dgm(f) \cap Q_{x}^{y}) = \beta_{b_{-1}}^{b_{n+1}} - \beta_{b_{i}}^{b_{n+1}} + \beta_{b_i}^{b_{j-1}} - \beta_{b_{-1}}^{b_{j-1}} =\\
+\#(\text{\rm Dgm}(f) \cap Q_{x}^{y}) = \beta_{b_{-1}}^{b_{n+1}} - \beta_{b_{i}}^{b_{n+1}} + \beta_{b_i}^{b_{j-1}} - \beta_{b_{-1}}^{b_{j-1}} =\\
 = \beta_{-\infty}^{+\infty} - \beta_{b_{i}}^{+\infty} + \beta_{b_i}^{b_{j-1}} - \beta_{-\infty}^{b_{j-1}} = \beta_{b_i}^{b^{j-1}} = \beta_{x}^{y}
 \end{gather*}
 ya que $F_{x}^{y}= \{0\}$ cuando $x$ ó $y$ son infinito, y por lo tanto su dimensión, es decir, su número de Betti persistente, es cero.
@@ -1325,10 +1332,10 @@ ya que $F_{x}^{y}= \{0\}$ cuando $x$ ó $y$ son infinito, y por lo tanto su dime
 Este lema nos garantiza que el diagrama de persistencia codifica toda la información sobre los grupos de homología persistente \cite{libroEH}.
 
 \subsubsection*{Persistencia en complejos simpliciales}
-Veremos que podemos particularizar la persistencia vista para funciones tame a complejos simpliciales. Para ello utilizaremos las \emph{filtraciones} de un complejo simplicial como conjuntos de subnivel.
+Veremos que podemos particularizar la persistencia vista para funciones tame a complejos simpliciales. Para ello utilizaremos las \emph{filtraciones} de un complejo simplicial como conjuntos de subnivel y haremos uso de la \emph{homología simplicial} como teoría de homología.
 
 \begin{definition}
-Sea un complejo simplicial $K$ y $f: K \to \mathbb{R}$ una función. Entonces, $f$ será \emph{monótona} si $f(\sigma) \leq f(\tau)$ si $\sigma$ es una cara de $\tau$.
+Sea un complejo simplicial $K$ y $f: K \to \mathbb{R}$ una función. Se dice que, $f$ es \emph{monótona} si $f(\sigma) \leq f(\tau)$ si $\sigma$ es una cara de $\tau$.
 \end{definition}
 \begin{sloppypar}
 La monotonía de $f$ garantiza que para cada $a \in \mathbb{R}$, el conjunto de subnivel ${K(a) = f^{-1}(-\infty,a]}$ es un subcomplejo de $K$.
@@ -1338,12 +1345,12 @@ La monotonía de $f$ garantiza que para cada $a \in \mathbb{R}$, el conjunto de 
 \begin{definition}
 Sean $a_1 < a_2 < ... < a_n$ los valores que toma la función en los símplices y sea $a_0 = -\infty$. Entonces $f$ induce una \emph{filtración}
 \[
-\emptyset = K_0 \subset K_1 \subset ... \subset K_n = K, \text{ con } K_i=K(a_i)
+\emptyset = K_0 \subseteq K_1 \subseteq ... \subseteq K_n = K, \text{ con } K_i=K(a_i)\,.
 \]
 \end{definition}
-Estas filtraciones pueden ser obtenidas de diversas formas. Por un lado, podremos obtener filtraciones variando el radio de los complejos de \v{C}ech, Vietoris-Rips y alfa complejos; y más adelante veremos como obtener filtraciones de complejos simpliciales más generales a partir de la filtración de las estrellas inferiores de una función PL.
+Estas filtraciones pueden ser obtenidas de diversas formas. Por un lado, podremos obtener filtraciones variando el radio de los complejos de \v{C}ech, Vietoris-Rips y alfa complejos; y más adelante veremos como obtener filtraciones de complejos simpliciales más generales a partir de la filtración por las estrellas inferiores de una función PL.
 
-De esta forma, al igual que vimos en las funciones Morse, una clase de homología $\alpha$ nace en $K_i$ si no está en la imagen de la función inducida por la inclusión $K_{i-1} \subset K_i$. Además, una clase $\alpha$ que nace en $K_i$ muere al entrar en $K_j$ si la imagen de la función inducida por $K_{i-1} \subset K_{j-1}$ no contiene la imagen de $\alpha$, pero la imagen de la función inducida por $K_{i-1} \subset K_j$ sí.
+De esta forma, al igual que vimos en las funciones Morse, una clase de homología $\alpha$ nace en $K_i$ si no está en la imagen de la función inducida por la inclusión $K_{i-1} \subseteq K_i$. Además, una clase $\alpha$ que nace en $K_i$ muere al entrar en $K_j$ si la imagen de la función inducida por $K_{i-1} \subseteq K_{j-1}$ no contiene la imagen de $\alpha$, pero la imagen de la función inducida por $K_{i-1} \subseteq K_j$ sí.
 
 Introduciremos los grupos de homología persistente, reduciendo la notación de la siguiente forma: $F_i = F_{b_i}$, $F_{i}^{j}=F_{b_i}^{b_j}$ y $\beta_{i}^{j}=\beta_{b_i}^{b_j}$. Así podemos redefinir la noción de nacimiento y muerte de una clase de homología como sigue
 \begin{itemize}
@@ -1357,9 +1364,9 @@ Sea $\gamma$ una clase de homología que nace en $K_i$ y muere al entrar en $K_j
 
 Siguiendo esta notación, se define la multiplicidad como
 \[
-\mu_{i}^{j} = (\beta_{i}^{j-1}-\beta_{i}^{j})-(\beta_{i-1}-\beta_{i-1}^{i})
+\mu_{i}^{j} = (\beta_{i}^{j-1}-\beta_{i}^{j})-(\beta_{i-1}-\beta_{i-1}^{i})\,.
 \]
-Donde a $\beta_{i}^{j-1}$ se puede interpretar como el número de clases de homología que están vivas en $K_i$ y siguen vivas en $K_{j-1}$. Por lo tanto, la primera diferencia de la igualdad se interpreta como el número de clases independientes que están vivas en $K_i$ y mueren en $K_j$; mientras que la segunda diferencia son el número de clases independientes que nacen antes de $K_i$ y mueren en $K_j$. En conclusión, la multiplicidad, $\mu_{i}^{j}$, se interpreta como el número de clases de homología que nacen en $K_i$ y mueren en $K_j$.
+Donde a $\beta_{i}^{j-1}$ se puede interpretar como el número de clases de homología que están vivas en $K_i$ y siguen vivas en $K_{j-1}$. Por lo tanto, la primera diferencia de la igualdad se interpreta como el número de clases independientes que están vivas en $K_i$ y mueren en $K_j$, mientras que la segunda diferencia son el número de clases independientes que nacen antes de $K_i$ y mueren en $K_j$. En conclusión, la multiplicidad, $\mu_{i}^{j}$, se interpreta como el número de clases de homología que nacen en $K_i$ y mueren en $K_j$.
 
 \begin{figure}[!ht]
 \centering
@@ -1382,34 +1389,36 @@ f(x)=\sum_{i} b_i(x)f(u_i)
 \]
 donde $u_i$ son los vértices de $K$ y $b_i(x)$ son las coordenadas baricéntricas de $x$.
 \end{definition}
-Por simplicidad se asume que $f\vert_{\text{Vert }K}$ es inyectiva. Reindexando los vértices de forma que $f(u_i) < f(u_2) < ... < f(u_n)$, definimos $K_i$ como el subcomplejo  definifo por los primero $i$ vértices.
+Por simplicidad se asume que $f\vert_{\text{Vert }K}$ es inyectiva. Reindexando los vértices de forma que $f(u_i) < f(u_2) < ... < f(u_n)$, definimos $K_i$ como el subcomplejo definido por los primeros $i$ vértices.
 
 \begin{definition}
-La \emph{estrella inferior} es el subconjunto de símplices para los cuales $u_i$ es el vértice de mayor valor de $f$:
+La \emph{estrella inferior} de un vértice $u_i \in \text{Vert }K$ se define como el subconjunto de símplices para los cuales $u_i$ es el vértice de mayor valor de $f$:
 \[
-\text{St}\_u_i = \{\sigma \in \text{St }u_i \mid x \in \sigma \Rightarrow f(x) \leq f(u_i)\}
+\text{St}\_u_i = \{\sigma \in \text{St }u_i \mid x \in \sigma \Rightarrow f(x) \leq f(u_i)\}\,.
 \] 
 \end{definition}
 
-Como ocurría con la estrella, la estrella inferior generalmente no es un subcomplejo. Añadiendo las caras restantes al conjunto, obtenemos la \emph{estrella inferior cerrada}, la cual es un subcomplejo de $K$. Debido a la asunción de la inyectividad de la restricción de $f$ a sus vértices, cada símplice tiene un único vértice con valor máximo, y por tanto pertenece a una única estrella inferior. Luego, $K_i$ es la unión de las primeras $i$ estrellas inferiores; obteniendo la siguiente filtración de $K$:
+Como ocurría con la estrella, la estrella inferior generalmente no es un subcomplejo. Añadiendo las caras restantes a los símplices en $\text{St}\_u_i$, obtenemos la \emph{estrella inferior cerrada} $\overline{\text{St}}\_u_i$, que es el menor subcomplejo de $K$ que contiene a $\text{St}\_u_i$. Como $f$ es inyectiva en sus vértices, cada símplice tiene un único vértice con valor máximo, y por tanto pertenece a una única estrella inferior. Luego, $K_i$ es la unión de las primeras $i$ estrellas inferiores; obteniendo la siguiente filtración de $K$:
 
 \begin{definition}
-Sea $K$ un complejo simplicial con valores reales asignados en todos sus vértices y $f$ una función PL sobre $K$. Entonces definimos la \emph{filtración de las estrellas inferiores de $f$} como la cadena de complejos $\emptyset = K_0 \subseteq K_1 \subseteq ... \subseteq K_n = K$, donde $K_i=K_{i-1} \cup \text{St}\_u_i$. 
+Sea $K$ un complejo simplicial y $\abs{K} \to \mathbb{R}$ una función PL. Se define la \emph{filtración de $K$ por las estrellas inferiores de $f$} como la filtración de subcomplejos $\emptyset = K_0 \subseteq K_1 \subseteq ... \subseteq K_n = K$, donde $K_i=K_{i-1} \cup \overline{\text{St}}\_u_i$. 
 \end{definition}
 
 Esta filtración cumple las siguientes propiedades:
-\begin{property}
-$K_i$ tiene el mismo tipo de homotopía que el subnivel $\abs{K}_t=f^{-1}(-\infty, t]$, para todo $f(u_i) \leq t < f(u_{i+1})$ \cite{libroEH}.
-\end{property}
-
-\begin{property}
+\begin{property}[\cite{libroEH}]
 \begin{sloppypar}
-La la variación de la homología en los conjuntos de subnivel ${\abs{K}_t=f^{-1}(-\infty, t]}$ es la misma que la homología de la filtración de las estrellas inferiores de $f$.
+$K_i$ tiene el mismo tipo de homotopía que el subnivel ${\abs{K}_t=f^{-1}(-\infty, t]}$, para todo $f(u_i) \leq t < f(u_{i+1})$.
 \end{sloppypar}
 \end{property}
 
-\begin{property}
-Sea $\mathbb{X}$ un espacio topológico triangulable. Entonces podemos aproximar toda función tame en $\mathbb{X}$ a partir de una función PL en su triangulación \cite{articuloPersistenciaEH}.
+\begin{property}[\cite{libroEH}]
+\begin{sloppypar}
+La la variación de la homología en los conjuntos de subnivel ${\abs{K}_t=f^{-1}(-\infty, t]}$ es la misma que la homología de la filtración por las estrellas inferiores de $f$.
+\end{sloppypar}
+\end{property}
+
+\begin{property}[\cite{articuloPersistenciaEH}]
+Sea $\mathbb{X}$ un espacio topológico triangulable. Entonces podemos aproximar toda función tame en $\mathbb{X}$ a partir de una función PL en su triangulación.
 \end{property}
 
 
