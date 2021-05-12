@@ -596,7 +596,7 @@ class Complejo():
             j = 0
             while j < len(lowsArray) and numCaras > 0:
                 if j not in carasVisitadas and lowsArray[j] == -1 and len(self.carasOrd[j][0]) == i+1:
-                    dgmi.append((self.carasOrd[j][1], math.inf))
+                    dgmi.append((self.carasOrd[j][1], float('inf')))
                     numCaras = numCaras - 1
                     carasVisitadas.append(j)
                     # Marca de que ya se ha anadido su persistencia
@@ -617,9 +617,9 @@ class Complejo():
         death = list()
         for i in range(len(dmg)):
             dmgi = dmg[i]
-            birthI = np.array([c[0] for c in dmgi if c[1] != math.inf])
-            deathI = np.array([c[1] for c in dmgi if c[1] != math.inf])
-            infinity.append([c[0] for c in dmgi if c[1] == math.inf])
+            birthI = np.array([c[0] for c in dmgi if c[1] != float('inf')])
+            deathI = np.array([c[1] for c in dmgi if c[1] != float('inf')])
+            infinity.append([c[0] for c in dmgi if c[1] == float('inf')])
             maxDeath = max(maxDeath, int(np.amax(deathI))*1.1 + 1)
             birth.append(birthI)
             death.append(deathI)
@@ -659,9 +659,9 @@ class Complejo():
         death = list()
         for i in range(len(dmg)):
             dmgi = dmg[i]
-            birthI = np.array([c[0] for c in dmgi if c[1] != math.inf])
-            deathI = np.array([c[1] for c in dmgi if c[1] != math.inf])
-            infinity.append([c[0] for c in dmgi if c[1] == math.inf])
+            birthI = np.array([c[0] for c in dmgi if c[1] != float('inf')])
+            deathI = np.array([c[1] for c in dmgi if c[1] != float('inf')])
+            infinity.append([c[0] for c in dmgi if c[1] == float('inf')])
             maxDeath = max(maxDeath, int(np.amax(deathI))*1.1 + 1)
             birth.append(birthI)
             death.append(deathI)

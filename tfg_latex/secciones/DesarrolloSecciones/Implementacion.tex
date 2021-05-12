@@ -1,5 +1,5 @@
 
-\section{Implementaciones y cálculos}
+\section{Implementaciones y cálculos}\label{sec:impl}
 En esta sección daremos algunas evidencias computacionales de la estabilidad de los diagramas de persistencias, centrándonos filtraciones de complejos simpliciales asociadas a nubes de puntos con un cierto ruido. Para ello comenzaremos estudiando posibles algoritmos para calcular tanto la \emph{distancia Hausdorff} como la \emph{distancia bottleneck}. 
 \subsection{Cálculo de la distancia Hausdorff}
 
@@ -43,14 +43,14 @@ Sea $A=\{x_1, x_2, ...,x_m\}$ y $B=\{y_1, y_2, ...,y_m\}$ los dos conjuntos de p
 \end{algorithmic}
 \end{algorithm}
 
-Obviamente, la complejidad del algoritmo \ref{ref:HausdorffDirect} es del orden de $\bigO(n*m)$, donde $m = \abs{A}$ y $n = \abs{B}$. La distancia Hausdorff entre $A$ y $B$  será el máximo de los resultados de ejecutar el algorirmo \ref{ref:HausdorffDirect} en ambas direcciones, y por lo tanto la complejidad de calcular la distancia Hausdorff de este modo es de $\bigO(n*m)$.
+Obviamente, la complejidad del algoritmo \ref{ref:HausdorffDirect} es del orden de $\bigO(n*m)$, donde $m = \abs{A}$ y $n = \abs{B}$. La distancia Hausdorff entre $A$ y $B$  será el máximo de los resultados de ejecutar el algoritmo \ref{ref:HausdorffDirect} en ambas direcciones, y por lo tanto la complejidad de calcular la distancia Hausdorff de este modo es de $\bigO(n*m)$.
 
-Sin embargo, existen implementaciones del cálculo de la distancia Hausdorff que tienen complejidad del orden de $\bigO(m)$ en el mejor de los casos y $\bigO(n*m)$ en el peor de los casos \cite{ArticuloHausdorff}. 
+Sin embargo, existen implementaciones del cálculo de la distancia Hausdorff que tienen complejidad del orden de $\bigO(m)$ en el mejor de los casos y $\bigO(n*m)$ en el peor de los casos \cite{ArticuloHausdorff}.
 \subsection{Cálculo de la distancia bottleneck}
 En esta sección veremos los algoritmos propuestos en \cite{libroEH}, donde el cálculo de la distancia bottleneck entre dos diagramas de persistencia se reduce en la obtención de un emparejamiento óptimo en un grafo bipartido.
 
 \subsubsection*{Obtención de la distancia a partir de emparejamientos}
-Empezaremos viendo como podemos obtener la distancia bottleneck entre diagramas de persistancia a partir de emparejamientos de un grafo bipartido.
+Empezaremos viendo cómo podemos obtener la distancia bottleneck entre diagramas de persistencia a partir de emparejamientos de un grafo bipartido.
 
 Sea $X$ e $Y$ dos diagramas de persistencia, para los que asumimos que están formados por un número finito de puntos fuera de la diagonal e infinitos puntos en ella. Denotamos $X_0$ al multiconjunto finito de los puntos fuera de la diagonal en $X$ y $X_0'$ a la proyección ortogonal de $X_0$ sobre la diagonal. Por tanto, construimos el grafo bipartido completo
 \[
@@ -68,7 +68,7 @@ c(uv)=
 \]
 
 \begin{remark}
-Por construcción, la arista de coste mínimo que conecta un punto $u$ fuera de la diagonal con un punto de la diagonal es $uu'$, donde $u'$ es la proyección ortogonal de $u$ sobre la diagonal. Además el coste de esta arista es la mitad de la persistencia de $u$. 
+Por construcción, la arista de coste mínimo que conecta un punto $u$ fuera de la diagonal con un punto de la diagonal es $uu'$, donde $u'$ es la proyección ortogonal de $u$ sobre la diagonal. Además, el coste de esta arista es la mitad de la persistencia de $u$. 
 \end{remark}
 
 \begin{definition}
@@ -85,7 +85,7 @@ Como $G$ es un grafo bipartido completo, todo emparejamiento máximo es también
 \begin{definition}
 Se define $G(\epsilon)=(U \cupdot V, A_\epsilon)$ como el subgrafo de $G$ que se obtiene al eliminar todas las aristas $uv \in A$ con coste $c(uv)>\epsilon$.  
 \end{definition}
-En este caso, todo emparejamiento perfecto en $G(\epsilon)$ es máximo, sin embargo el opuesto no siempre es cierto.
+En este caso, todo emparejamiento perfecto en $G(\epsilon)$ es máximo, sin embargo, el opuesto no siempre es cierto.
 
 \begin{definition}
 Un \emph{emparejamiento de coste mínimo} es un emparejamiento máximo que minimiza la suma de los costes de las aristas del emparejamiento. Denotaremos a esta suma como el \emph{coste total} del emparejamiento.
@@ -95,10 +95,10 @@ Un \emph{emparejamiento de coste mínimo} es un emparejamiento máximo que minim
 Sean $X$ e $Y$ dos diagramas de persistencia y sea $G =(U \cupdot V, A)$ su correspondiente grafo bipartido. Entonces la distancia bottleneck entre $X$ e $Y$ es el menor $\epsilon$ tal que el subgrafo $G(\epsilon)$ tiene un emparejamiento perfecto.
 \end{lemma}
 
-Por lo tanto, el calculo de la distancia bottleneck entre diagramas de persistencia se reduce a la obtención de emparejamientos perfectos con coste mínimo en grafos bipartidos.
+Por lo tanto, el cálculo de la distancia bottleneck entre diagramas de persistencia se reduce a la obtención de emparejamientos perfectos con coste mínimo en grafos bipartidos.
 
 \subsubsection*{Emparejamientos en grafos bipartidos}
-Comenzaremos viendo como podemos obtener emparejamientos máximos en el grafo bipartido $G(\epsilon)=(U \cupdot V, A_\epsilon)$. Para ello haremos uso de algoritmos iterativos, donde en cada paso mejoraremos el emparejamiento, hasta que no sea posible aumentarlo.
+Comenzaremos viendo cómo podemos obtener emparejamientos máximos en el grafo bipartido $G(\epsilon)=(U \cupdot V, A_\epsilon)$. Para ello haremos uso de algoritmos iterativos, donde en cada paso mejoraremos el emparejamiento, hasta que no sea posible aumentarlo.
 
 \begin{definition}
 Sea $M_i$ el emparejamiento tras realizar $i$ iteraciones. Se define $D_i = (P, Q)$ como el digrafo tal que
@@ -160,11 +160,11 @@ Para calcular el menor $\epsilon$ tal que $G(\epsilon)$ tiene un emparejamiento 
 \leavevmode
 \begin{enumerate}
 	\item Si el subgrafo $G(0)$, el cual consiste en las aristas de coste cero de $G$, tiene un emparejamiento perfecto, entonces es un emparejamiento de coste mínimo. Es más, su coste total es cero.
-	\item Restar la misma cantidad al coste de todas las aristas incidentes a un vértice de $G$ afecta a todos los emparejamientos perfectos de la misma forma. En particular, un emparejamiento perfecto minimiza el coste total antes de la restas de la cantidades si y sólo si sigue minimizandolo tras las restas de las cantidades.
+	\item Restar la misma cantidad al coste de todas las aristas incidentes a un vértice de $G$ afecta a todos los emparejamientos perfectos de la misma forma. En particular, un emparejamiento perfecto minimiza el coste total antes de las restas de la cantidades si y sólo si sigue minimizándolo tras las restas de las cantidades.
 \end{enumerate}
 \end{property}
 
-Así pues, empezaremos construyendo un emparejamiento máximo en $G(0)$. Si es un emparejamiento perfecto ya hemos acabado y por lo tanto la distancia bottleneck entre los diagramas de persistencia es $0$. En otro caso, cambiaremos los costes de las aristas de $G$ preservando el orden de los emparejamientos perfectos en $G$ por coste total. Para ello introducimos las \emph{funciones de reducción} $d_i: U \times V \to \mathbb{R}$. Partiendo de $d_0(x)=0$ para todos los vértices de $G$, el algorítmo cambiará el valor de la función de reducción en cada iteración $i$.
+Así pues, empezaremos construyendo un emparejamiento máximo en $G(0)$. Si es un emparejamiento perfecto ya hemos acabado y por lo tanto la distancia bottleneck entre los diagramas de persistencia es $0$. En otro caso, cambiaremos los costes de las aristas de $G$ preservando el orden de los emparejamientos perfectos en $G$ por coste total. Para ello introducimos las \emph{funciones de reducción} $d_i: U \times V \to \mathbb{R}$. Partiendo de $d_0(x)=0$ para todos los vértices de $G$, el algoritmo cambiará el valor de la función de reducción en cada iteración $i$.
 
 \begin{definition}
 Sea $c(xy)$ el coste original de la arista $xy \in G$. Se define el \emph{coste modificado} tras $i$ iteraciones como
@@ -206,8 +206,8 @@ La propiedad anterior garantiza que en la última iteración obtenemos el empare
 Como tenemos $n$ iteraciones en las cuales cada una aplicamos el algoritmo de Dijkstra, entonces la complejidad del cálculo de la distancia bottleneck siguiendo el algoritmo comentado es del orden de $\bigO(n^3)$.
 
 \subsection{Pruebas}
+La implementación del cálculo se ha realizado en Python y el código se puede encontrar en el Anexo \ref{codigo_dist}.
 \todo{Subsección por hacer}
-
 
 
 

@@ -1,8 +1,8 @@
 
-\section{Teorema de estabilidad}
+\section{Teorema de estabilidad}\label{sec:teorema}
 En esta sección introduciremos el \emph{teorema de estabilidad de los diagramas de persistencia}, y profundizaremos en su demostración siguiendo \cite{Cohen-Steiner2007}. Primero estudiaremos la estabilidad para la \emph{distancia de Hausdorff}, y después, reforzaremos el resultado estudiando la estabilidad con la \emph{distancia bottleneck}.
 \subsection{Proposición del teorema}
-El teomera de estabilidad nos va a garantizar la robustez de los diagramas de persistencia. Dicho de otro modo, que ``pequeñas'' perturbaciones en las funciones, dan lugar a diagramas de persistencia ``cercanos''. Así pues, primero precisaremos el concepto de cercanía entre funciones y diagramas de persistencia.
+El teorema de estabilidad nos va a garantizar la robustez de los diagramas de persistencia. Dicho de otro modo, que ``pequeñas'' perturbaciones en las funciones, dan lugar a diagramas de persistencia ``cercanos''. Así pues, primero precisaremos el concepto de cercanía entre funciones y diagramas de persistencia.
 
 Sean $X$ e $Y$ dos diagramas de persistencia. Recordamos que $X$ e $Y$ son dos multiconjuntos de puntos del plano extendido $\overline{\mathbb{R}}^2$, constituidos por un número finito de puntos sobre la diagonal, y por los puntos de la diagonal con multiplicidad infinito. 
 
@@ -48,7 +48,7 @@ W_\infty(\text{\rm Dgm}(f), \text{\rm Dgm}(g)) \leq \norm{f-g}_\infty\,.
 \]
 \end{theorem}
 
-Luego, se garantiza que los diagramas de persistencia son estables bajo perturbaciones de baja amplitud. Este resultado se puede observar gráficamente en la figura \ref{ref:ejEstabilidad}, donde se observa que los valores críticos ``supérfluos'' de la función perturbada definen puntos en el diagrama muy próximos a la diagonal, y los valores críticos ``relevantes'' definen puntos muy próximos a los puntos del diagrama asociados a la función original.
+Luego, se garantiza que los diagramas de persistencia son estables bajo perturbaciones de baja amplitud. Este resultado se puede observar gráficamente en la figura \ref{ref:ejEstabilidad}, donde se observa que los valores críticos ``superfluos'' de la función perturbada definen puntos en el diagrama muy próximos a la diagonal, y los valores críticos ``relevantes'' definen puntos muy próximos a los puntos del diagrama asociados a la función original.
 
 \begin{figure}[!ht]
 \centering
@@ -58,11 +58,332 @@ Luego, se garantiza que los diagramas de persistencia son estables bajo perturba
 \end{figure}  
 
 \subsection{Estabilidad para la distancia Hausdorff}
+Partiremos de la demostración de la estabilidad con la distancia Hausdorff, que sigue sigue así
+
 \begin{theorem}[Teorema de estabilidad con la distancia Hausdorff para funciones tame]
 Sea $\mathbb{X}$ un espacio topológico triangulable y sea $f,g: \mathbb{X} \to \mathbb{R}$ dos funciones tame continuas. Entonces, para cada dimensión $k$, la distancia Hausdorff entre los diagramas de persistencia esta acotada por la distancia $L_\infty$ entre las funciones, es decir,
 \[
 H(\text{\rm Dgm}(f), \text{\rm Dgm}(g)) \leq \norm{f-g}_\infty\,.
 \]
 \end{theorem}
+
+\subsubsection*{Relaciones entre cuadrantes superiores izquierdos}
+Primero estudiaremos la relación entre las multiplicidades de los cuadrantes superiores izquierdos de dos diagramas de persistencia.
+
+\begin{proposition}
+Sean $f,g: \mathbb{X} \to \mathbb{R}$ dos funciones tame continuas. Si denotamos $\epsilon = \norm{f-g}_\infty$, entonces $f^{-1}(-\infty,x]\subseteq g^{-1}(-\infty, x+\epsilon]$ para todo $x \in \mathbb{R}$
+\end{proposition}
+
+\begin{proof}
+Sea $y \in \mathbb{X}$ tal que $y \in f^{-1}(-\infty,x]=\{x\in \mathbb{X} \mid f(x) \in (-\infty,x]\}$. Como $\norm{f-g}_\infty= \sup_{x\in \mathbb{X}}\ \abs{f(z) - g(x)} = \epsilon$, entonces
+\[
+\abs{f(y)-g(y)}<\epsilon \Rightarrow g(y)\in (-\infty, x+\epsilon] \Rightarrow y \in g^{-1}(-\infty, x+\epsilon]\,.
+\]
+\end{proof}
+
+Denotamos la aplicación inducida por esta inclusión por $\varphi_x:F_x \to G_{x-\epsilon}$. La inclusión análoga, $g^{-1}(-\infty,x]\subseteq f^{-1}(-\infty, x+\epsilon]$, induce la aplicación $\psi_x: G_x \to F_{x+\epsilon}$. Sea $b<c$, estas dos aplicaciones dan lugar a los siguientes diagramas conmutativos:
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRADEB9YAIwFoAOgJhpsDAgF8QE0uky58hFACZyVWoxZsuwAMYBqISLGTpskBmx4CRAMxrq9Zq0QduPQ8NFZxYKTLkrRSIAVgcNZ21uAyNvX39zSwUbFDJldSctVwBxdwTA5KVkVXTHTRcQXL18i3lrIvtSiKzKvLMC+tDSJsyKqp4JAD1q6XUYKABzeCJQADMAJwgAWyQyEBwIJABGMsjXWfdBLxM-YZjjn1NqBjoeGAYABTrg1wYYWZx2kAXl1eoNpAAFl2LSE9HmaAAFlhDrETlJrrd7k8gikQPMsBNIZ8At9FitEKp1ptEPZmhUDrxPMZLqc9NS4lcQDc7o9nmi3h8vj8CcDiUgwuS2BM8mcEcykWzUUpme8ceYeQL-iSdkLXEJvJxdCBEayUYU2BisfK5vikAA2ZVIIm9Nga7CcHg6iV69kyzkmvG-RCW-mIADsIIqIt4QxGuuRbrYHu5ZoDVtJQbtAk12ojUoNriN2NGEiAA
+\[\begin{tikzcd}
+F_{b-\epsilon} \arrow[rr, "f_{b-\epsilon}^{c+\epsilon}"] \arrow[dd, "\varphi_{b-\epsilon}"'] &  & F_{c+\epsilon}              & F_{b+\epsilon} \arrow[rr, "f_{b+\epsilon}^{c+\epsilon}"] &  & F_{c+\epsilon}                  \\
+                                                                                             &  &                             &                                                          &  &                                 \\
+G_{b} \arrow[rr, "g_{b}^{c}"]                                                                &  & G_{c} \arrow[uu, "\psi_c"'] & G_{b} \arrow[uu, "\psi_b"] \arrow[rr, "g_{b}^{c}"]       &  & G_{b}^{c} \arrow[uu, "\psi_c"']
+\end{tikzcd}
+\]
+Es un diagrama conmutativo, ya que como las función inclusión conmutan, entonces también lo hacen sus aplicaciones inducidas. 
+
+Del primer diagrama tenemos que $f_{b-\epsilon}^{c+\epsilon}=\psi_{c} \circ g_{b}^{c} \circ \varphi_{b-\epsilon}$. Sea $\xi \in F_{b-\epsilon}^{c+\epsilon}=\text{im } f_{b-\epsilon}^{c+\epsilon}$, de forma que $\xi = f_{b-\epsilon}^{c+\epsilon}(\eta)$ para un $\eta \in F_{b-\epsilon}$. Luego, $\xi = \psi_c(\zeta)$, con $\zeta = g_{b}^{c}(\varphi_{b-\epsilon}(\eta)) \in G_{b}^{c}$, por tanto $F_{b-\epsilon} \subseteq \psi_{c}(G_{b}^{c})$.
+
+Del segundo diagrama, tenemos que $\psi_{c}(G_{b}^{c})=\psi_{c} \circ g_{b}^{c}(G_b)$, ya que $G_{b}^{c}=\text{im } g_{b}^{c} = g_{b}^{c}(G_b)$. A su vez, se cumple que $\psi_{c} \circ g_{b}^{c}(G_b) = f_{b+\epsilon}^{c+\epsilon} \circ \psi_{b}(G_b) \subseteq F_{b+\epsilon}^{c+\epsilon} \Rightarrow \psi_{c}(G_{b}^{c}) \subseteq F_{b+\epsilon}^{c+\epsilon}$.
+
+Así pués, se cumple:
+\begin{equation}\label{eq:relCuadrantes}
+F_{b-\epsilon}^{c+\epsilon} \subseteq \psi_{c}(G_{b}^{c}) \subseteq F_{b+\epsilon}^{c+\epsilon}\,.
+\end{equation}
+
+De manera análoga podemos demostrar que se cumple que
+\[
+ G_{b-\epsilon}^{c+\epsilon} \subseteq \varphi_{c}(F_{b}^{c}) \subseteq G_{b+\epsilon}^{c+\epsilon}
+\]
+intercambiando $F_{x}$ y $G_{y}$ en los diagramas y sustituyendo las aplicaciones inducidas correctamente.
+	
+\begin{theorem}[Fórmula de las dimensiones \cite{AlgebraLineal}]\label{ref:FormulaDim}
+Si una aplicación $f: U \to V$ es lineal entonces se cumple que
+\[
+\text{\rm dim ker } f + \text{\rm dim im } f = \text{\rm dim } U\,. 
+\]
+\end{theorem}
+
+De la primera inclusión de \ref{eq:relCuadrantes} obtenemos que $\text{dim } F_{b-\epsilon}^{c+\epsilon} \leq \text{dim } \psi_{c}(G_{b}^{c}) \overset{Th.\  \ref{ref:FormulaDim}}{\leq} \text{dim } G_{b}^{c}$. Aplicando el \emph{Lema del $k$-Triángulo} a la anterior desigualdad y denotando a los cuadrantes superiores izquierdos como $Q = Q_{b}^{c}$ y $Q_\epsilon = Q_{b-\epsilon}^{c+\epsilon}$, se obtiene el siguiente resultado:
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[thick]
+    \tikzstyle{point}=[circle,thick,draw=black,fill=black,inner sep=0pt,minimum width=4pt,minimum height=4pt]
+        	\tikzstyle{point1}=[circle,thick,draw=black,fill=white,inner sep=0pt,minimum width=4pt,minimum height=4pt]
+    
+    \draw[->] (-2.5,-2) -- (3.5,-2) node[right] {$x$};
+    \draw[->] (2,-2.5) -- (2,2.5) node[above] {$y$};
+
+    \begin{scope}[xshift=2cm,yshift=-2cm]
+    	\coordinate (a) at (-1, 1.5);
+    	\coordinate (ax) at (-1,0);
+    	\coordinate (ay) at (0, 1.5);
+    	\coordinate (b) at (-4.5, 1.5);
+    	\coordinate (c) at (-4.5, 4.5);
+    	\coordinate (d) at (-1,  4.5);
+    	
+    	\coordinate (a1) at (-2, 2.5);
+    	\coordinate (a1x) at (-2, 0);
+    	\coordinate (a1y) at (0, 2.5);
+    	\coordinate (b1) at (-4.5, 2.5);
+    	\coordinate (d1) at (-2,  4.5);
+    	
+    	\coordinate (p1) at (-1.3,  3);
+    	\coordinate (p2) at (-4,  3.6);
+		\coordinate (p3) at (-2.8,  4.1);
+		\coordinate (p4) at (-3.2,  1.8);
+		\coordinate (p5) at (-3,  3.2);
+    \end{scope}
+
+
+    \draw[greeo,fill=greeo,opacity=0.6] (a) -- (b) -- (c)--(d) -- cycle;
+    \draw[redp,fill=redp] (a1) -- (b1) -- (c)--(d1) -- cycle;
+	\draw[thick] (a) -- (b);
+	\draw[thick] (a) -- (d);
+	\draw[thick] (a1) -- (b1);
+	\draw[thick] (a1) -- (d1);
+	\draw[thick,dashed,opacity=0.6] (ay) -- (a);
+	\draw[thick,dashed,opacity=0.6] (ax) -- (a);
+	\draw[thick,dashed,opacity=0.6] (a1y) -- (a1);
+	\draw[thick,dashed,opacity=0.6] (a1x) -- (a1);
+    
+	\node ()[point] at (a) {};
+	\node ()[point] at (a1) {};
+	\node [below=0.1cm of a1x] {$b-\epsilon$};
+	\node [below=0.1cm of ax] {$b$};
+	\node [right=0.1cm of a1y] {$c+\epsilon$};
+	\node [right=0.1cm of ay] {$c$};
+	\node ()[point1] at (p1){};
+	\node ()[point1] at (p2){};
+	\node ()[point1] at (p3){};
+	\node ()[point1] at (p4){};
+	\node ()[point1] at (p5){};
+\end{tikzpicture}
+\caption{Representación del \emph{Lema del cuadrante}}
+\label{ref:lemaCuadranteDib}
+\end{figure}
+
+\begin{lemma}[Lema del cuadrante]
+$\#(\text{\rm Dgm}(f) \cap Q_\epsilon) \leq \#(\text{\rm Dgm}(g) \cap Q)\,.$
+\end{lemma}
+
+\begin{proof}
+Si $b$ y $c$ no son valores críticos homológicos de $g$ y $b-\epsilon$, $c+\epsilon$ no son valores críticos homológicos de $f$, entonces por el Lema del $k$-Triángulo
+\[
+\#(\text{\rm Dgm}(g) \cap Q)= \beta_{b}^{c} = \text{dim } G_{b}^{c} 
+\text{ y }
+\#(\text{\rm Dgm}(f) \cap Q_\epsilon)= \beta_{b-\epsilon}^{c+\epsilon} = \text{dim } F_{b-\epsilon}^{c+\epsilon} \,.
+\]
+Y como se tiene $\text{dim } F_{b-\epsilon}^{c+\epsilon} \leq \text{dim } G_{b}^{c}$, entonces $\#(\text{\rm Dgm}(f) \cap Q_\epsilon) \leq \#(\text{\rm Dgm}(g) \cap Q)\,.$
+
+En el caso que los puntos $b$ y $c$ sean valores críticos homológicos de $g$ y $b-\epsilon$, $c+\epsilon$ son valores críticos homológicos de $f$, entonces podemos engordar los cuadrantes una cantidad $0<\delta<\epsilon$, tal que
+\[
+\#(\text{\rm Dgm}(f) \cap Q_\epsilon)=\#(\text{\rm Dgm}(f) \cap Q_{b-\epsilon+\delta}^{c+\epsilon-\delta}) 
+\text{ y }
+ \#(\text{\rm Dgm}(g) \cap Q)=\#(\text{\rm Dgm}(g) \cap Q_{b+\delta}^{c-\delta})\,,
+\]
+siendo estas nuevas coordenadas distintas de los valores críticos de $f$ y $g$ respectivamente.
+\end{proof}
+
+Este lema nos garantiza que la multiplicidad total de $\text{Dgm}(g)$ en el cuadrante superior izquierda con vértice en el punto $(b, c)$ esta acotada inferiormente por la multiplicidad total de $\text{Dgm}(f)$ en el cuadrante superior izquerda reducida por $\epsilon$. Esto se puede observar en la figura \ref{ref:lemaCuadranteDib}.
+
+\subsubsection*{Regiones como subespacios vectoriales}
+\begin{sloppypar}
+Sin embargo, el \emph{Lema del cuadrante} no es lo suficientemente fuerte para nuestros propósitos. Vamos a obtener un resultado similar al \emph{Lema del cuadrante}, pero en este caso para cajas encajadas. Esto se debe a que si se cumple ${H(\text{Dgm}(f), \text{Dgm}(g)) \leq \norm{f-g}_\infty = \epsilon}$, entonces para todo punto $(x,y) \in \text{Dgm}(f)$ debe haber un punto en $\text{Dgm}(g)$ a distancia menor o igual que $\epsilon$. Lo que significa que debe haber un punto $q \in \text{Dgm}(g)$ dentro del cuadrado $[x-\epsilon, x+\epsilon]\times[y-\epsilon, y+\epsilon]\,,$ \cite{presentacionEstabilidad}.
+\end{sloppypar}
+
+Para definir estas regiones introduciremos subespacios vectoriales de $\overline{\mathbb{R}}^2$ y haremos uso del \emph{Lema del $k$-triángulo} para poder expresar sus dimensiones como la multiplicidad total del diagrama de persistencia en dichas regiones.
+
+Sean $w < x < y <z \in \mathbb{R}$ puntos diferentes a los valores críticos homológicos de $f:\mathbb{X} \to \mathbb{R}$. Recordamos que la dimensión del grupo de homología $F_x$ es igual a la multiplicidad total en el cuadrante superior izquierdo de vértice el punto de la diagonal $(x,x)$, y la dimensión del grupo de persistencia $F_{x}^{y}$ es igual a la multiplicidad total en el cuadrante superior izquierdo de vértice el punto $(x,y)$. Estas regiones se pueden observar en las figuras \ref{ref:regHausdorff}$\,$(a),(b).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.6\textwidth]{include/figuras/regionesHausdorffSinComas.png} 
+\caption{(a) Grupo de homología del conjunto de subnivel $f^{-1}(-\infty,x]\,.$ (b) Imagen de $F_x$ en $F_y\,.$ (c) Núcleo de la sobreyección $F_{x}^{y} \to F_{x}^{z}\,.$ (d) Cociente de $\tensor*{F}{*_{x}^{y\,}_{}^{z}}$ y $\tensor*{F}{*_{w}^{y\,}_{}^{z}}\,.$ Fuente: \cite{Cohen-Steiner2007}}
+\label{ref:regHausdorff}
+\end{figure} 
+
+\begin{sloppypar}
+Si restringimos $f_{x}^{y}: F_y \to F_z$ al espacio vectorial $F_x^y$ tenemos la epimorfismo ${\tensor*{f}{*_{x}^{y\,}_{}^{z}}:F_{x}^{y} \to F_{x}^{z}}$, ya que todas las clases de homología que están vivas en $x$ y siguen vivas en $z$, deben de seguir vivas en $y<z$. Escribiendo $\tensor*{F}{*_{x}^{y\,}_{}^{z}}$ el núcleo de dicha aplicación, tenemos que $\text{dim } \tensor*{F}{*_{x}^{y\,}_{}^{z}} = \text{dim } F_{x}^{y}-\text{dim } F_{x}^{z}$. Lo que corresponde con la sección marcada en la figura \ref{ref:regHausdorff}$\,$(c).
+\end{sloppypar}
+
+Además, podemos observar que se cumple $F_w^y \subseteq F_x^y$, ya que todo elemento de $F_w^y$, el cual es la imagen de un $\xi\in F_w$ por la aplicación $f_w^y$, es también la imagen de $f_w^x(\xi)$ por la aplicación  $f_x^y$. Como consecuencia, $ \tensor*{F}{*_{w}^{y\,}_{}^{z}} \subseteq  \tensor*{F}{*_{x}^{y\,}_{}^{z}}\,$, y por tanto podemos definir el siguiente cociente
+\[
+\tensor*{F}{*_{w\;}^{y\,}_{x}^{z}}= \dfrac{\tensor*{F}{*_{x}^{y\,}_{}^{z}}}{\tensor*{F}{*_{w}^{y\,}_{}^{z}}}\,.
+\]
+Al ser un cociente de subespacios vectoriales, su dimensión es la diferencia de los dos núcleos, es decir, $\text{dim } \tensor*{F}{*_{w\;}^{y\,}_{x}^{z}} = \text{dim } \tensor*{F}{*_{x}^{y\,}_{}^{z}}-\text{dim } \tensor*{F}{*_{w}^{y\,}_{}^{z}}\,$. Lo que es quivalente a la multiplicidad total en del diagrama de persistencia en la caja $[w,x]\times [y,z]$; como se puede observar en la figura \ref{ref:regHausdorff}$\,$(d).
+
+\subsubsection*{Relaciones entre cajas encajadas}
+
+
+
+\begin{lemma}[Lema de la caja]\label{eq:lemaCaja}
+Sean $a < b < c < d \in \mathbb{R}$, $R=[a,b]\times[c,d]$ una caja en $\overline{\mathbb{R}}^2$ y $R_\epsilon=[a+\epsilon,b-\epsilon]\times[c+\epsilon,d-\epsilon]$ la caja obtenida de reducir $R$ en todos sus lados. Entonces se cumple
+\[
+\#(\text{\rm Dgm}(f) \cap R_\epsilon) \leq \#(\text{\rm Dgm}(g) \cap R)\,.
+\]
+\end{lemma}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.5\textwidth]{include/figuras/boxLemma.png} 
+\caption{Representación del \emph{Lema de la caja}. Fuente: \cite{presentacionEstabilidad}}
+\label{ref:boxLemma}
+\end{figure}
+
+Para poder demostrar el \emph{Lema de la caja} primero recordemos el \emph{Segundo teorema de isomorfía}:
+\begin{theorem}[Segundo teorema de isomorfía \cite{teoremasIsomorfia}]\label{ref:segThIso}
+Sea  $V$ un espacio vectorial y sean $S$ y $T$ dos subespacios de $V$, entonces
+\begin{enumerate}
+	\item $S + T =\{v\in V \mid v= s+t, s\in S \text{ y } t\in T\}$ es un subespacio de $V$.
+	\item $S/(S \cap T) \cong (S+T)/T\,$.
+\end{enumerate}
+
+\end{theorem}
+
+\begin{proof}[Demostración del Lema \ref{eq:lemaCaja} (Lema de la caja)]
+Podemos asumir sin perder generalidad que $a$, $b$, $c$ y $d$ no son valores críticos homológicos de $g$ y $a+\epsilon$, $b-\epsilon$, $c+\epsilon$ y $d-\epsilon$ no son valores críticos homológicos de $f$. Además consideraremos que $a + \epsilon < b -\epsilon$ y $c + \epsilon < d - \epsilon$, de forma que $R_\epsilon$ este bien definido.
+
+Para el cálculo de las multiplicidades totales dentro de las cajas haremos uso de las dimensiones de los subespacios vectoriales asociados, es decir,
+\begin{equation}\label{eq:Mf-F}
+\text{dim } \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}} = \#(\text{\rm Dgm}(f) \cap R_\epsilon)\,, 
+\end{equation}
+\begin{equation}\label{eq:G-Mg}
+\text{dim } \tensor*{G}{*_{a\;}^{c\,}_{b}^{d}} = \#(\text{\rm Dgm}(g) \cap R)\,. 
+\end{equation}
+
+Para demostrar que $\text{dim } \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}} \leq \text{dim } \tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}$, buscaremos una epimorfismo entre un subespacio vectorial de $\tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}$ a $ \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}} \leq \text{dim }$. Para la construcción de dicha aplicación haremos uso del diagrama conmutativo que se muestra en la figura \ref{ref:diagCon1}, el cual garantizaremos que esta bien definido y que es conmutativo.
+
+\begin{figure}[!ht]
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAHEB9YOgXwD1gUXiF6l0mXPkIoATKVlVajFmwBi3OgGoAOjphpsDAgKEBaPQaMnR4kBmx4CReQBYl9Zq0QgNPXfqGWMZgpgDGAVbBNmISjtJErgoeKt6+3ABGFoHWoYJQ2VEhIrH2kk4yyEnu1J6qPn5ZlkHFghHNuSV2DlLOKGQAbClebFw84bx6cEyGMDgwAI4ABACimhO2cb2VA+TD9RyZpsKbZfF9yLtDtalsa8AZE1NMGXBzi0tjj20lSjBQAHN4ERQAAzABOEAAtkh5CAcBAkABGagMOgZGAMAAK5QSPgYMFBOBANxGPlBmkiLRMbSpuVIBQ60VCAF4mJxZKcIdDkdQEUgAMx8ujBNgACwgEAA1iTlGSQOCOSysFzITDEEl4YjEEKQGiMdjcX0FVgAWLiaSDuyBSyKQ9CtS8sB2jlmQyHZ1VTzEHD+RrhaKfBLpbK6mlFTaVaVueqAKx87VwsNsPRBThhPQ0GDgnDcNZ0fhhXgsuAc2X6zE484yPWE4nRtVIeNapBkOUHAHrNoMyY6LM5vOcAtFtmcJHl9GVo01glEr3qtt+3bwkUMcWSmWW8NjpYspZRuwxwUJpDL5M+TN0cFoMVYdOZ7O54CND3M46v4rF0vjhve5t+gB2Lc2EVVxlVlHBV3XENf3VICW39PVJ0NasQNNc1Q1uHxSxtVNsHvPtH0HDJCy6MFG0QeCl1RZCq22NCzQtds0nZMDOwecIewfAdgDWEii1ECheCAA
+\[
+\begin{tikzcd}
+G_{a}^{d} \arrow[rrrrrr, "r_1 = i", hook]                                                                                                           &  &                                                                                                                  &  &                                                                                              &  & G_{b}^{d}                                                                                                               \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+                                                                                                                                                    &  & F_{a+\epsilon}^{d-\epsilon} \arrow[rr, "r_2=i", hook]                                                            &  & F_{b-\epsilon}^{d-\epsilon} \arrow[rruu, "\varphi_c\vert_{F_{b-\epsilon}^{d-\epsilon}}=s_1"] &  &                                                                                                                         \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+                                                                                                                                                    &  & F_{a+\epsilon}^{c+\epsilon} \arrow[uu, "{\tensor*{f}{*_{a+\epsilon}^{c+\epsilon\,}_{}^{d-\epsilon}}=u_2}"] \arrow[rr, "r_3=i", hook] &  & F_{b-\epsilon}^{c+\epsilon} \arrow[uu, "{u_3=\tensor*{f}{*_{b-\epsilon}^{c+\epsilon\,}_{}^{d-\epsilon}}}"']      &  &                                                                                                                         \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+G_{a}^{c}\supseteq E_{a}^{c} \arrow[rruu, "\psi_c\vert_{E_a^c}=s_2"] \arrow[uuuuuu, "{\tensor*{g}{*_{a}^{c\,}_{}^{d}}\vert_{E_a^c}=u_1}"] \arrow[rrrrrr, "r_4=i", hook] &  &                                                                                                                  &  &                                                                                              &  & E_{b}^{c}\subseteq G_{b}^{c} \arrow[lluu, "s_3=\psi_c\vert_{E_b^c}"'] \arrow[uuuuuu, "{u_4=\tensor*{g}{*_{b}^{c\,}_{}^{d}}\vert_{E_b^c}}"']
+\end{tikzcd}
+\]
+\caption{Diagrama conmutativo con la notación reducida explicada.}
+\label{ref:diagCon1}
+\end{figure}
+
+Definimos $E_a^c$ como la preimagen, por la restricción de $\psi_c$ a $G_b^c$, del núcleo de $u_3$ (ver figura \ref{ref:diagCon1}), es decir, $E_b^c = \psi_c^{-1}(\tensor*{F}{*_{b-\epsilon}^{c+\epsilon\,}_{}^{d-\epsilon}})\cap G_b^c\,$. Por (\ref{eq:relCuadrantes}) se cumple que $F_{b-\epsilon}^{c+\epsilon} \subseteq \psi_c(G_b^c)$, por lo que $s_3=\psi_c\vert_{E_c^b}$ tiene el núcleo de $u_3$, $\tensor*{F}{*_{b-\epsilon}^{c+\epsilon\,}_{}^{d-\epsilon}}$, como su imagen.
+
+También definimos $E_a^c = G_a^c \cap E_b^c$. Veremos posteriormente que $E_b^c/E_a^c$ es un subespacio de $\tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}$ al que podremos encontrar un epimorfismo a $ \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}}$.
+
+Continuando la descripción del diagrama conmutativo tenemos las aplicaciones $r_1$, $r_2$, $r_3$ y $r_4$ que son las inclusiones entre los respectivos espacios vectoriales. Además, $u_1$ es la restricción de $\tensor*{g}{*_{a}^{c\,}_{}^{d}}$ en $E_a^c$ y $u_2$ es la restricción de $\tensor*{g}{*_{b}^{c\,}_{}^{d}}$ en $E_b^c$. También tenemos $s_2=\psi_c\vert_{E_a^c}$, y por (\ref{eq:relCuadrantes}) se cumple que $\psi_c(G_a^c)\subseteq F_{a+\epsilon}^{c+\epsilon}$, lo que garantiza que esta bien definido $s_2$, ya que su imagen esta contenida en $F_{a+\epsilon}^{c+\epsilon}$. Finalmente, $s_1=\varphi_c\vert_{F_{b-\epsilon}^{d-\epsilon}}$ y por (\ref{eq:relCuadrantes} [con $F$ y $G$ intercambiados]) se cumple que $\varphi_{d-\epsilon}(F_{b-\epsilon^{d-\epsilon}})\subseteq G_{b}^{d}$, lo que garantiza que esta bien definido $s_1$.
+
+Por tanto, el diagrama esta bien definido y es conmutativo (ya que las aplicaciones son inclusiones o bien aplicaciones inducidas por inclusiones).
+
+\begin{sloppypar}
+Como se puede observar en la figura \ref{ref:camino1DiagCon}, $u_4 = s_1 \circ u_3 \circ s_3$, lo que implica que $E_b^c = \text{ker } u_4$, ya que $u_3 \circ s_3$ es cero. Además, como se puede observar en la figura \ref{ref:camino2DiagCon},$r_1 \circ u_1 = u_4 \circ r_4$, lo que implica que $E_a^c=\text{ker } u_1$, porque $u_4 \circ r_4$ es cero y $r_1$ es inyectivo al ser una inclusión. Expresamos estas relaciones denotando ${E_b^c=\tensor*{E}{*_{b}^{c\,}_{}^{d}} \subseteq \tensor*{G}{*_{b}^{c\,}_{}^{d}}}$ y ${E_a^c=\tensor*{E}{*_{a}^{c\,}_{}^{d}} \subseteq \tensor*{G}{*_{a}^{c\,}_{}^{d}}}$.
+\end{sloppypar}
+
+
+\begin{figure}[!ht]
+\begin{subfigure}[b]{\textwidth}
+\[
+\begin{tikzcd}
+G_{a}^{d} \arrow[rrrrrr, "r_1 = i", hook]                                                                                                           &  &                                                                                                                  &  &                                                                                              &  & G_{b}^{d}                                                                                                               \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+                                                                                                                                                    &  & F_{a+\epsilon}^{d-\epsilon} \arrow[rr, "r_2=i", hook]                                                            &  & F_{b-\epsilon}^{d-\epsilon} \arrow[rruu, blue, "\varphi_c\vert_{F_{b-\epsilon}^{d-\epsilon}}=s_1" black] &  &                                                                                                                         \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+                                                                                                                                                    &  & F_{a+\epsilon}^{c+\epsilon} \arrow[uu, "{\tensor*{f}{*_{a+\epsilon}^{c+\epsilon\,}_{}^{d-\epsilon}}=u_2}"] \arrow[rr, "r_3=i", hook] &  & F_{b-\epsilon}^{c+\epsilon} \arrow[uu, blue,"{u_3=\tensor*{f}{*_{b-\epsilon}^{c+\epsilon\,}_{}^{d-\epsilon}}}"' black]      &  &                                                                                                                         \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+G_{a}^{c}\supseteq E_{a}^{c} \arrow[rruu, "\psi_c\vert_{E_a^c}=s_2"] \arrow[uuuuuu, "{\tensor*{g}{*_{a}^{c\,}_{}^{d}}\vert_{E_a^c}=u_1}"] \arrow[rrrrrr, "r_4=i", hook] &  &                                                                                                                  &  &                                                                                              &  & E_{b}^{c}\subseteq G_{b}^{c} \arrow[lluu, blue, "s_3=\psi_c\vert_{E_b^c}"' black] \arrow[uuuuuu, red, "{u_4=\tensor*{g}{*_{b}^{c\,}_{}^{d}}\vert_{E_b^c}}"' black]
+\end{tikzcd}
+\]
+\caption{El camino en azul representa $s_1 \circ u_3 \circ s_3$ y el camino en rojo $u_4$.}
+\label{ref:camino1DiagCon}
+\end{subfigure}
+\begin{subfigure}[b]{\textwidth}
+\[
+\begin{tikzcd}
+G_{a}^{d} \arrow[rrrrrr, blue, "r_1 = i" black, hook]                                                                                                           &  &                                                                                                                  &  &                                                                                              &  & G_{b}^{d}                                                                                                               \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+                                                                                                                                                    &  & F_{a+\epsilon}^{d-\epsilon} \arrow[rr, "r_2=i", hook]                                                            &  & F_{b-\epsilon}^{d-\epsilon} \arrow[rruu, "\varphi_c\vert_{F_{b-\epsilon}^{d-\epsilon}}=s_1"] &  &                                                                                                                         \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+                                                                                                                                                    &  & F_{a+\epsilon}^{c+\epsilon} \arrow[uu, "{\tensor*{f}{*_{a+\epsilon}^{c+\epsilon\,}_{}^{d-\epsilon}}=u_2}"] \arrow[rr, "r_3=i", hook] &  & F_{b-\epsilon}^{c+\epsilon} \arrow[uu, "{u_3=\tensor*{f}{*_{b-\epsilon}^{c+\epsilon\,}_{}^{d-\epsilon}}}"']      &  &                                                                                                                         \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+G_{a}^{c}\supseteq E_{a}^{c} \arrow[rruu, "\psi_c\vert_{E_a^c}=s_2"] \arrow[uuuuuu, blue, "{\tensor*{g}{*_{a}^{c\,}_{}^{d}}\vert_{E_a^c}=u_1}" black] \arrow[rrrrrr, red, "r_4=i" black, hook] &  &                                                                                                                  &  &                                                                                              &  & E_{b}^{c}\subseteq G_{b}^{c} \arrow[lluu, "s_3=\psi_c\vert_{E_b^c}"'] \arrow[uuuuuu, red, "{u_4=\tensor*{g}{*_{b}^{c\,}_{}^{d}}\vert_{E_b^c}}"' black]
+\end{tikzcd}
+\]
+\caption{El camino en azul representa $r_1 \circ u_1$ y el camino en rojo $u_4 \circ r_4$.}
+\label{ref:camino2DiagCon}
+\end{subfigure}
+\caption{Representación de las composiciones como caminos en el diagrama conmutativo.}
+\label{ref:caminos1Y2DiagCon}
+\end{figure}
+
+Como $\tensor*{E}{*_{a}^{c\,}_{}^{d}}=\tensor*{E}{*_{b}^{c\,}_{}^{d}} \cap \tensor*{G}{*_{a}^{c\,}_{}^{d}}$, el cociente
+\[
+\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}}=\dfrac{\tensor*{E}{*_{b}^{c\,}_{}^{d}}}{\tensor*{E}{*_{a}^{c\,}_{}^{d}}}
+=
+\dfrac{\tensor*{E}{*_{b}^{c\,}_{}^{d}}}{\tensor*{E}{*_{b}^{c\,}_{}^{d}} \cap \tensor*{G}{*_{a}^{c\,}_{}^{d}}}
+\overset{Th.\ \ref{ref:segThIso}}{\cong}
+\dfrac{\tensor*{E}{*_{b}^{c\,}_{}^{d}} + \tensor*{G}{*_{a}^{c\,}_{}^{d}}}{\tensor*{G}{*_{a}^{c\,}_{}^{d}}}\,,
+\]
+es decir, es un conjunto de clases laterales de elementos en $\tensor*{E}{*_{b}^{c\,}_{}^{d}} \subseteq \tensor*{G}{*_{b}^{c\,}_{}^{d}}$ módulo $\tensor*{G}{*_{a}^{c\,}_{}^{d}}$, por tanto $\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}} \subseteq \tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}$. Luego,
+\begin{equation}\label{eq:E-G}
+\text{dim }\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}} \leq \text{dim }\tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}\,.
+\end{equation}
+
+Recordemos que $\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}} = \text{ker } u_4 /\text{ker } u_1$ y que $\tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}} = \text{ker } u_3 /\text{ker } u_2$. Además, hemos observado que $s_3(\text{ker }u_4) = s_3(E_b^c) = \text{ker } u_3$. Así pues, para demostrar que $s_3$ induce un epimorfismo entre los cocientes $\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}}$ y  $\tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}}$ sólo quedaría por garantizar que $s_3(\text{ker } u_1)=s_2(\text{ker } u_1)$ esta incluida en $\text{ker } u_2$. Sin embargo, esto se cumple, ya que como se puede observar en la figura \ref{ref:camino3DiagCon}, $u_3 \circ s_3 \circ r_4(\xi) = r_2 \circ u_2 \circ s_2(\xi)=0$ para todo $\xi \in \text{ker } u_1$, y $r_2$ es inyectiva al ser una inclusión.
+
+\begin{figure}[!ht]
+\[
+\begin{tikzcd}
+G_{a}^{d} \arrow[rrrrrr, "r_1 = i", hook]                                                                                                           &  &                                                                                                                  &  &                                                                                              &  & G_{b}^{d}                                                                                                               \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+                                                                                                                                                    &  & F_{a+\epsilon}^{d-\epsilon} \arrow[rr, red, "r_2=i" black, hook]                                                            &  & F_{b-\epsilon}^{d-\epsilon} \arrow[rruu, "\varphi_c\vert_{F_{b-\epsilon}^{d-\epsilon}}=s_1"] &  &                                                                                                                         \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+                                                                                                                                                    &  & F_{a+\epsilon}^{c+\epsilon} \arrow[uu, red, "{\tensor*{f}{*_{a+\epsilon}^{c+\epsilon\,}_{}^{d-\epsilon}}=u_2}" black] \arrow[rr, "r_3=i", hook] &  & F_{b-\epsilon}^{c+\epsilon} \arrow[uu, blue,"{u_3=\tensor*{f}{*_{b-\epsilon}^{c+\epsilon\,}_{}^{d-\epsilon}}}"' black]      &  &                                                                                                                         \\
+                                                                                                                                                    &  &                                                                                                                  &  &                                                                                              &  &                                                                                                                         \\
+G_{a}^{c}\supseteq E_{a}^{c} \arrow[rruu,red, "\psi_c\vert_{E_a^c}=s_2" black] \arrow[uuuuuu, "{\tensor*{g}{*_{a}^{c\,}_{}^{d}}\vert_{E_a^c}=u_1}"] \arrow[rrrrrr,blue, "r_4=i" black, hook] &  &                                                                                                                  &  &                                                                                              &  & E_{b}^{c}\subseteq G_{b}^{c} \arrow[lluu, blue, "s_3=\psi_c\vert_{E_b^c}"' black] \arrow[uuuuuu, "{u_4=\tensor*{g}{*_{b}^{c\,}_{}^{d}}\vert_{E_b^c}}"']
+\end{tikzcd}
+\]
+\caption{El camino en azul representa $u_3 \circ s_3 \circ r_4$ y el camino en rojo $r_2 \circ u_2 \circ s_2$.}
+\label{ref:camino3DiagCon}
+\end{figure}
+
+\begin{sloppypar}
+Como consecuencia, aplicando la fórmula de las dimensiones tenemos que ${\text{dim }\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}}=\text{dim } \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}} + \text{dim ker } s3}$, entonces
+\end{sloppypar}
+
+\begin{equation}\label{eq:F-E}
+\text{dim } \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}}\leq \text{dim } \tensor*{E}{*_{a\;}^{c\,}_{b}^{d}}\,.
+\end{equation}
+
+Finalmente, obtenemos la desigualdad al concatenar (\ref{eq:Mf-F}), (\ref{eq:F-E}), (\ref{eq:E-G}) y (\ref{eq:G-Mg}), en este orden, es decir,
+\[
+\#(\text{\rm Dgm}(f) \cap R_\epsilon)
+=
+\text{dim } \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}}
+\leq
+\text{dim } \tensor*{E}{*_{a\;}^{c\,}_{b}^{d}}
+\leq
+\text{dim }\tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}
+=
+\#(\text{\rm Dgm}(g) \cap R)\,.
+\]
+\end{proof}
+
+Como comentábamos previamente, una consecuencia inmediata del \emph{Lema de la caja} es que la distancia Hausdorff entre $\text{Dgm}(f)$ y $\text{Dgm}(g)$ no es mayor que $\epsilon$. Ya que si $R_\epsilon=[x,x] \times [y,y]=(x, y)$ es un punto de $\text{Dgm}(f)$, entonces debe haber un punto de $\text{Dgm}(g)$ a distancia menor o igual que $\epsilon$, porque la multiplicidad total de $\text{Dgm}(g)$ en la caja ${R = [x-\epsilon, x+\epsilon] \times [y-\epsilon, y+\epsilon]}$ es mayor o igual que uno.
+
 \subsection{Estabilidad para la distancia bottleneck}
 \todo{Subsección por hacer}

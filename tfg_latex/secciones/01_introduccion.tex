@@ -1,35 +1,38 @@
 \chapter{Introducción}
-%%---------------------------------------------------------
-La introducción del TFG debe servir para que los profesores que evalúan el Trabajo puedan comprender el contexto en el que se realiza el mismo, y los objetivos que se plantean.
-
-Esta plantilla muestra la estructura básica de la memoria final de TFG, así como algunas instrucciones de formato.
-
-El esquema básico de una memoria final de TFG es el siguiente:
-\begin{itemize}
-\item[•] Resumen en español e inglés (máximo 2 páginas cada uno)
-\item[•] Tabla de contenidos
-\item[•] Introducción (con los objetivos del TFG)
-\item[•] Desarrollo
-\item[•] Resultados y conclusiones
-\item[•] Análisis de impacto
-\item[•] Bibliografía (publicaciones utilizadas en el estudio y desarrollo del trabajo)
-\item[•] Anexos (opcional)
-\end{itemize}
-
-%%---------------------------------------------------------
 
 \section{Motivación}
-La Topología se centra en el estudio de las diversas propiedades de los espacios topológicos y las funciones continuas. Mientras que en el subcampo de la Topología Computacional veremos cómo podemos hacer uso de diversos algoritmos para poder estudiar las propiedades de los espacios topológicos y ser capaces de resolver problemas topológicos computacionalmente.
+El crecimiento de la cantidad de datos que producimos y almacenamos es exponencial, estimándose que para 2025 llegaremos a haber creado un total de 160 zettabytes \cite{datos2025}. En este contexto surge la necesidad de analizar y comprender las características de grandes conjuntos de datos. Así pues, nace la disciplina del \emph{Análisis Topológico de Datos} con el fin de responder a las siguientes preguntas sobre las propiedades cualitativas geométricas de nuestros conjuntos de datos: ¿Cuáles son las características topológicas de mi conjunto de datos? Si hemos introducido complejidad adicional a nuestros datos debido a problemas de medición o de discretización, ¿cómo medimos la relevancia de las características observadas?
+
+Para poder resolver estas preguntas se suele hacer uso de la \emph{homología persistente}, y más concretamente en su representación en los denominados \emph{diagramas de persistencia}. Estos diagramas son multiconjuntos de puntos en el plano extendido, dónde cada punto representa una característica cualitativa de nuestros datos y la diferencia en valor absoluto de sus coordenadas cuantifica su relevancia. Algunas de las características usuales que se miden son el número de componentes conexas, el número de agujeros y el número de cavidades.
 
 \section{Descripción general del trabajo}
-El trabajo se basa en el estudio y exposición del Teorema de estabilidad, el cual, a grandes rasgos, establece que pequeñas perturbaciones en los datos implican pequeñas perturbaciones en la homología persistente. Para ello me centraré en el artículo \cite{Cohen-Steiner2007}.
+El trabajo se basa en el estudio y exposición del Teorema de estabilidad, el cual, a grandes rasgos, establece que pequeñas perturbaciones en los datos implican pequeñas perturbaciones en la homología persistente.
 
-Adicionalmente, implementaré en Python la distancia \textit{Bottleneck} para poder ilustrar este teorema haciendo uso distintos conjuntos de datos. La implementación se sustenta en el uso de complejos simpliciales y su correspondiente homología simplicial.
+Para ello he buscado y estudiado diversas referencias que contengan el enunciado y la demostración del Teorema de estabilidad, como \cite{libroEH}  \cite{articuloPersistenciaEH} \cite{Cohen-Steiner2007}.
 
-\subsection*{Objetivos}
-\begin{itemize}
-	\item Buscar referencias que contengan el enunciado y la demostración del Teorema de estabilidad.
-	\item Estudiar y entender estas referencias.
-	\item Implementar el cálculo de la distancia de Bottleneck entre diagramas de persistencia.
-	\item Ilustrar el Teorema de estabilidad sobre distintos conjuntos de datos.
-\end{itemize}
+Adicionalmente, implementaré en Python las distancias \emph{Bottleneck} y \emph{Hausdorff} para poder ilustrar este teorema haciendo uso distintos conjuntos de datos. 
+
+Las pruebas se sustentan en el \emph{pipeline} usual en el Análisis Topológico de Datos, ilustrado en la figura \ref{ref:pipeline}. Partiremos de un conjunto de datos, en este caso, una nube de puntos. Posteriormente se obtendrá una secuencia de espacios topológicos sobre los obtendremos la homología persistente que será representada en el diagrama de persistencia. Para poder observar la estabilidad, se introducirán perturbaciones en conjunto de puntos inicial y se contrastará los diagramas de persistencia.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[->, node distance=6cm, auto]
+\node (A){Nube de puntos};
+\node (B)[right of=A]{Filtración de complejos simpliciales};
+\node (H) [below=0.8cm of B]{};
+\node (C)[right=3cm of H]{Diagramas de persistencia};
+\node (D)[below=2cm of A]{Nube de puntos$^*$};
+\node (E)[right of=D]{Filtración de complejos simpliciales$^*$};
+
+\path (A) edge (B)
+	  (B) edge [bend left=10] (C)
+	  (A) edge node{Ruido} (D)
+	  (D) edge (E)
+	  (E) edge [bend right=10] (C);
+\end{tikzpicture}
+\caption{Pipeline para la comprobación del Teorema de estabilidad}
+\label{ref:pipeline}
+\end{figure}
+
+\section{Estructura del trabajo}
+En la sección \ref{sec:bg} se introducirán las nociones topológicas básicas para hacer autocontenido el trabajo. En ella introduciremos los \emph{complejos simpliciales}, la \emph{homología} y la \emph{persistencia}. Continuando con la sección \ref{sec:teorema}, donde enunciaremos y demostraremos el \emph{Teorema de estabilidad}, usando como referencia el siguiente artículo \cite{Cohen-Steiner2007}. Y terminando con la sección \ref{sec:impl}, en la que entraremos en detalle en los algoritmos propuestos para la implementación de las distancias \emph{Bottleneck} y \emph{Hausdorff}, mostrando diversas pruebas para ilustrar los resultados del teorema.

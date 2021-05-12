@@ -1,9 +1,10 @@
 
-\section{Conocimientos previos y definiciones}
+\section{Conocimientos previos y definiciones}\label{sec:bg}
 En esta sección se introducirán las nociones topológicas básicas para hacer autocontenido este trabajo. Dichas nociones nos darán el contexto y conocimientos necesarios para poder profundizar en el \emph{Teorema de Estabilidad} y ser capaces de abordar su demostración.
 
 \subsection{Complejos Simpliciales}
-Unas forma de representar algunos espacios topológicos es a través de su descomposición en piezas más sencillas. Una descomposición de estas características se denomina complejo si sus piezas son topológicamente simples y sus intersecciones son piezas del mismo tipo, pero de dimensión inferior \cite{libroEH}. Existe una gran variedad de complejos con distintos grados de abstracción. En este trabajo nos centraremos en los complejos simpliciales, que permiten representar una gran variedad de espacios y son especialmente adecuados para cuestiones computacionales.
+
+Una forma de representar algunos espacios topológicos es a través de su descomposición en piezas más sencillas. Una descomposición de estas características se denomina complejo si sus piezas son topológicamente simples y sus intersecciones son piezas del mismo tipo, pero de dimensión inferior \cite{libroEH}. Existe una gran variedad de complejos con distintos grados de abstracción. En este trabajo nos centraremos en los complejos simpliciales, que permiten representar una gran variedad de espacios y son especialmente adecuados para cuestiones computacionales.
 
 Los complejos simpliciales pueden ser estudiados desde un enfoque geométrico y desde un enfoque combinatorio. Partiremos de la definición de complejo simplicial desde el punto de vista geométrico. Para ello recordaremos algunos conceptos de geometría afín.
 
@@ -656,7 +657,7 @@ V_u = \{ x \in \mathbb{R}^d \mid d(x,u) \leq d(x,v) \text{, para todo } v \in S\
 La colección de las celdas de Voronoi de los puntos de $S$ se denomina \emph{diagrama de Voronoi} de $S$.
 \end{definition}
 
-En la figura \ref{ref:vor-del} se puede ver el diagrama de Voronoi de un conjuntos de puntos. Nótese que las celdas de Voronoi recubren todo el espacio.
+En la figura \ref{ref:vor-del} se puede ver el diagrama de Voronoi de un conjunto de puntos. Nótese que las celdas de Voronoi recubren todo el espacio.
 
 \begin{definition}
 Sea $S \subset \mathbb{R}^d$ un conjunto finito. Se define el \emph{complejo de Delaunay} de $S$ como el complejo simplicial abstracto 
@@ -707,7 +708,7 @@ En la figura \ref{ref:alpha} se puede observar la unión de dichas regiones y su
 
 Puesto que $R_u(r) \subset \overline{B}_r(u)$ para cada $u \in S$, se tiene que $\text{Alpha}(r) \subset \text{\v{C}ech}(r)$. Del mismo modo, dado que $R_u(r) \subset V_u$ para cada $u \in S$, se tiene que $\text{Alpha}(r) \subset \text{Del}(S)$.
 
-Además el alfa complejo tiene menos símplices que el complejo de \v{C}ech. Y como es un subcomplejo del complejo de Delaunay, admite de manera natural una realización en $\mathbb{R}^d$. Por lo que hace que los alfa complejos sean una buena opción desde el punto de vista computacional.
+Además, el alfa complejo tiene menos símplices que el complejo de \v{C}ech. Y como es un subcomplejo del complejo de Delaunay, admite de manera natural una realización en $\mathbb{R}^d$. Por lo que hace que los alfa complejos sean una buena opción desde el punto de vista computacional.
 
 
 \subsection{Homología}
@@ -1019,7 +1020,7 @@ La figura \ref{ref:gruposCadenasOpBorde} muestra esta relación entre el grupo d
 
 
 \subsubsection*{Grupos de homología simplicial}
-La idea general de los grupos de homología es poder encontrar los agujeros a partir de los ciclos. Para ello tendremos que ``descartar'' aquellos ciclos que son bordes. Es por esto que cocientaremos el grupo de los ciclos por el grupo de bordes, ya que así todos los bordes serán triviales en homología.
+La idea general de los grupos de homología es poder encontrar los agujeros a partir de los ciclos. Para ello tendremos que ``descartar'' aquellos ciclos que son bordes. Es por esto por lo que cocientaremos el grupo de los ciclos por el grupo de bordes, ya que así todos los bordes serán triviales en homología.
 
 \begin{definition}
 Dado un complejo simplicial $K$ se define su \emph{grupo de homología $p$-dimensional} como el cociente
@@ -1283,12 +1284,12 @@ Se define la multiplicidad del par $(a_i, a_j)$ como
 \]
 \end{definition}
 
-Podemos visualizar la multiplicidad, $\mu_{i}^{j}$, como se muestra en la figura \ref{ref:multiplicidadDiagrama}. Donde, considerando $\beta_{x}^{y}$ como una función sobre el plano real extendido $\overline{\mathbb{R}}^2$, donde $\overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty, +\infty\}$; entonces, $\mu_{i}^{j}$ es la suma alternada de los número de Betti persistentes en las esquinas del cuadrado $[b_{i-1}, b_i]\times[b_{j-1}, b_j]$.
+Podemos visualizar la multiplicidad, $\mu_{i}^{j}$, como se muestra en la figura \ref{ref:multiplicidadDiagrama}. Donde, considerando $\beta_{x}^{y}$ como una función sobre el plano real extendido $\overline{\mathbb{R}}^2$, donde $\overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty, +\infty\}$; entonces, $\mu_{i}^{j}$ es la suma alternada de los números de Betti persistentes en las esquinas del cuadrado $[b_{i-1}, b_i]\times[b_{j-1}, b_j]$.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.5\textwidth]{include/figuras/multiplicidadEsquinas.png} 
-\caption{La multiplicidad del punto $(a_i, a_j)$ es la suma alternada de los número de Betti persistentes en las esquinas del cuadrado $[b_{i-1}, b_i]\times[b_{j-1}, b_j]$. Fuente: \cite{Cohen-Steiner2007}}
+\caption{La multiplicidad del punto $(a_i, a_j)$ es la suma alternada de los números de Betti persistentes en las esquinas del cuadrado $[b_{i-1}, b_i]\times[b_{j-1}, b_j]$. Fuente: \cite{Cohen-Steiner2007}}
 \label{ref:multiplicidadDiagrama}
 \end{figure}
 
@@ -1348,7 +1349,7 @@ Sean $a_1 < a_2 < ... < a_n$ los valores que toma la función en los símplices 
 \emptyset = K_0 \subseteq K_1 \subseteq ... \subseteq K_n = K, \text{ con } K_i=K(a_i)\,.
 \]
 \end{definition}
-Estas filtraciones pueden ser obtenidas de diversas formas. Por un lado, podremos obtener filtraciones variando el radio de los complejos de \v{C}ech, Vietoris-Rips y alfa complejos; y más adelante veremos como obtener filtraciones de complejos simpliciales más generales a partir de la filtración por las estrellas inferiores de una función PL.
+Estas filtraciones pueden ser obtenidas de diversas formas. Por un lado, podremos obtener filtraciones variando el radio de los complejos de \v{C}ech, Vietoris-Rips y alfa complejos; y más adelante veremos cómo obtener filtraciones de complejos simpliciales más generales a partir de la filtración por las estrellas inferiores de una función PL.
 
 De esta forma, al igual que vimos en las funciones Morse, una clase de homología $\alpha$ nace en $K_i$ si no está en la imagen de la función inducida por la inclusión $K_{i-1} \subseteq K_i$. Además, una clase $\alpha$ que nace en $K_i$ muere al entrar en $K_j$ si la imagen de la función inducida por $K_{i-1} \subseteq K_{j-1}$ no contiene la imagen de $\alpha$, pero la imagen de la función inducida por $K_{i-1} \subseteq K_j$ sí.
 
