@@ -41,7 +41,7 @@ Se puede observar que los puntos que determinar en mayor escala la distancia bot
 Debido a que la distancia bottleneck satisface una restricción adicional respecto a la distancia Hausdorff, es decir, la biyección entre los puntos; entonces, se cumple $H(X, Y) \leq W_\infty(X, Y)$.
 \end{remark}
 
-\begin{theorem}[Teorema de estabilidad para funciones tame]
+\begin{theorem}[Teorema de estabilidad para funciones tame]\label{th:estabilidadTame}
 Sea $\mathbb{X}$ un espacio topológico triangulable y sea $f,g: \mathbb{X} \to \mathbb{R}$ dos funciones tame continuas. Entonces, para cada dimensión $k$, la distancia bottleneck entre los diagramas de persistencia esta acotada por la distancia $L_\infty$ entre las funciones, es decir,
 \[
 W_\infty(\text{\rm Dgm}(f), \text{\rm Dgm}(g)) \leq \norm{f-g}_\infty\,.
@@ -386,4 +386,193 @@ Finalmente, obtenemos la desigualdad al concatenar (\ref{eq:Mf-F}), (\ref{eq:F-E
 Como comentábamos previamente, una consecuencia inmediata del \emph{Lema de la caja} es que la distancia Hausdorff entre $\text{Dgm}(f)$ y $\text{Dgm}(g)$ no es mayor que $\epsilon$. Ya que si $R_\epsilon=[x,x] \times [y,y]=(x, y)$ es un punto de $\text{Dgm}(f)$, entonces debe haber un punto de $\text{Dgm}(g)$ a distancia menor o igual que $\epsilon$, porque la multiplicidad total de $\text{Dgm}(g)$ en la caja ${R = [x-\epsilon, x+\epsilon] \times [y-\epsilon, y+\epsilon]}$ es mayor o igual que uno.
 
 \subsection{Estabilidad para la distancia bottleneck}
-\todo{Subsección por hacer}
+Una vez demostrada que la distancia Hausdorff entre dos diagramas de persistencia esta acotada por las distancia infinito de las funciones tame, vamos a reforzar el resultado para la distancia bottleneck.
+
+\subsubsection*{Estabilidad para la distancia bottleneck en un caso sencillo}
+Partiremos demostrando la estabilidad para un caso concreto que nos permite una demostración sencilla. Dada una función tame $f:\mathbb{X} \to \mathbb{R}$, consideramos la mínima distancia entre dos puntos fuera de la diagonal o bien entre un punto fuera de la diagonal y otro en la diagonal:
+\[
+\delta_f = \min\{\norm{p-q}_\infty \mid (\text{Dgm}(f) \setminus \Delta) \ni p \neq q \in \text{Dgm}(f)\}\,.
+\]
+Esta mínima distancia se puede ver representada en la figura \ref{ref:distanciaDeltaF}. 
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.35\textwidth]{include/figuras/distanciaDelta.png} 
+\caption{Representación de $\delta_f$. Fuente: \cite{presentacionEstabilidad}}
+\label{ref:distanciaDeltaF}
+\end{figure}
+
+Si dibujamos cuadrados de radio $\epsilon = \delta_f/2$ centrados en los puntos de $\text{Dgm}(f)$, obtenemos una colección de cuadrados disjuntos entre ellos y disjuntos de la diagonal engordada; ver figura \ref{ref:cuadradosF}. Añadiremos otra función tame $g:\mathbb{X} \to \mathbb{R}$ que \emph{es muy cercana a} $f$; ver figura \ref{ref:cuadradosFyG}. Lo que significa que $f$ y $g$ satisfacen que $\norm{f-g}_\infty < \delta_f/2$.
+
+\begin{figure}[!ht]
+\centering
+\begin{subfigure}{0.4\textwidth}
+\centering
+\includegraphics[width=0.6\textwidth]{include/figuras/cuadradosF.png} 
+\caption{Cuadrados de radio $\epsilon$ centrados en los puntos de $\text{Dgm}(f)$. Fuente: \cite{presentacionEstabilidad}}
+\label{ref:cuadradosF}
+\end{subfigure}\hspace{0.1\textwidth}%
+\begin{subfigure}{0.4\textwidth}
+\centering
+\includegraphics[width=0.6\textwidth]{include/figuras/cuadradosFyG.png} 
+\caption{Cuadrados de radio $\epsilon$ centrados en los puntos de $\text{Dgm}(f)$ y $\text{Dgm}(g)$, con $g$ muy cercana a $f$. Fuente: \cite{Cohen-Steiner2007}}
+\label{ref:cuadradosFyG}
+\end{subfigure}
+\caption{}
+\end{figure}
+
+Así pues, probaremos el teorema de estabilidad para la distancia bottleneck añadiendo la condición que las funciones tame tienen que \emph{estar muy cerca}.
+
+\begin{lemma}[Lema de la biyección sencilla]
+Sean $f,g: \mathbb{X} \to \mathbb{R}$ dos funciones tame, y sea $g$ muy cercana a $f$. Entonces los diagramas de persistencia satisfacen 
+\[
+W_\infty(\text{\rm Dgm}(f), \text{\rm Dgm}(g)) \leq \norm{f-g}_\infty\,.
+\]
+\end{lemma}
+
+\begin{proof}
+Denotamos $\mu$ a la multiplicidad del punto $p \in (\text{Dgm}(f) \setminus \Delta)$ y $\square_\epsilon$ al cuadrado de centro $p$ y radio $\epsilon = \norm{f-g}_\infty$. Entonces, aplicando el \emph{Lema de la caja} obtenemos que 
+\[
+\mu = \#(\text{Dgm}(f) \cap \square_0) \leq \#(\text{Dgm}(g) \cap \square_\epsilon) \leq \#(\text{Dgm}(f) \cap \square_{2\epsilon})\,. 
+\]
+
+Como $g$ \emph{es muy cercana a} $f$ entonces $\epsilon = \norm{f-g}_\infty < \delta_f/2 \Rightarrow 2\epsilon < \delta_f$. Lo que implica que $p$ es el único punto de $\text{Dgm}(f) \cap \square_{2\epsilon}$, como se puede ver en la figura \ref{ref:biyeccionFacilFig}, por tanto
+\[
+\#(\text{Dgm}(f) \cap \square_{2\epsilon}) = \mu \Rightarrow \mu \leq \#(\text{Dgm}(g) \cap \square_\epsilon) \leq \mu \Rightarrow \#(\text{Dgm}(g) \cap \square_\epsilon) = \mu\,.
+\]
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.75\textwidth]{include/figuras/biyeccionFacilFig.png} 
+\caption{Se observa que al ser $g$ \emph{muy cercana a} $f$, entonces $p$ es el único punto de $\text{Dgm}(f) \cap \square_{2\epsilon}$. Fuente: \cite{presentacionEstabilidad}}
+\label{ref:biyeccionFacilFig}
+\end{figure}
+
+Entonces, podemos emparejar todos los puntos de $\text{Dgm}(g) \cap \square_\epsilon$ a $p$. Repitiendo este proceso para todos los puntos de $\text{Dgm}(f)$ fuera de la diagonal, emparejaremos todos los puntos de $\text{Dgm}(g)$ excepto aquellos que su distancia a $\text{Dgm}(f) \setminus \Delta$ sea mayor que $\epsilon$. Sin embargo, debido a que $H(\text{Dgm}(f), \text{Dgm}(g)) \leq \epsilon$, estos puntos de $\text{Dgm}(g)$ deben estar a distancia menor o igual que $\epsilon$ de la diagonal. Por lo que emparejando estos puntos restantes a su proyección ortogonal sobre la diagonal obtenemos una biyección entre $\text{Dgm}(f)$ y $\text{Dgm}(g)$,  tal y como se muestra en la figura \ref{ref:emparejamientoBiyeccionFacil}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.75\textwidth]{include/figuras/emparejamientoBiyeccionFacil.png} 
+\caption{Emparejamiento de distancia menor que $\epsilon$ entre los puntos de $\text{Dgm}(f)$ y $\text{Dgm}(g)$, para el caso en el que $g$ \emph{es muy cercano a} $f$. Fuente: \cite{presentacionEstabilidad}}
+\label{ref:emparejamientoBiyeccionFacil}
+\end{figure}
+
+Como la biyección empareja puntos de distancia menor o igual que $\epsilon$, concluimos que la distancia bottleneck entre $\text{Dgm}(f)$ y $\text{Dgm}(g)$ es menor o igual que $\epsilon$.
+\end{proof}
+
+\subsubsection*{Estabilidad para la distancia bottleneck con funciones PL}
+Nos acercaremos un poco más a la demostración para el caso general, comprobando primero la estabilidad para dos funciones PL $\hat{f}$ y $\hat{g}$ definidas en un complejo simplicial $K$. Recordamos que vimos en la sección \ref{sec:funcionesPL} que las funciones PL eran tame.
+
+Definimos la \emph{combinación convexa} de $\hat{f}$ y $\hat{g}$ como $h_\lambda: (1-\lambda)\hat{f} + \lambda\hat{g}$, para $\lambda \in [0,1]$. Esta familia uniparamétrica de combinaciones convexas forma una interpolación lineal entre las funciones $h_0=\hat{f}$ y $h_1=\hat{g}$.
+
+\begin{lemma}[Lema de la interpolación]
+\begin{sloppypar}
+Sea $K$ un complejo simplicial y sean ${\hat{f}, \hat{g}: K \to \mathbb{R}}$ dos funciones PL. Entonces,
+\end{sloppypar}
+\[
+W_\infty(\text{\rm Dgm}(\hat{f}), \text{\rm Dgm}(\hat{g})) \leq \norm{\hat{f}-\hat{g}}_\infty\,.
+\]
+\end{lemma}
+
+\begin{proof}
+Descompondremos esta interpolación lineal en suficientes pequeños pasos de forma que podamos usar el \emph{Lema de la biyección sencilla} en cada uno de ellos. Sea $c = \norm{\hat{f}-\hat{g}}_\infty$.
+
+Podemos observar que para que para todo $\lambda \in [0,1]$, $h_\lambda$ es tame y que $\delta(\lambda)=\delta_{h_\lambda}>0$. Para garantizar que $h_\lambda$ es tame veremos que $h_\lambda$ es una función PL. Como $\hat{f}$ y $\hat{g}$ son PL, entonces $\hat{f}(x)= \sum_{i} b_i(x)\hat{f}(u_i)$ y $\hat{g}(x)= \sum_{i} b_i(x)\hat{g}(u_i)$, donde $u_i$ son los vértices de $K$ y $b_i(x)$ son las coordenadas baricéntricas de $x$. Luego,
+\begin{gather*}
+h_\lambda(x) = (1-\lambda)\hat{f}(x) + \lambda\hat{g}(x)= (1-\lambda)\sum_{i} b_i(x)\hat{f}(u_i) + \lambda \sum_{i} b_i(x)\hat{g}(u_i)=\\
+=\sum_{i} b_i(x)\hat{f}(u_i) -\lambda\sum_{i} b_i(x)\hat{f}(u_i) + \lambda \sum_{i} b_i(x)\hat{g}(u_i)=\\
+=\sum_{i} b_i(x)((1-\lambda)\hat{f}(u_i)+ \lambda\hat{g}(u_i))\,,
+\end{gather*}
+por lo que $h_\lambda$ es PL.
+
+Se sigue que el conjunto de los intervalos abiertos $J_\lambda=(\lambda-\delta(\lambda)/4c,\lambda+\delta(\lambda)/4c)\subset \mathbb{R}$ forman un recubrimiento abierto del intervalo $[0,1]$. Como $[0,1]$ es compacto, entonces un subrecubrimiento minimal $C'$ de $C$ será finito. Sean $\lambda_1 < \lambda_2 < ... < \lambda_n$ los puntos medios de los intervalos de $C'$. Como $C'$ es minimal y los intervalos son abiertos, entomces cualquier par de intervalos consecutivos $J_{\lambda_i}$ y $J_{\lambda_{i+1}}$ son no disjuntos. Luego,
+
+\[
+\lambda_{i+1} - \lambda_i \leq \dfrac{\delta(\lambda_{i+1}) + \delta(\lambda_{i})}{4c}\leq \dfrac{\max\{\delta(\lambda_{i+1}), \delta(\lambda_{i})\}}{2c}\,.
+\]
+
+Por definición de $c$, se cumple que $\norm{h_{\lambda_i}-h_{\lambda_{i+1}}}_\infty =c(\lambda_{i+1} - \lambda_i)$, ya que
+\begin{gather*}
+\norm{h_{\lambda_i}-h_{\lambda_{i+1}}}_\infty =
+\norm{(1-\lambda_i)\hat{f} +\lambda_i\hat{g} - (1-\lambda_{i+1})\hat{f} -\lambda_{i+1}\hat{g}}_\infty =\\
+=\norm{(\lambda_{i+1} - \lambda_i)\hat{f} - (\lambda_{i+1} - \lambda_i)\hat{g}}_\infty = 
+\abs{\lambda_{i+1} - \lambda_i}\norm{\hat{f}-\hat{g}}_\infty 
+=c(\lambda_{i+1} - \lambda_i)\,.
+\end{gather*}
+
+Como consecuencia, $\norm{h_{\lambda_i}-h_{\lambda_{i+1}}}_\infty \leq \max\{\delta(\lambda_{i+1}), \delta(\lambda_{i})\}/2$, lo que implica que $h_{\lambda_i}$ \emph{esta muy cercana a} $h_{\lambda_{i+1}}$ o al revés. Por lo que podemos aplicar el \emph{Lema de la biyección sencilla}, el cual nos garantiza que $W_\infty(\text{Dgm}(h_{\lambda_i}), \text{Dgm}(h_{\lambda_i})) \leq \norm{h_{\lambda_i}-h_{\lambda_{i+1}}}_\infty\,$, para todo $1\leq i \leq n-1$. Siendo $\lambda_0=0$ y $\lambda_{n+1}=1$, se sigue dando la desigualdad anterior para $i=0$ e $i=n$, ya que $h_0$ \emph{es muy cercana a} $h_1$ y $h_1$ \emph{es muy cercana a} $h_n$.
+
+Haciendo uso de la \emph{desigualdad triangular de $W_\infty$} obtenemos el resultado,
+\begin{gather*}
+W_\infty(\text{\rm Dgm}(\hat{f}), \text{\rm Dgm}(\hat{g})) \overset{Des.\ Triang.}{\leq}
+\sum_{i=0}^{n} W_\infty(\text{Dgm}(h_{\lambda_i}), \text{Dgm}(h_{\lambda_i})) \leq \sum_{i=0}^{n}\norm{h_{\lambda_i}-h_{\lambda_{i+1}}}_\infty\ =\\
+=c\sum_{i=0}^{n}(\lambda_{i+1} - \lambda_i)=c(\lambda_{n+1}-\lambda_0)=c(1-0) = \norm{\hat{f}-\hat{g}}_\infty\,.
+\end{gather*}
+\end{proof}
+
+\subsubsection*{Estabilidad para la distancia bottleneck con funciones tame}
+Tenemos todos los resultados necesarios para poder demostrar el \emph{Teorema de estabilidad para la distancia bottleneck con funciones tame}, el cual recordamos a continuación:
+
+\begin{reptheorem}{th:estabilidadTame}[Teorema de estabilidad para funciones tame]
+Sea $\mathbb{X}$ un espacio topológico triangulable y sea $f,g: \mathbb{X} \to \mathbb{R}$ dos funciones tame continuas. Entonces,
+\[
+W_\infty(\text{\rm Dgm}(f), \text{\rm Dgm}(g)) \leq \norm{f-g}_\infty\,.
+\]
+\end{reptheorem}
+
+Adicionalmente, necesitaremos recordar un par de nociones de análisis matemático:
+\begin{definition}
+Dados dos espacios métricos $(X, d_X)$ y $(Y,d_Y)$, y $M \subset X$ entonces una función $f:M \to Y$ se llama \emph{uniformemente continua} en $M$ cuando, para cada $\epsilon > 0$, puede encontrarse $\delta>0$ tal que, si $x_1,x_2 \in M$ verifican que $d_X(x_1,x_2)<\delta$, entonces $d_Y(f(x_1),f(x_2))<\epsilon$.
+\end{definition}
+
+\begin{theorem}[Teorema de Heine–Cantor \cite{libroAnalisisMatematico}]
+\begin{sloppypar}
+Sean $E$ y $F$ espacios métricos y ${f : E \to F}$ una función continua. Si $E$ es compacto, entonces $f$ es uniformemente continua.
+\end{sloppypar}
+\end{theorem}
+
+\begin{proof}[Demostración del teorema \ref{th:estabilidadTame} (Teorema de estabilidad para funciones tame)]
+$ $\newline
+Por la definición de espacio triangulable, existe un complejo simplicial (finito) $L$ y un homeomorfismo $\Phi:L \to \mathbb{X}$. Se observa que el diagrama de persistencia es invariante este tipo de cambio de variable, es decir, $f \circ \Phi: L \to \mathbb{R}$ es tame y tiene el mismo diagrama de persistencia que $f$. 
+
+Sea $\delta >0$ lo suficientemente pequeño. Como $f$ y $g$ son continuas, $L$ es compacto, entonces por el \emph{Teorema de Heine-Cantor} $f$ y $g$ son uniformemente compactas, lo que nos garantiza que existe una subdivisión $K$ de $L$ tal que
+\begin{gather*}
+\abs{f \circ \Phi(u) - f \circ \Phi(v)} \leq \delta\,,\\
+\abs{g \circ \Phi(u) - g \circ \Phi(v)} \leq \delta\,,
+\end{gather*}
+cuando $u$ y $v$ son puntos de un mismo símplice de $K$, ya que podemos obtener esta subdivisión $K$ tal que el diámetro de cada símplice sea tan pequeño como sea necesario para cumplir la condición de la continuidad uniforme de $f$ y $g$.
+
+Sean $\hat{f},\hat{g}:\text{Sd }K \to \mathbb{R}$ las funciones PL que aproximan a $f \circ \Phi$ y $g \circ \Phi$ en $K$. Por construcción de $K$, estas funciones satisfacen $\norm{\hat{f} - f \circ \Phi}_\infty \leq \delta$ y $\norm{\hat{g} - g \circ \Phi}_\infty \leq \delta$.
+
+\begin{sloppypar}
+Para terminar utilizaremos la \emph{desigualdad triangular de $W_\infty$} para acotar ${W_\infty(\text{Dgm}(f), \text{Dgm}(g))}$ superiormente por la suma de las distancias entre los diagramas de persistencia de las funciones adyacentes en la secuencia $f, \hat{f}, \hat{g}, g$.
+\end{sloppypar}
+
+Para el par $\hat{f}$ y $\hat{g}$ tenemos
+\begin{align}
+W_\infty(\text{\rm Dgm}(\hat{f}), \text{\rm Dgm}(\hat{g})) 
+&\leq \norm{\hat{f}-\hat{g}}_\infty \label{eq:punto1}\\
+&\leq \norm{\hat{f} - f \circ \Phi}_\infty + \norm{f \circ \Phi - g \circ \Phi}_\infty + \norm{\hat{g} - g \circ \Phi}_\infty \label{eq:punto2}\\
+&\leq \norm{f-g}_\infty +2\delta \label{eq:punto3}
+\end{align}
+
+El punto \ref{eq:punto1} se debe al \emph{Lema de la interpolación}, el \ref{eq:punto2} a la \emph{desigualdad triangular de} $d_\infty$ y por último, el punto \ref{eq:punto3} se debe a que $\hat{f}$ y $\hat{g}$ difieren como mucho $\delta$ de $f \circ \Phi$ y $g \circ \Phi$ respectivamente, y que $\norm{f-g}_\infty = \norm{f \circ \Phi - g \circ \Phi}_\infty$.
+
+Para obtener poder acotar la distancia bottleneck entre $f$ y $\hat{f}$, supondremos que $\delta<\delta_f/2$, de forma que podemos aplicar el \emph{Lema de la biyección sencilla}. Como el cambio de variables no afecta al diagrama de persistencia obtenemos que
+\[
+W_\infty(\text{Dgm}(f), \text{Dgm}(\hat{f}))= 
+W_\infty(\text{Dgm}(f \circ \Phi), \text{Dgm}(\hat{f})) \leq \delta\,.  
+\]
+
+Análogamente podemos obtener acotar la distancia bottleneck entre $g$ y $\hat{g}$ si asumimos que $\delta < \min\{\delta_f/2,\delta_g/2\}$.
+
+Luego, en total tenemos
+\begin{gather*}
+W_\infty(\text{Dgm}(f), \text{Dgm}(g)) \overset{Des.\ Triang.}{\leq}\\
+\leq W_\infty(\text{Dgm}(f), \text{Dgm}(\hat{f})) + W_\infty(\text{Dgm}(\hat{f}), \text{Dgm}(\hat{g})) + W_\infty(\text{Dgm}(\hat{g}), \text{Dgm}(g)) \leq\\
+\leq \norm{f-g}_\infty + 4\delta \underset{\delta \to 0}{\longrightarrow} \norm{f-g}_\infty
+\end{gather*}
+Como la condición es cierta para todo $\delta > 0$, podemos hacer $\delta$ tan pequeño como queramos. Por tanto queda demostrado el \emph{Teorema de estabilidad}.
+\end{proof}
+
+

@@ -20,10 +20,22 @@
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 
+\makeatletter
+\newtheorem*{rep@theorem}{\rep@title}
+\newcommand{\newreptheorem}[2]{%
+\newenvironment{rep#1}[1]{%
+ \def\rep@title{#2 \ref{##1}}%
+ \begin{rep@theorem}}%
+ {\end{rep@theorem}}}
+\makeatother
+
+
 \theoremstyle{plain}% default
 \newtheorem{theorem}{Teorema}[section]
+\newreptheorem{theorem}{Teorema}
 \newtheorem*{corollary}{Corolario}
 \newtheorem{lemma}[theorem]{Lema}
+\newreptheorem{lemma}{Lema}
 \newtheorem{proposition}{Proposición}[section]
 
 \theoremstyle{definition}
