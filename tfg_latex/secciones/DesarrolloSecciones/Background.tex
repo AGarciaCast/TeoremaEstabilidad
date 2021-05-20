@@ -1276,7 +1276,7 @@ Si analizamos las aplicaciones $f_{x}^{y}$, observamos que el $\text{ker } f_{x}
 para cada dimensión $k$ fija. 
 \end{remark}
 
-Sea $f: \mathbb{X} \to \mathbb{R}$ una función tame, $(a_i)_{i=1..n}$ sus valores críticos homológicos y se considera la secuencia entrelazada $(b_i)_{i=0..n}$, tal que $b_{i-1} < a_{i} < b_{i}$ para $1 \leq i \leq n$. Para capturar la homología a lo largo de todo el proceso hacemos $b_{-1} = a_0 = -\infty$ y $b_{n+1} = a_{n+1} = +\infty$. Entonces,
+Sea $f: \mathbb{X} \to \mathbb{R}$ una función tame, $(a_i)_{i=1..n}$ sus valores críticos homológicos y se considera la sucesión entrelazada $(b_i)_{i=0..n}$, tal que $b_{i-1} < a_{i} < b_{i}$ para $1 \leq i \leq n$. Para capturar la homología a lo largo de todo el proceso hacemos $b_{-1} = a_0 = -\infty$ y $b_{n+1} = a_{n+1} = +\infty$. Entonces,
 \begin{definition}
 Se define la multiplicidad del par $(a_i, a_j)$ como
 \[
@@ -1284,7 +1284,9 @@ Se define la multiplicidad del par $(a_i, a_j)$ como
 \]
 \end{definition}
 
-Podemos visualizar la multiplicidad, $\mu_{i}^{j}$, como se muestra en la figura \ref{ref:multiplicidadDiagrama}. Donde, considerando $\beta_{x}^{y}$ como una función sobre el plano real extendido $\overline{\mathbb{R}}^2$, donde $\overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty, +\infty\}$; entonces, $\mu_{i}^{j}$ es la suma alternada de los números de Betti persistentes en las esquinas del cuadrado $[b_{i-1}, b_i]\times[b_{j-1}, b_j]$.
+\begin{sloppypar}
+Podemos visualizar la multiplicidad, $\mu_{i}^{j}$, como se muestra en la figura \ref{ref:multiplicidadDiagrama}. Donde, considerando $\beta_{x}^{y}$ como una función sobre el plano real extendido $\overline{\mathbb{R}}^2$, donde ${\overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty, +\infty\}}$; entonces, $\mu_{i}^{j}$ es la suma alternada de los números de Betti persistentes en las esquinas del cuadrado $[b_{i-1}, b_i]\times[b_{j-1}, b_j]$.
+\end{sloppypar}
 
 \begin{figure}[!ht]
 \centering
@@ -1294,7 +1296,7 @@ Podemos visualizar la multiplicidad, $\mu_{i}^{j}$, como se muestra en la figura
 \end{figure}
 
 \begin{remark}
-Si $x$ y $x'$ se encuentran dentro del intervalo $(a_i, a_{i+1})$, e $y$ e $y'$ en el intervalo $(a_{j-1}, a_j)$, entonces $\beta_{x}^{y} = \beta_{x'}^{y}$. Este resultado se sigue de en consecuencia del \emph{Lema del valor crítico}, que garantiza que $F_{x}^{y}$ y $F_{x'}^{y'}$ son isomorfos.
+Si $x$ y $x'$ se encuentran dentro del intervalo $(a_i, a_{i+1})$, e $y$ e $y'$ en el intervalo $(a_{j-1}, a_j)$, entonces $\beta_{x}^{y} = \beta_{x'}^{y}$. Este resultado se sigue como consecuencia del \emph{Lema del valor crítico}, que garantiza que $F_{x}^{y}$ y $F_{x'}^{y'}$ son isomorfos.
 \end{remark}
 
 \begin{definition}
@@ -1336,7 +1338,7 @@ Este lema nos garantiza que el diagrama de persistencia codifica toda la informa
 Veremos que podemos particularizar la persistencia vista para funciones tame a complejos simpliciales. Para ello utilizaremos las \emph{filtraciones} de un complejo simplicial como conjuntos de subnivel y haremos uso de la \emph{homología simplicial} como teoría de homología.
 
 \begin{definition}
-Sea un complejo simplicial $K$ y $f: K \to \mathbb{R}$ una función. Se dice que, $f$ es \emph{monótona} si $f(\sigma) \leq f(\tau)$ si $\sigma$ es una cara de $\tau$.
+Sea $K$ un complejo simplicial y $f: K \to \mathbb{R}$ una función. Se dice que, $f$ es \emph{monótona} si $f(\sigma) \leq f(\tau)$ si $\sigma$ es una cara de $\tau$.
 \end{definition}
 \begin{sloppypar}
 La monotonía de $f$ garantiza que para cada $a \in \mathbb{R}$, el conjunto de subnivel ${K(a) = f^{-1}(-\infty,a]}$ es un subcomplejo de $K$.
@@ -1349,9 +1351,8 @@ Sean $a_1 < a_2 < ... < a_n$ los valores que toma la función en los símplices 
 \emptyset = K_0 \subseteq K_1 \subseteq ... \subseteq K_n = K, \text{ con } K_i=K(a_i)\,.
 \]
 \end{definition}
-Estas filtraciones pueden ser obtenidas de diversas formas. Por un lado, podremos obtener filtraciones variando el radio de los complejos de \v{C}ech, Vietoris-Rips y alfa complejos; y más adelante veremos cómo obtener filtraciones de complejos simpliciales más generales a partir de la filtración por las estrellas inferiores de una función PL.
 
-De esta forma, al igual que vimos en las funciones Morse, una clase de homología $\alpha$ nace en $K_i$ si no está en la imagen de la función inducida por la inclusión $K_{i-1} \subseteq K_i$. Además, una clase $\alpha$ que nace en $K_i$ muere al entrar en $K_j$ si la imagen de la función inducida por $K_{i-1} \subseteq K_{j-1}$ no contiene la imagen de $\alpha$, pero la imagen de la función inducida por $K_{i-1} \subseteq K_j$ sí.
+De esta forma, al igual que vimos con las funciones Morse, una clase de homología $\alpha$ nace en $K_i$ si no está en la imagen de la función inducida por la inclusión $K_{i-1} \subseteq K_i$. Además, una clase $\alpha$ que nace en $K_i$ muere al entrar en $K_j$ si la imagen de la función inducida por $K_{i-1} \subseteq K_{j-1}$ no contiene la imagen de $\alpha$, pero la imagen de la función inducida por $K_{i-1} \subseteq K_j$ sí.
 
 Introduciremos los grupos de homología persistente, reduciendo la notación de la siguiente forma: $F_i = F_{b_i}$, $F_{i}^{j}=F_{b_i}^{b_j}$ y $\beta_{i}^{j}=\beta_{b_i}^{b_j}$. Así podemos redefinir la noción de nacimiento y muerte de una clase de homología como sigue
 \begin{itemize}
@@ -1367,7 +1368,7 @@ Siguiendo esta notación, se define la multiplicidad como
 \[
 \mu_{i}^{j} = (\beta_{i}^{j-1}-\beta_{i}^{j})-(\beta_{i-1}-\beta_{i-1}^{i})\,.
 \]
-Donde a $\beta_{i}^{j-1}$ se puede interpretar como el número de clases de homología que están vivas en $K_i$ y siguen vivas en $K_{j-1}$. Por lo tanto, la primera diferencia de la igualdad se interpreta como el número de clases independientes que están vivas en $K_i$ y mueren en $K_j$, mientras que la segunda diferencia son el número de clases independientes que nacen antes de $K_i$ y mueren en $K_j$. En conclusión, la multiplicidad, $\mu_{i}^{j}$, se interpreta como el número de clases de homología que nacen en $K_i$ y mueren en $K_j$.
+Donde $\beta_{i}^{j-1}$ se puede interpretar como el número de clases de homología que están vivas en $K_i$ y siguen vivas en $K_{j-1}$. Por lo tanto, la primera diferencia de la igualdad se interpreta como el número de clases independientes que están vivas en $K_i$ y mueren en $K_j$, mientras que la segunda diferencia son el número de clases independientes que nacen antes de $K_i$ y mueren en $K_j$. En conclusión, la multiplicidad, $\mu_{i}^{j}$, se interpreta como el número de clases de homología que nacen en $K_i$ y mueren en $K_j$.
 
 \begin{figure}[!ht]
 \centering
@@ -1381,7 +1382,7 @@ Cada punto $(a_i, a_j)$ representa $\mu_{i}^{j}$ clases de homología independie
 Adicionalmente de los diagramas de persistencia, podemos codificar la información sobre la homología persistente a través de los denominados \emph{códigos de barras}. Estas representaciones se pueden obtener a partir del diagrama de persistencia dibujando por cada punto $(a_i, a_j)$ con $a_i < a_j$ de dicho diagrama $\mu_{i}^{j}$ intervalos semiabiertos $[a_i, a_j)$, como se muestra en la figura \ref{ref:codigoBarras}.
 
 \subsubsection*{Funciones PL}\label{sec:funcionesPL}
-Un caso especial de las funciones tame son las \emph{funciones lineales a trozos} (en inglés: \emph{piecewise linear function}) la cuales asocian el espacio subyacente de un complejo simplicial a valores reales.
+Un caso especial de las funciones tame son las \emph{funciones lineales a trozos} (en inglés: \emph{piecewise linear function}) que asocian valores reales al espacio subyacente de un complejo simplicial.
 
 \begin{definition}
 Sea $K$ un complejo simplicial con valores reales asignados en todos sus vértices. Se define la función lineal a trozos $f: \abs{K} \to \mathbb{R}$ como la extensión linear de los valores de los vértices sobre los símplices, es decir,
@@ -1402,7 +1403,7 @@ La \emph{estrella inferior} de un vértice $u_i \in \text{Vert }K$ se define com
 Como ocurría con la estrella, la estrella inferior generalmente no es un subcomplejo. Añadiendo las caras restantes a los símplices en $\text{St}\_u_i$, obtenemos la \emph{estrella inferior cerrada} $\overline{\text{St}}\_u_i$, que es el menor subcomplejo de $K$ que contiene a $\text{St}\_u_i$. Como $f$ es inyectiva en sus vértices, cada símplice tiene un único vértice con valor máximo, y por tanto pertenece a una única estrella inferior. Luego, $K_i$ es la unión de las primeras $i$ estrellas inferiores; obteniendo la siguiente filtración de $K$:
 
 \begin{definition}
-Sea $K$ un complejo simplicial y $\abs{K} \to \mathbb{R}$ una función PL. Se define la \emph{filtración de $K$ por las estrellas inferiores de $f$} como la filtración de subcomplejos $\emptyset = K_0 \subseteq K_1 \subseteq ... \subseteq K_n = K$, donde $K_i=K_{i-1} \cup \overline{\text{St}}\_u_i$. 
+Sea $K$ un complejo simplicial y $f_i:\abs{K} \to \mathbb{R}$ una función PL. Se define la \emph{filtración de $K$ por las estrellas inferiores de $f$} como la filtración de subcomplejos $\emptyset = K_0 \subseteq K_1 \subseteq ... \subseteq K_n = K$, donde $K_i=K_{i-1} \cup \overline{\text{St}}\_u_i$. 
 \end{definition}
 
 Esta filtración cumple las siguientes propiedades:

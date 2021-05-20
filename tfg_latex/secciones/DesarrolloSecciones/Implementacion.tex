@@ -47,7 +47,7 @@ Obviamente, la complejidad del algoritmo \ref{ref:HausdorffDirect} es del orden 
 
 Sin embargo, existen implementaciones del cálculo de la distancia Hausdorff que tienen complejidad del orden de $\bigO(m)$ en el mejor de los casos y $\bigO(n*m)$ en el peor de los casos \cite{ArticuloHausdorff}.
 \subsection{Cálculo de la distancia bottleneck}
-En esta sección veremos los algoritmos propuestos en \cite{libroEH}, donde el cálculo de la distancia bottleneck entre dos diagramas de persistencia se reduce en la obtención de un emparejamiento óptimo en un grafo bipartido.
+En esta sección veremos los algoritmos propuestos en \cite{libroEH}, donde el cálculo de la distancia bottleneck entre dos diagramas de persistencia se reduce a la obtención de un emparejamiento óptimo en un grafo bipartido.
 
 \subsubsection*{Obtención de la distancia a partir de emparejamientos}
 Empezaremos viendo cómo podemos obtener la distancia bottleneck entre diagramas de persistencia a partir de emparejamientos de un grafo bipartido.
@@ -58,7 +58,7 @@ G= (U \cupdot V, A), \text{ con } U=X_0 \cupdot Y_0', V=Y_0 \cupdot X_0', \text{
 \]
 donde $U \cupdot V$ denota la unión disjunta de los conjuntos $U$ y $V$.
 
-En este grafo introducimos la función de coste $c: A \to \mathbb{R}$ donde a cada arista $uv \in A$ se le asigna la la distancia $L_\infty$ entre los puntos $u$ y $v$:
+En este grafo introducimos la función de coste $c: A \to \mathbb{R}$ donde a cada arista $uv \in A$ se le asigna la la distancia infinito entre los puntos $u$ y $v$:
 \[
 c(uv)=
 \begin{cases}
@@ -159,7 +159,7 @@ Para calcular el menor $\epsilon$ tal que $G(\epsilon)$ tiene un emparejamiento 
 \begin{property}[\cite{libroEH}]
 \leavevmode
 \begin{enumerate}
-	\item Si el subgrafo $G(0)$, el cual consiste en las aristas de coste cero de $G$, tiene un emparejamiento perfecto, entonces es un emparejamiento de coste mínimo. Es más, su coste total es cero.
+	\item Si el subgrafo $G(0)$, que consiste en las aristas de coste cero de $G$, tiene un emparejamiento perfecto, entonces es un emparejamiento de coste mínimo. Es más, su coste total es cero.
 	\item Restar la misma cantidad al coste de todas las aristas incidentes a un vértice de $G$ afecta a todos los emparejamientos perfectos de la misma forma. En particular, un emparejamiento perfecto minimiza el coste total antes de las restas de la cantidades si y sólo si sigue minimizándolo tras las restas de las cantidades.
 \end{enumerate}
 \end{property}
@@ -173,9 +173,9 @@ c_i(xy) = c(xy) - d_i(x) - d_i(y) > 0\,.
 \]
 \end{definition}
 
-Sea $G_i$ el grafo $G$ con los costes modificados por $d_i$, entonces el algoritmo construirá iterativamente emparejamientos máximos en $G_i(0)$, el cual es el subgrafo resultante de eliminar las aristas con peso no nulo de $G_i$. Incrementando el número de aristas del emparejamiento máximo en uno por cada iteración, obtendremos el emparejamiento perfecto en $n$ iteraciones.
+Sea $G_i$ el grafo $G$ con los costes modificados por $d_i$, entonces el algoritmo construirá iterativamente emparejamientos máximos en $G_i(0)$, que coincide con el subgrafo resultante al eliminar las aristas con peso no nulo de $G_i$. Incrementando el número de aristas del emparejamiento máximo en uno por cada iteración, obtendremos el emparejamiento perfecto en $n$ iteraciones.
 
-Análogo al método Húngaro, iremos añadiendo aristas de coste modificado cero al emparejamiento en cada iteración, y para generar ceros adicionales en los costes modificados de las aristas seleccionaremos el menor de los costes totales de los caminos de $M_i$-aumento como cantidad que variará la función de reducción.
+Análogo al método Húngaro, iremos añadiendo aristas de coste modificado cero al emparejamiento en cada iteración y para generar ceros adicionales en los costes modificados de las aristas seleccionaremos el menor de los costes totales de los caminos de $M_i$-aumento como cantidad que variará la función de reducción.
 
 Sea $M_i$ un emparejamiento máximo en $G_i(0)$ y sea $D_i$ el digrafo asociado al emparejamiento $M_i$ y $G_i$. Si $M_i$ no es un emparejamiento perfecto en $G_i$, entonces no es un emparejamiento máximo en $G_i$, y por lo tanto existirá un camino de $M_i$-aumento en $D_i$.
 

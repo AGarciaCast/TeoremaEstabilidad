@@ -3,33 +3,30 @@
 \section{Motivación}
 El crecimiento de la cantidad de datos que producimos y almacenamos es exponencial, estimándose que para 2025 llegaremos a haber creado un total de 160 zettabytes \cite{datos2025}. En este contexto surge la necesidad de analizar y comprender las características de grandes conjuntos de datos. Así pues, nace la disciplina del \emph{Análisis Topológico de Datos} con el fin de responder a las siguientes preguntas sobre las propiedades cualitativas geométricas de nuestros conjuntos de datos: ¿Cuáles son las características topológicas de mi conjunto de datos? Si hemos introducido complejidad adicional a nuestros datos debido a problemas de medición o de discretización, ¿cómo medimos la relevancia de las características observadas?
 
-Para poder resolver estas preguntas se suele hacer uso de la \emph{homología persistente}, y más concretamente en su representación en los denominados \emph{diagramas de persistencia}. Estos diagramas son multiconjuntos de puntos en el plano extendido, dónde cada punto representa una característica cualitativa de nuestros datos y la diferencia en valor absoluto de sus coordenadas cuantifica su relevancia. Algunas de las características usuales que se miden son el número de componentes conexas, el número de agujeros y el número de cavidades.
+Para poder intentar contestar a estas preguntas se hace uso de la \emph{homología persistente}, y más concretamente de los \emph{diagramas de persistencia}. Estos diagramas son multiconjuntos de puntos en el plano extendido, dónde cada punto representa una característica cualitativa de nuestros datos y la diferencia en valor absoluto de sus coordenadas cuantifica su relevancia. Algunas de las características usuales que se miden son el número de componentes conexas, el número de agujeros y el número de cavidades.
 
 \section{Descripción general del trabajo}
-El trabajo se basa en el estudio y exposición del Teorema de estabilidad, el cual, a grandes rasgos, establece que pequeñas perturbaciones en los datos implican pequeñas perturbaciones en la homología persistente.
+El trabajo se basa en el estudio y exposición del Teorema de estabilidad, que establece, a grandes rasgos, que pequeñas perturbaciones en los datos implican pequeñas perturbaciones en la homología persistente.
 
-Para ello he buscado y estudiado diversas referencias que contengan el enunciado y la demostración del Teorema de estabilidad, como \cite{libroEH}  \cite{articuloPersistenciaEH} \cite{Cohen-Steiner2007}.
+Para ello he buscado y estudiado diversas referencias acerca de este resultado y su demostración \cite{libroEH, articuloPersistenciaEH, Cohen-Steiner2007}.
 
-Adicionalmente, implementaré en Python las distancias \emph{Bottleneck} y \emph{Hausdorff} para poder ilustrar este teorema haciendo uso distintos conjuntos de datos. 
+Adicionalmente, he implementado en Python las distancias \emph{Bottleneck} y \emph{Hausdorff} para poder ilustrar este resultado haciendo uso distintos conjuntos de datos. 
 
-Las pruebas se sustentan en el \emph{pipeline} usual en el Análisis Topológico de Datos, ilustrado en la figura \ref{ref:pipeline}. Partiremos de un conjunto de datos, en este caso, una nube de puntos. Posteriormente se obtendrá una secuencia de espacios topológicos sobre los obtendremos la homología persistente que será representada en el diagrama de persistencia. Para poder observar la estabilidad, se introducirán perturbaciones en conjunto de puntos inicial y se contrastará los diagramas de persistencia.
+Las pruebas se sustentan en el \emph{pipeline} usual del Análisis Topológico de Datos, ilustrado en la figura \ref{ref:pipeline}. Partiremos de un conjunto de datos, en este caso, una nube de puntos. Posteriormente se obtendrá una familia de espacios topológicos sobre los obtendremos la homología persistente que será representada en el diagrama de persistencia. Para estudiar la estabilidad, se introducirán perturbaciones en conjunto de puntos inicial y se compararán los diagramas de persistencia.
 
 \begin{figure}[ht]
-\centering
-\begin{tikzpicture}[->, node distance=6cm, auto]
-\node (A){Nube de puntos};
-\node (B)[right of=A]{Filtración de complejos simpliciales};
-\node (H) [below=0.8cm of B]{};
-\node (C)[right=3cm of H]{Diagramas de persistencia};
-\node (D)[below=2cm of A]{Nube de puntos$^*$};
-\node (E)[right of=D]{Filtración de complejos simpliciales$^*$};
-
-\path (A) edge (B)
-	  (B) edge [bend left=10] (C)
-	  (A) edge node{Ruido} (D)
-	  (D) edge (E)
-	  (E) edge [bend right=10] (C);
-\end{tikzpicture}
+%https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB0x32cYAPHMAByTAEYwABLAlomYHJgC+IRaXSZc+QigBM5KrUYs23XgOFjJ02fKUA9AFQq1IDNjwEiZAIwH6zVkQOHn5BADEsBhwAJzoAYywAZ7ApSTiIAFs0BhgAK0wJbCyGLATGeGVVdXctIj1fan9jINNQ4Aio2ITk1Il04ryCouzSrHK4RUdnas1PFDIdPyNA4LNBABExgHNYjLpetBho7DheMDLKlzdZ7WQ9RcblkxDzTboduj2Do5Ozi6mqq4NB5bt5SABmJYBZ5rYCbU50c5jCSiCA4HA5MAwOIAa0qBhgUC28CIoAAZtFMkgyCAFEg9IZoYgwEwGAxqAw6OIGAAFYG1II5Mk4aYgClUxA0umIMGM5qrNoAJSYWCgEGUHK5MF5-LmICFIsB4oySFl0vBjyZLLZmu5fJqeoNouN9Oo0oALJbmtb2fqtTqHdp9TBhc7KSbEBbaRAkABWL2BH227X2m5sJ1G8NIT3RpAANgTSCTfrtuqDTuo4jAUCQAFpvMRMxL47nEAW5YnWb7OaXA+mQyLKzBq6bGxRFEA
+\[
+\begin{tikzcd}[
+  column sep={125pt,between origins}
+]
+\text{Nube de puntos} \arrow[d] \arrow[rr, "\text{Ruido}"] &                             & \text{Nube de puntos}^* \arrow[d]                       \\
+\text{Filtración de complejos simpliciales} \arrow[d]      & 
+& \text{Filtración de complejos simpliciales}^* \arrow[d] \\
+\text{Diagrama de persistencia} \arrow[rd, bend right=10]                 &                             & \text{Diagrama de persistencia}^* \arrow[ld,bend left=10]            \\
+&\text{Distancia bottleneck} &
+\end{tikzcd}
+\]
 \caption{Pipeline para la comprobación del Teorema de estabilidad}
 \label{ref:pipeline}
 \end{figure}
