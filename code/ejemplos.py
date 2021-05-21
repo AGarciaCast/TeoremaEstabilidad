@@ -7,18 +7,16 @@ Created on Fri May 14 23:34:04 2021.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import json
 import gudhi
 import folium
 import sympy as sy
 import matplotlib.colors
-from folium.map import Layer, FeatureGroup,LayerControl,Marker
 import distancias
-from scipy.spatial.distance import directed_hausdorff
 
 # variable curvas
 t = sy.symbols('t', real=True)
 
+# Colores partidos España
 coloresPartidos = {
                       "PSOE": "#DD5C47",
                       "PP": "#5C95DA",
@@ -86,64 +84,115 @@ def puntosCurvaRuido(curva, t, t0, t1, numPuntos=10, mu=0, sigma=0.1):
 
 
 def ejemploPlano(points1, points2, indice, mapa=None):
+    """
+    Calcular la distancia Hausdorff entre los conjuntos de puntos y la distancia bottleneck entre sus diagramas de persistencia.
+
+    Si se va a usar el mapa se utilizarán complejos de Vietoris-Rips y en otro caso alfa complejos
+
+    points1: numpy.array.
+    points2: numpy.array.
+    incice: String.
+        String indicativo del ejemplo a ejecutar.
+    mapa = folium.map.
+    """
+    # ------------Primer conjunto de puntos------------
+
     if mapa is None:
+        # Inicializamos la figura
         fig, axs = plt.subplots(2, 2, dpi=100)
         fig.set_size_inches(15, 10)
+
+        # Calculamos el alfa complejo
+        complex1 = gudhi.AlphaComplex(points=points1)
+        simplex_tree1 = complex1.create_simplex_tree()
+        nameComp = "Alpha complex"
     else:
+        # Inicializamos la figura
         fig, axs = plt.subplots(1, 2, dpi=100)
         fig.set_size_inches(15, 5)
-        sub_group1 = folium.FeatureGroup(name="Alpha Complejo Wikipedia", control=True, show=False)
-        sub_group2 = folium.FeatureGroup(name="Alpha Complejo Random", control=True, show=True)
 
-    alpha_complex1 = gudhi.AlphaComplex(points=points1)
-    simplex_tree1 = alpha_complex1.create_simplex_tree()
+        # Calculamos el complejo de Vietoris-Rips
+        complex1 = gudhi.RipsComplex(points=points1)
+        simplex_tree1 = complex1.create_simplex_tree(max_dimension=2)
+        nameComp = "Vietoris-Rips complex"
 
-    result_str = 'Alpha complex is of dimension ' + repr(simplex_tree1.dimension()) + ' - ' + \
-                 repr(simplex_tree1.num_simplices()) + ' simplices - ' + \
-                 repr(simplex_tree1.num_vertices()) + ' vertices.'
-    print(result_str)
+    print(nameComp + 'is of dimension ' + repr(simplex_tree1.dimension()) + ' - ' +
+          repr(simplex_tree1.num_simplices()) + ' simplices - ' +
+          repr(simplex_tree1.num_vertices()) + ' vertices.'
+          )
 
-    value = max(set([filtered_value[1] for filtered_value in simplex_tree1.get_filtration()]))
-
-    if mapa is None:
-        plotalpha(alpha_complex1, simplex_tree1, value, axs[0, 0])
-        axs[0, 0].title.set_text(r"$r={}$".format(str(value)))
-    else:
-        plotAlphaMapa(alpha_complex1, simplex_tree1, value, mapa, sub_group1)
-
+    # Obtenemos el diagrama de persistencia
     diag1 = simplex_tree1.persistence()
-
     if mapa is None:
+        # Obtener valor filtración
+        value = max(set([filtered_value[1] for filtered_value in simplex_tree1.get_filtration()]))
+
+        # Representar alfa complejo de dicha filtración
+        plotalpha(complex1, simplex_tree1, value, axs[0, 0])
+        axs[0, 0].title.set_text(r"$r={}$".format(str(value)))
+
+        # Representar el diagrama de persistencia
         gudhi.plot_persistence_diagram(diag1, axes=axs[0, 1])
     else:
+        # Obtener valor filtración
+        valueM = max([s[1][1] for s in diag1 if s[0] == 1])
+        value = max([s[1][0] for s in diag1 if s[1][1] == valueM])
+
+        # Representar complejo de Vietoris-Rips de dicha filtración sobre el mapa
+        sub_group1 = folium.FeatureGroup(name=f"Complejo VR Wikipedia (r = {value})", control=True, show=True)
+        plotAlphaMapa(points1, simplex_tree1, value, mapa, sub_group1)
+
+        # Representar el diagrama de persistencia
         gudhi.plot_persistence_diagram(diag1, axes=axs[0])
 
-    alpha_complex2 = gudhi.AlphaComplex(points=points2)
-    simplex_tree2 = alpha_complex2.create_simplex_tree()
-
-    result_str = 'Alpha complex is of dimension ' + repr(simplex_tree2.dimension()) + ' - ' + \
-                 repr(simplex_tree2.num_simplices()) + ' simplices - ' + \
-                 repr(simplex_tree2.num_vertices()) + ' vertices.'
-    print(result_str)
-
-    value = max(set([filtered_value[1] for filtered_value in simplex_tree1.get_filtration()]))
+    # ------------Segundo conjunto de puntos------------
 
     if mapa is None:
-        plotalpha(alpha_complex2, simplex_tree2, value, axs[1, 0])
-        axs[1, 0].title.set_text(r"$r={}$".format(str(value)))
+        # Calculamos el alfa complejo
+        complex2 = gudhi.AlphaComplex(points=points2)
+        simplex_tree2 = complex2.create_simplex_tree()
     else:
-        plotAlphaMapa(alpha_complex2, simplex_tree2, value, mapa, sub_group2)
+        # Calculamos el complejo de Vietoris-Rips
+        complex2 = gudhi.RipsComplex(points=points2)
+        simplex_tree2 = complex2.create_simplex_tree(max_dimension=2)
 
+    print(nameComp + 'is of dimension ' + repr(simplex_tree2.dimension()) + ' - ' +
+          repr(simplex_tree2.num_simplices()) + ' simplices - ' +
+          repr(simplex_tree2.num_vertices()) + ' vertices.'
+          )
+
+    # Obtenemos el diagrama de persistencia
     diag2 = simplex_tree2.persistence()
     if mapa is None:
+        # Obtener valor filtración
+        value = max(set([filtered_value[1] for filtered_value in simplex_tree1.get_filtration()]))
+
+        # Representar alfa complejo de dicha filtración
+        plotalpha(complex2, simplex_tree2, value, axs[1, 0])
+        axs[1, 0].title.set_text(r"$r={}$".format(str(value)))
+
+        # Representar el diaggrama de persistencia
         gudhi.plot_persistence_diagram(diag2, axes=axs[1, 1])
     else:
+        # Obtener valor filtración
+        valueM = max([s[1][1] for s in diag2 if s[0] == 1])
+        value = max([s[1][0] for s in diag2 if s[1][1] == valueM])
+
+        # Representar complejo de Vietoris-Rips de dicha filtración sobre el mapa
+        sub_group2 = folium.FeatureGroup(name=f"Complejo VR Random (r = {value})", control=True, show=False)
+        plotAlphaMapa(points2, simplex_tree2, value, mapa, sub_group2)
+
+        # Representar el diagrama de persistencia
         gudhi.plot_persistence_diagram(diag2, axes=axs[1])
 
+    # Ajustar figura y guardarla en directorio de trabajo
     fig.tight_layout()
     fig.savefig(f'ejemplo{indice}.png', dpi=100)
     plt.show()
 
+    # ------------Calculo de las distancias------------
+
+    # Obtener los puntos de dimensión 0 de los diagramas
     diag1_0 = np.array([s[1] for s in diag1 if s[0] == 0])
     diag2_0 = np.array([s[1] for s in diag2 if s[0] == 0])
 
@@ -152,6 +201,7 @@ def ejemploPlano(points1, points2, indice, mapa=None):
     print("Distancia bottleneck dimensión 0:", round(distancias.bottleneck(diag1_0, diag2_0), 5),
           "(Implementación GUDHI:", str(round(gudhi.bottleneck_distance(diag1_0, diag2_0), 5)) + ")")
 
+    # Obtener los puntos de dimensión 1 de los diagramas
     diag1_1 = np.array([s[1] for s in diag1 if s[0] == 1])
     diag2_1 = np.array([s[1] for s in diag2 if s[0] == 1])
     print("Distancia bottleneck dimensión 1:", round(distancias.bottleneck(diag1_1, diag2_1), 5),
@@ -159,6 +209,12 @@ def ejemploPlano(points1, points2, indice, mapa=None):
 
 
 def ejemplo1(backup=True):
+    """
+    Ejecutar el ejemplo 1: Estudio de la estabilidad en una elipse.
+
+    backup: boolean.
+        True si quieres usar los puntos guardados en los ficheros puntos1_1.npy y puntos1_2.npy.
+    """
     if backup:
         with open('puntos1_1.npy', 'rb') as f:
             points1 = np.load(f)
@@ -175,6 +231,12 @@ def ejemplo1(backup=True):
 
 
 def ejemplo2(backup=True):
+    """
+    Ejecutar el ejemplo 2: Estudio de la estabilidad en una rosa polar.
+
+    backup: boolean.
+        True si quieres usar los puntos guardados en los ficheros puntos2_1.npy y puntos2_2.npy.
+    """
     if backup:
         with open('puntos2_1.npy', 'rb') as f:
             points1 = np.load(f)
@@ -192,6 +254,12 @@ def ejemplo2(backup=True):
 
 
 def estiloMapa(feature, elecciones):
+    """
+    Representación de las provincias segun el color del partido politico ganador.
+
+    feature: GeoJson feature.
+    elecciones: pandas.DataFrame.
+    """
     provincia = feature['properties']['texto']
     partido = elecciones.loc[elecciones["Provincia"] == provincia, "Partido"].values[0]
     provincia_style = {
@@ -204,16 +272,14 @@ def estiloMapa(feature, elecciones):
     return provincia_style
 
 
-def plotAlphaMapa(ac, st, k, m, sub_group):
+def plotAlphaMapa(puntos, st, k, m, sub_group):
     """
     Representar el alpha complejo del complejo K.
 
     puntos: np.array.
     K: Complejo.
     """
-    puntos = np.array([ac.get_point(i) for i in range(st.num_vertices())])
     aristas = [s[0] for s in st.get_skeleton(2) if len(s[0]) == 2 and s[1] <= k]
-
     if aristas:
         for arista in aristas:
             p1 = puntos[arista[0]].tolist()
@@ -227,13 +293,14 @@ def plotAlphaMapa(ac, st, k, m, sub_group):
 
 
 def ejemploMapa():
+    """Ejecutar el ejemplo 3: Estudio de la estabilidad en el mapa de España de las elecciones nacionales de Nov 2019."""
     m = folium.Map(
         location=[36.2, -4],
         tiles="CartoDB Positron",
         zoom_start=6,
     )
 
-    elecciones = pd.read_csv('elecciones2019Nov.csv')
+    elecciones = pd.read_csv("elecciones2019Nov.csv", index_col="id_provincia")
     eleccionesPSOE = elecciones[elecciones["Partido"] == "PSOE"]
     coordenadasWiki = np.array([tuple(elem) for elem in eleccionesPSOE[["Latitud", "Longitud"]].values.tolist()])
     coordenadasRandom = np.array([tuple(elem) for elem in eleccionesPSOE[["LatitudR", "LongitudR"]].values.tolist()])
