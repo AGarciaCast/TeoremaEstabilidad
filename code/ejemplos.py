@@ -110,6 +110,8 @@ def ejemploPlano(points1, points2, indice, mapa=None):
         # Inicializamos la figura
         fig, axs = plt.subplots(1, 2, dpi=100)
         fig.set_size_inches(15, 5)
+        fig2, axs2 = plt.subplots(1, 2, dpi=100)
+        fig2.set_size_inches(15, 5)
 
         # Calculamos el complejo de Vietoris-Rips
         complex1 = gudhi.RipsComplex(points=points1)
@@ -129,7 +131,7 @@ def ejemploPlano(points1, points2, indice, mapa=None):
 
         # Representar alfa complejo de dicha filtración
         plotalpha(complex1, simplex_tree1, value, axs[0, 0])
-        axs[0, 0].title.set_text(r"$r={}$".format(str(value)))
+        axs[0, 0].title.set_text(r"Alfa complejo $(r = {})$".format(str(value)))
 
         # Representar el diagrama de persistencia
         gudhi.plot_persistence_diagram(diag1, axes=axs[0, 1])
@@ -142,8 +144,10 @@ def ejemploPlano(points1, points2, indice, mapa=None):
         sub_group1 = folium.FeatureGroup(name=f"Complejo VR Wikipedia (r = {value})", control=True, show=True)
         plotAlphaMapa(points1, simplex_tree1, value, mapa, sub_group1)
 
-        # Representar el diagrama de persistencia
+        # Representar el diagrama de persistencia y codigo de barras
+        fig.suptitle(r"Complejo VR Wikipedia $(r = {})$".format(str(value)), fontsize=16)
         gudhi.plot_persistence_diagram(diag1, axes=axs[0])
+        gudhi.plot_persistence_barcode(diag1, axes=axs[1])
 
     # ------------Segundo conjunto de puntos------------
 
@@ -169,7 +173,7 @@ def ejemploPlano(points1, points2, indice, mapa=None):
 
         # Representar alfa complejo de dicha filtración
         plotalpha(complex2, simplex_tree2, value, axs[1, 0])
-        axs[1, 0].title.set_text(r"$r={}$".format(str(value)))
+        axs[1, 0].title.set_text(r"Alfa complejo $+$ Ruido $(r = {})$".format(str(value)))
 
         # Representar el diaggrama de persistencia
         gudhi.plot_persistence_diagram(diag2, axes=axs[1, 1])
@@ -179,14 +183,22 @@ def ejemploPlano(points1, points2, indice, mapa=None):
         value = max([s[1][0] for s in diag2 if s[1][1] == valueM])
 
         # Representar complejo de Vietoris-Rips de dicha filtración sobre el mapa
-        sub_group2 = folium.FeatureGroup(name=f"Complejo VR Random (r = {value})", control=True, show=False)
+        sub_group2 = folium.FeatureGroup(name="Complejo VR Random (r = {value})", control=True, show=False)
         plotAlphaMapa(points2, simplex_tree2, value, mapa, sub_group2)
 
-        # Representar el diagrama de persistencia
-        gudhi.plot_persistence_diagram(diag2, axes=axs[1])
+        # Representar el diagrama de persistencia y codigo de barras
+        fig2.suptitle(r"Complejo VR Random $(r = {})$".format(str(value)), fontsize=16)
+        gudhi.plot_persistence_diagram(diag2, axes=axs2[0])
+        gudhi.plot_persistence_barcode(diag2, axes=axs2[1])
 
     # Ajustar figura y guardarla en directorio de trabajo
     fig.tight_layout()
+    if mapa is not None:
+        fig.subplots_adjust(top=0.88)
+        fig2.tight_layout()
+        fig2.subplots_adjust(top=0.88)
+        fig2.savefig(f'ejemplo{indice}2.png', dpi=100)
+
     fig.savefig(f'ejemplo{indice}.png', dpi=100)
     plt.show()
 
