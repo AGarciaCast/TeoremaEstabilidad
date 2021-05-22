@@ -32,6 +32,9 @@ coloresPartidos = {
                       "Cs": "#DF9B07",
                       "TEX": "#037252"
                       }
+# Directorios datos
+pathIn = r"input/"
+pathOut = r"output/"
 
 
 def plotalpha(ac, st, k, ax):
@@ -183,7 +186,7 @@ def ejemploPlano(points1, points2, indice, mapa=None):
         value = max([s[1][0] for s in diag2 if s[1][1] == valueM])
 
         # Representar complejo de Vietoris-Rips de dicha filtración sobre el mapa
-        sub_group2 = folium.FeatureGroup(name="Complejo VR Random (r = {value})", control=True, show=False)
+        sub_group2 = folium.FeatureGroup(name=f"Complejo VR Random (r = {value})", control=True, show=False)
         plotAlphaMapa(points2, simplex_tree2, value, mapa, sub_group2)
 
         # Representar el diagrama de persistencia y codigo de barras
@@ -197,9 +200,9 @@ def ejemploPlano(points1, points2, indice, mapa=None):
         fig.subplots_adjust(top=0.88)
         fig2.tight_layout()
         fig2.subplots_adjust(top=0.88)
-        fig2.savefig(f'ejemplo{indice}2.png', dpi=100)
+        fig2.savefig(pathOut + f'ejemplo{indice}2.png', dpi=100)
 
-    fig.savefig(f'ejemplo{indice}.png', dpi=100)
+    fig.savefig(pathOut + f'ejemplo{indice}.png', dpi=100)
     plt.show()
 
     # ------------Calculo de las distancias------------
@@ -228,10 +231,10 @@ def ejemplo1(backup=True):
         True si quieres usar los puntos guardados en los ficheros puntos1_1.npy y puntos1_2.npy.
     """
     if backup:
-        with open('puntos1_1.npy', 'rb') as f:
+        with open(pathIn + 'puntos1_1.npy', 'rb') as f:
             points1 = np.load(f)
 
-        with open('puntos1_2.npy', 'rb') as f:
+        with open(pathIn + 'puntos1_2.npy', 'rb') as f:
             points2 = np.load(f)
     else:
         curva = [4 * sy.sin(t), 9 * sy.cos(t)]
@@ -250,10 +253,10 @@ def ejemplo2(backup=True):
         True si quieres usar los puntos guardados en los ficheros puntos2_1.npy y puntos2_2.npy.
     """
     if backup:
-        with open('puntos2_1.npy', 'rb') as f:
+        with open(pathIn + 'puntos2_1.npy', 'rb') as f:
             points1 = np.load(f)
 
-        with open('puntos2_2.npy', 'rb') as f:
+        with open(pathIn + 'puntos2_2.npy', 'rb') as f:
             points2 = np.load(f)
     else:
         curva = [10 * sy.cos(2 * t) * sy.cos(t),
@@ -312,19 +315,19 @@ def ejemploMapa():
         zoom_start=6,
     )
 
-    elecciones = pd.read_csv("elecciones2019Nov.csv", index_col="id_provincia")
+    elecciones = pd.read_csv(pathIn + "elecciones2019Nov.csv", index_col="id_provincia")
     eleccionesPSOE = elecciones[elecciones["Partido"] == "PSOE"]
     coordenadasWiki = np.array([tuple(elem) for elem in eleccionesPSOE[["Latitud", "Longitud"]].values.tolist()])
     coordenadasRandom = np.array([tuple(elem) for elem in eleccionesPSOE[["LatitudR", "LongitudR"]].values.tolist()])
 
-    folium.GeoJson(r"spain_provincias.geojson", name="Partidos Ganadores", control=False,
+    folium.GeoJson(pathIn + r"spain_provincias.geojson", name="Partidos Ganadores", control=False,
                    style_function=(lambda feature: estiloMapa(feature, elecciones))).add_to(m)
 
     print("-------------Ejemplo 3-------------\n")
     ejemploPlano(coordenadasWiki, coordenadasRandom, "Mapa", mapa=m)
 
     folium.LayerControl(collapsed=False).add_to(m)
-    m.save("mapaEspaña.html")
+    m.save(pathOut + "mapSpain.html")
     return elecciones, coordenadasRandom
 
 
