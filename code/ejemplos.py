@@ -12,6 +12,7 @@ import folium
 import sympy as sy
 import matplotlib.colors
 import distancias
+import sys
 
 # variable curvas
 t = sy.symbols('t', real=True)
@@ -62,6 +63,8 @@ def plotalpha(ac, st, k, ax):
             p2 = puntos[arista[1]]
             ax.plot([p1[0], p2[0]], [p1[1], p2[1]], 'k')
 
+    ax.axis('scaled')
+
 
 def puntosCurvaRuido(curva, t, t0, t1, numPuntos=10, mu=0, sigma=0.1):
     """
@@ -86,7 +89,7 @@ def puntosCurvaRuido(curva, t, t0, t1, numPuntos=10, mu=0, sigma=0.1):
     return puntosCurva + ruido
 
 
-def ejemploPlano(points1, points2, indice, mapa=None):
+def ejemploPlano(points1, points2, indice, mapa=None, provincias=None):
     """
     Calcular la distancia Hausdorff entre los conjuntos de puntos y la distancia bottleneck entre sus diagramas de persistencia.
 
@@ -96,7 +99,8 @@ def ejemploPlano(points1, points2, indice, mapa=None):
     points2: numpy.array.
     incice: String.
         String indicativo del ejemplo a ejecutar.
-    mapa = folium.map.
+    mapa: folium.map.
+    provincias: list.
     """
     # ------------Primer conjunto de puntos------------
 
@@ -108,7 +112,7 @@ def ejemploPlano(points1, points2, indice, mapa=None):
         # Calculamos el alfa complejo
         complex1 = gudhi.AlphaComplex(points=points1)
         simplex_tree1 = complex1.create_simplex_tree()
-        nameComp = "Alpha complex"
+        nameComp = "Alfa complejo"
     else:
         # Inicializamos la figura
         fig, axs = plt.subplots(1, 2, dpi=100)
@@ -119,11 +123,11 @@ def ejemploPlano(points1, points2, indice, mapa=None):
         # Calculamos el complejo de Vietoris-Rips
         complex1 = gudhi.RipsComplex(points=points1)
         simplex_tree1 = complex1.create_simplex_tree(max_dimension=2)
-        nameComp = "Vietoris-Rips complex"
+        nameComp = "Complejo de Vietoris-Rips"
 
-    print(nameComp + 'is of dimension ' + repr(simplex_tree1.dimension()) + ' - ' +
-          repr(simplex_tree1.num_simplices()) + ' simplices - ' +
-          repr(simplex_tree1.num_vertices()) + ' vertices.'
+    print(nameComp + ' de dimensión ' + repr(simplex_tree1.dimension()) + ' - ' +
+          repr(simplex_tree1.num_simplices()) + ' símplices - ' +
+          repr(simplex_tree1.num_vertices()) + ' vértices.'
           )
 
     # Obtenemos el diagrama de persistencia
@@ -142,6 +146,9 @@ def ejemploPlano(points1, points2, indice, mapa=None):
         # Obtener valor filtración
         valueM = max([s[1][1] for s in diag1 if s[0] == 1])
         value = max([s[1][0] for s in diag1 if s[1][1] == valueM])
+        arista = [s for s, v in simplex_tree1.get_filtration() if v == value][0]
+        print("Arista que genera la clase de homología de dimensión 1 que más vive:",
+              "(" + provincias[arista[0]] + "-" + provincias[arista[1]] + ")\n")
 
         # Representar complejo de Vietoris-Rips de dicha filtración sobre el mapa
         sub_group1 = folium.FeatureGroup(name=f"Complejo VR Wikipedia (r = {value})", control=True, show=True)
@@ -163,9 +170,9 @@ def ejemploPlano(points1, points2, indice, mapa=None):
         complex2 = gudhi.RipsComplex(points=points2)
         simplex_tree2 = complex2.create_simplex_tree(max_dimension=2)
 
-    print(nameComp + 'is of dimension ' + repr(simplex_tree2.dimension()) + ' - ' +
-          repr(simplex_tree2.num_simplices()) + ' simplices - ' +
-          repr(simplex_tree2.num_vertices()) + ' vertices.'
+    print(nameComp + ' de dimensión ' + repr(simplex_tree2.dimension()) + ' - ' +
+          repr(simplex_tree2.num_simplices()) + ' símplices - ' +
+          repr(simplex_tree2.num_vertices()) + ' vértices.'
           )
 
     # Obtenemos el diagrama de persistencia
@@ -184,6 +191,9 @@ def ejemploPlano(points1, points2, indice, mapa=None):
         # Obtener valor filtración
         valueM = max([s[1][1] for s in diag2 if s[0] == 1])
         value = max([s[1][0] for s in diag2 if s[1][1] == valueM])
+        arista = [s for s, v in simplex_tree2.get_filtration() if v == value][0]
+        print("Arista que genera la clase de homología de dimensión 1 que más vive:",
+              "(" + provincias[arista[0]] + "-" + provincias[arista[1]] + ")")
 
         # Representar complejo de Vietoris-Rips de dicha filtración sobre el mapa
         sub_group2 = folium.FeatureGroup(name=f"Complejo VR Random (r = {value})", control=True, show=False)
@@ -197,12 +207,12 @@ def ejemploPlano(points1, points2, indice, mapa=None):
     # Ajustar figura y guardarla en directorio de trabajo
     fig.tight_layout()
     if mapa is not None:
-        fig.subplots_adjust(top=0.88)
+        fig.subplots_adjust(top=0.85)
         fig2.tight_layout()
-        fig2.subplots_adjust(top=0.88)
-        fig2.savefig(pathOut + f'ejemplo{indice}2.png', dpi=100)
+        fig2.subplots_adjust(top=0.85)
+        fig2.savefig(pathOut + f'ejemplo{indice}2.png', dpi=100, bbox_inches='tight')
 
-    fig.savefig(pathOut + f'ejemplo{indice}.png', dpi=100)
+    fig.savefig(pathOut + f'ejemplo{indice}.png', dpi=100, bbox_inches='tight')
     plt.show()
 
     # ------------Calculo de las distancias------------
@@ -220,7 +230,7 @@ def ejemploPlano(points1, points2, indice, mapa=None):
     diag1_1 = np.array([s[1] for s in diag1 if s[0] == 1])
     diag2_1 = np.array([s[1] for s in diag2 if s[0] == 1])
     print("Distancia bottleneck dimensión 1:", round(distancias.bottleneck(diag1_1, diag2_1), 5),
-          "(Implementación GUDHI:", str(round(gudhi.bottleneck_distance(diag1_1, diag2_1), 5)) + ")", "\n")
+          "(Implementación GUDHI:", str(round(gudhi.bottleneck_distance(diag1_1, diag2_1), 5)) + ")")
 
 
 def ejemplo1(backup=True):
@@ -241,8 +251,11 @@ def ejemplo1(backup=True):
         points1 = puntosCurvaRuido(curva, t, 0, 2*np.pi, numPuntos=30)
         points2 = puntosCurvaRuido(curva, t, 0, 2*np.pi, numPuntos=30, mu=2, sigma=0.3)
 
-    print("-------------Ejemplo 1-------------\n")
+    print("-------------INICIO:Ejemplo1-------------")
     ejemploPlano(points1, points2, 1)
+    print("-------------FIN:Ejemplo1-------------\n")
+
+    return points2
 
 
 def ejemplo2(backup=True):
@@ -262,10 +275,13 @@ def ejemplo2(backup=True):
         curva = [10 * sy.cos(2 * t) * sy.cos(t),
                  10 * sy.cos(2 * t) * sy.sin(t)]
         points1 = puntosCurvaRuido(curva, t, 0, 2*np.pi, numPuntos=50, sigma=0.00)
-        points2 = puntosCurvaRuido(curva, t, 0, 2*np.pi, numPuntos=50, mu=2, sigma=0.3)
+        points2 = puntosCurvaRuido(curva, t, 0, 2*np.pi, numPuntos=50, mu=2, sigma=0.5)
 
-    print("-------------Ejemplo 2-------------\n")
+    print("-------------INICIO:Ejemplo2-------------")
     ejemploPlano(points1, points2, 2)
+    print("-------------FIN:Ejemplo2-------------\n")
+
+    return points2
 
 
 def estiloMapa(feature, elecciones):
@@ -323,8 +339,9 @@ def ejemploMapa():
     folium.GeoJson(pathIn + r"spain_provincias.geojson", name="Partidos Ganadores", control=False,
                    style_function=(lambda feature: estiloMapa(feature, elecciones))).add_to(m)
 
-    print("-------------Ejemplo 3-------------\n")
-    ejemploPlano(coordenadasWiki, coordenadasRandom, "Mapa", mapa=m)
+    print("-------------INICIO:Ejemplo3-------------")
+    ejemploPlano(coordenadasWiki, coordenadasRandom, "Mapa", mapa=m, provincias=eleccionesPSOE["Provincia"].values.tolist())
+    print("-------------FIN:Ejemplo3-------------\n")
 
     folium.LayerControl(collapsed=False).add_to(m)
     m.save(pathOut + "mapSpain.html")
@@ -332,6 +349,15 @@ def ejemploMapa():
 
 
 if __name__ == "__main__":
-    ejemplo1()
-    ejemplo2()
+    orig_stdout = sys.stdout
+    log_file = open(r"ejemplos.log", 'w', encoding='utf-8')
+    sys.stdout = log_file
+
+    points1 = ejemplo1()
+    points2 = ejemplo2()
     elecciones, coordenadasRandom = ejemploMapa()
+
+    sys.stdout = orig_stdout
+    log_file.close()
+
+    print("Completado!")

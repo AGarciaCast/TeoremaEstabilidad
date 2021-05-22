@@ -139,6 +139,7 @@
 \definecolor{gray97}{gray}{.97}
 \definecolor{gray75}{gray}{.75}
 \definecolor{gray45}{gray}{.45}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
 
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Anexo}
@@ -186,10 +187,29 @@
 \lstnewenvironment{listing}[1][]
    {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
 
-\lstdefinestyle{consola}
-   {basicstyle=\scriptsize\bf\ttfamily,
-    backgroundcolor=\color{gray75},    
-    }
+\lstdefinestyle{consola}{
+   language=bash,
+   stringstyle=\mdseries\rmfamily,
+   keywordstyle=\bfseries\rmfamily,
+   basicstyle=\scriptsize\bf\ttfamily,
+   stepnumber=1,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   showstringspaces=false,
+   showspaces=false,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b,
+   rangeprefix=-------------,
+   rangesuffix=-------------,
+   includerangemarker=false,
+   columns=flexible,
+   firstnumber=0
+}
+
+\newcommand{\consola}[1]{\lstinputlisting[style=consola,linerange=INICIO:#1-FIN:#1]{../code/ejemplos.log}}
+
 
 \lstdefinestyle{CodigoC}
    {basicstyle=\scriptsize,

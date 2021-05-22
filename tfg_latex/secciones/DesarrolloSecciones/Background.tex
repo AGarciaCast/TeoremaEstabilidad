@@ -589,6 +589,10 @@ Sea $F$ una colección finita de conjuntos. Se define el \emph{nervio} de F como
 \]
 \end{definition}
 
+\begin{lemma}[Lema del nervio]
+Si $F$ es una colección finita de subconjuntos cerrados y convexos en el espacio Euclídeo, entonces el nervio de $F$ tiene el mismo tipo de homotopía que la unión de los conjuntos de $F$.
+\end{lemma}
+
 Consideramos el caso particular en el que los conjuntos de la familia son las bolas cerradas $\overline{B}_r(x)= \{y\in \mathbb{R}^d \mid d(x,y) \leq r\}$ en $\mathbb{R}^d$.
 
 \begin{figure}[!ht]
@@ -708,8 +712,11 @@ En la figura \ref{ref:alpha} se puede observar la unión de dichas regiones y su
 
 Puesto que $R_u(r) \subset \overline{B}_r(u)$ para cada $u \in S$, se tiene que $\text{Alpha}(r) \subset \text{\v{C}ech}(r)$. Del mismo modo, dado que $R_u(r) \subset V_u$ para cada $u \in S$, se tiene que $\text{Alpha}(r) \subset \text{Del}(S)$.
 
-Además, el alfa complejo tiene menos símplices que el complejo de \v{C}ech. Y como es un subcomplejo del complejo de Delaunay, admite de manera natural una realización en $\mathbb{R}^d$. Por lo que hace que los alfa complejos sean una buena opción desde el punto de vista computacional.
+\begin{property}[\cite{libroEH}]
+$\abs{\text{\rm Alpha}(r)}$ y $\abs{\text{\rm \v{C}ech}(r)}$ tienen el mismo tipo de homotopía.
+\end{property}
 
+Además, el alfa complejo tiene menos símplices que el complejo de \v{C}ech. Y como es un subcomplejo del complejo de Delaunay, admite de manera natural una realización en $\mathbb{R}^d$. Por lo que hace que los alfa complejos sean una buena opción desde el punto de vista computacional.
 
 \subsection{Homología}
 Como se puede ver en \cite{Hatcher}, la homotopía es una herramienta algebraica para poder obtener propiedades de los espacios topológicos. Sin embargo, los métodos para el cálculo de la homotopía no son manejables computacionalmente. Así pues, se propone la homología como formalismo algebraico, que, aunque no es capaz de obtener tanta información topológica sobre el espacio como con otros formalismos, es muy computable.
