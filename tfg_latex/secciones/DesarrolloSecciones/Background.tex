@@ -220,7 +220,7 @@ El \emph{espacio subyacente} de un complejo simplicial $K$, denotado $\abs{K}$, 
 \end{definition}
 Como se puede observar, el espacio subyacente  de un complejo simplicial es compacto, siendo unión finita de símplices. El siguiente resultado caracteriza los abiertos y cerrados del espacio subyacente $\abs{K}$ de un complejo simplicial $K$.
 
-\begin{proposition}[\cite{libroEH}]
+\begin{proposition}[{\cite[Chapter~3]{libroEH}}]
 Sea $K$ un complejo simplicial y $A \subset \abs{K}$ un subconjunto. Entonces $A$ es un abierto (cerrado) en $K$ si y sólo si para cada $\sigma \in K$, $A \cap \abs{\sigma}$ es un abierto (cerrado) de $\abs{\sigma}$.
 \end{proposition}
 
@@ -278,7 +278,7 @@ Y bajo ciertas circunstancias podremos hacer el paso opuesto de construir un com
 Sean $A$ un complejo simplicial abstracto y $K$ un complejo simplicial. Diremos que $K$ es una \emph{realización geométrica} de $A$, si $A$ es isomorfo al esquema de vértices de $K$.
 \end{definition}
 
-\begin{theorem}[\cite{libroEH}]
+\begin{theorem}[{\cite[Chapter~3]{libroEH}}]
 Todo complejo simplicial abstracto de dimensión $d$ admite una realización geométrica en $\mathbb{R}^{2d + 1}$.
 \end{theorem}
 
@@ -487,7 +487,7 @@ En la figura \ref{ref:subBar} se muestra la primera y segunda subdivisión baric
 
 Recordemos que el \emph{diámetro} de un subconjunto $A \subset \mathbb{R}^d$ es el supremo sobre las distancias entre sus puntos. 
 
-\begin{lemma}[\cite{libroEH}]
+\begin{lemma}[{\cite[Chapter~3]{libroEH}}]
 Si $\sigma$ es un $k$-símplice, entonces el diámetro de cada símplice en la subdivisión baricéntrica de $\sigma$ es como máximo $\frac{k}{k+1}\text{\rm diam }\sigma$.
 \end{lemma}
 
@@ -556,7 +556,7 @@ Sean $K$ y $L$ complejos simpliciales, $g: \abs{K} \to \abs{L}$ una aplicación 
 \end{definition}
 
 Además, la condición de estrella será una condición suficiente para garantizar la existencia de una aproximación simplicial:
-\begin{lemma}[\cite{libroEH}]
+\begin{lemma}[{\cite[Chapter~3]{libroEH}}]
 Sean $K$ y $L$ complejos simpliciales, $g: \abs{K} \to \abs{L}$ una aplicación continua que satisface la condición de estrella. Entonces $g$ tiene una aproximación simplicial $f: K \to L$.
 \end{lemma}
 
@@ -569,7 +569,7 @@ En la figura \ref{ref:aproxSimp} podemos ver un ejemplo de aproximación simplic
 \label{ref:aproxSimp}
 \end{figure}
 
-\begin{theorem}[Aproximación simplicial \cite{libroEH}]
+\begin{theorem}[Aproximación simplicial {\cite[Chapter~3]{libroEH}}]
 \label{ref:teoremaAproximacionSimplicial}
 \begin{sloppypar}
 Sean $K$ y $L$ complejos simpliciales, ${g: \abs{K} \to \abs{L}}$ una aplicación continua. Entonces existe $n \in \mathbb{N}$ tal que $g$ tiene una aproximación simplicial ${f: \text{\rm Sd}^{n}\ K \to L}$.
@@ -589,7 +589,7 @@ Sea $F$ una colección finita de conjuntos. Se define el \emph{nervio} de F como
 \]
 \end{definition}
 
-\begin{lemma}[Lema del nervio]
+\begin{lemma}[Lema del nervio {\cite[Chapter~3]{libroEH}}]
 Si $F$ es una colección finita de subconjuntos cerrados y convexos en el espacio Euclídeo, entonces el nervio de $F$ tiene el mismo tipo de homotopía que la unión de los conjuntos de $F$.
 \end{lemma}
 
@@ -712,7 +712,7 @@ En la figura \ref{ref:alpha} se puede observar la unión de dichas regiones y su
 
 Puesto que $R_u(r) \subset \overline{B}_r(u)$ para cada $u \in S$, se tiene que $\text{Alpha}(r) \subset \text{\v{C}ech}(r)$. Del mismo modo, dado que $R_u(r) \subset V_u$ para cada $u \in S$, se tiene que $\text{Alpha}(r) \subset \text{Del}(S)$.
 
-\begin{property}[\cite{libroEH}]
+\begin{property}[{\cite[Chapter~3]{libroEH}}]
 $\abs{\text{\rm Alpha}(r)}$ y $\abs{\text{\rm \v{C}ech}(r)}$ tienen el mismo tipo de homotopía.
 \end{property}
 
@@ -1007,7 +1007,7 @@ El $1$-ciclo que habíamos destacado en azul en la figura \ref{ref:1-ciclo} es u
 
 Probaremos que los $p$-bordes son $p$-ciclos, como ocurre en el ejemplo. Para ello enunciaremos el siguiente lema.
 
-\begin{lemma}[Lema fundamental de la homología \cite{libroEH}]
+\begin{lemma}[Lema fundamental de la homología {\cite[Chapter~4]{libroEH}}]
 $\partial_p \partial_{p+1} c = 0$ para todo entero $p$ y toda $(p + 1)$-cadena $c$.
 \end{lemma}
 
@@ -1069,7 +1069,7 @@ f(\sigma^p)	& \text{ si } \text{dim } f(\sigma^p) = p \\
 
 Puesto que los símplices forman una base de los espacios vectoriales $\text{C}_p(K)$ y $\text{C}_p(L)$, mediante una extensión lineal se obtiene una aplicación lineal $f_{\#}: \text{C}_p(K) \to \text{C}_p(L)$.
 
-\begin{property}[\cite{libroEH}]
+\begin{property}[{\cite[Chapter~4]{libroEH}}]
 Sean $\partial_K$ y $\partial_L$ los operadores borde de $K$ y $L$ respectivamente. Entonces $f_{\#}\circ \partial_K = \partial_L \circ f_{\#}$.
 \end{property}
 La propiedad anterior garantiza que $f_{\#}(\text{Z}_p(K)) \subset \text{Z}_p(L)$ y $f_{\#}(\text{B}_p(K)) \subset \text{B}_p(L)$. Por tanto $f_{\#}$ induce una aplicación lineal $f_{*}: \text{H}_p(K) \to \text{H}_p(L)$, que denominaremos \emph{homomorfismo inducido por $f$}.
@@ -1110,7 +1110,7 @@ La característica de Euler de un complejo simplicial $K$ es
 donde $s_p = \text{dim } \text{C}_p(K)$.
 \end{definition}
 La podremos calcular a partir de los números de Betti:
-\begin{theorem}[\cite{libroEH}]
+\begin{theorem}[{\cite[Chapter~4]{libroEH}}]
 $\chi(K) = \sum_{p=0}^{\text{\rm dim } K} (-1)^p \beta_p(K)$.
 \end{theorem}
 
@@ -1414,13 +1414,13 @@ Sea $K$ un complejo simplicial y $f_i:\abs{K} \to \mathbb{R}$ una función PL. S
 \end{definition}
 
 Esta filtración cumple las siguientes propiedades:
-\begin{property}[\cite{libroEH}]
+\begin{property}[{\cite[Chapter~6]{libroEH}}]
 \begin{sloppypar}
 $K_i$ tiene el mismo tipo de homotopía que el subnivel ${\abs{K}_t=f^{-1}(-\infty, t]}$, para todo $f(u_i) \leq t < f(u_{i+1})$.
 \end{sloppypar}
 \end{property}
 
-\begin{property}[\cite{libroEH}]
+\begin{property}[{\cite[Chapter~6]{libroEH}}]
 \begin{sloppypar}
 La la variación de la homología en los conjuntos de subnivel ${\abs{K}_t=f^{-1}(-\infty, t]}$ es la misma que la homología de la filtración por las estrellas inferiores de $f$.
 \end{sloppypar}

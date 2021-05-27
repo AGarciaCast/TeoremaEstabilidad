@@ -1,13 +1,36 @@
 \chapter*{Anexos}
 
-\section{Implementación de las distancias Hausdorff y bottleneck}
+\section{Código Python}
+\subsection{Implementación de las distancias Hausdorff y bottleneck}
 \lstinputlisting[style=Python,label=codigo_dist,caption=Implementación de las distancias Hausdorff y bottleneck]{../code/distancias.py}
 
-\section{Visualización de la función distancia a un conjunto}
+\subsection{Visualización de la función distancia a un conjunto}
 \lstinputlisting[style=Python,label=codigo_vis_dist,caption=Visualización de la función distancia a un conjunto]{../code/visualizar_distancia.py}
 
-\section{Implementación de los ejemplos}
+\subsection{Implementación de los ejemplos}
 \lstinputlisting[style=Python,label=codigo_ej,caption=Implementación de los ejemplos]{../code/ejemplos.py}
+
+\section{Datos entrada}
+\subsection{CSV datos provincias España}
+\renewcommand\arraystretch{1.5}%
+\begin{longtable}{|r|p{4.5cm}|p{2cm}|}
+\caption{Partidos con mayor número de votos en las elecciones generales del noviembre de 2019 en cada provincia.} \label{tab:ProvinciaPartido}\\\hline
+& \bfseries Provincia & \bfseries Partido\\\hline\hline
+\csvreader[late after line=\\\hline , head to column names]{../code/input/elecciones2019Nov.csv}{}%
+{\thecsvrow & \Provincia & \Partido}%
+\end{longtable}%
+\begin{longtable}{|r|p{4.5cm}|p{4.5cm}|p{4.5cm}|}
+\caption{Coodenadas de las provincias obtenidas de su correspondiente página de la Wikipedia} \label{tab:ProvinciaWiki}\\\hline
+& \bfseries Provincia & \bfseries Latitud Wikipedia & \bfseries Longitud Wikipedia\\\hline\hline
+\csvreader[late after line=\\\hline , head to column names]{../code/input/elecciones2019Nov.csv}{}%
+{\thecsvrow & \Provincia & \Latitud & \Longitud}%
+\end{longtable}%
+\begin{longtable}{|r|p{4.5cm}|p{4.5cm}|p{4.5cm}|}
+\caption{Coordenadas arbitrarias de cada una de las provincias} \label{tab:ProvinciaRand}\\\hline
+& \bfseries Provincia & \bfseries Latitud Random & \bfseries Longitud Random\\\hline\hline
+\csvreader[late after line=\\\hline , head to column names]{../code/input/elecciones2019Nov.csv}{}%
+{\thecsvrow & \Provincia & \LatitudR & \LongitudR}%
+\end{longtable}
 
 
 

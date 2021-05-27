@@ -18,6 +18,8 @@
 \usepackage{tensor}
 \usepackage{faktor}
 \usepackage{aligned-overset}
+\usepackage{csvsimple}
+\usepackage{longtable}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
@@ -135,7 +137,6 @@
 
 \usepackage{color}
 \usepackage{xcolor}
-
 \definecolor{gray97}{gray}{.97}
 \definecolor{gray75}{gray}{.75}
 \definecolor{gray45}{gray}{.45}
@@ -208,7 +209,9 @@
    firstnumber=0
 }
 
-\newcommand{\consola}[1]{\lstinputlisting[style=consola,linerange=INICIO:#1-FIN:#1]{../code/ejemplos.log}}
+\newcommand{\consola}[1]{
+\lstinputlisting[style=consola,linerange=INICIO:#1-FIN:#1]{../code/ejemplos.log}
+}
 
 
 \lstdefinestyle{CodigoC}

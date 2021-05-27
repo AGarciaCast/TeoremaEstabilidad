@@ -1,5 +1,12 @@
 \chapter{Resultados y conclusiones}
+En este trabajo de fin de grado se ha estudiado el \emph{Teorema de estabilidad} enunciado y demostrado en \cite{Cohen-Steiner2007}.
 
-\todo{Sección por hacer}
-Resumen de resultados obtenidos en el TFG. Y conclusiones personales del estudiante sobre el trabajo realizado.
+En la Sección \ref{sec:bg} se introducen los conceptos matemáticos necesarios para que el trabajo sea autocontenido. Esta introducción parte de los complejos simpliciales y la obtención de complejos simpliciales para nubes de puntos. Continuando con los resultados principales de los grupos de homología simplicial y alguna pequeña noción sobre homología singular. Y terminando introduciendo la persistencia enfocada desde diversos puntos de vista.
 
+En la Sección \ref{sec:teorema}, se enuncia el \emph{Teorema de estabilidad} y se demuestra el mismo siguiendo \cite{Cohen-Steiner2007}. Para ello primero se han definido las herramientas que son necesarias para poder estudiar la estabilidad, que son la distancia Hausdorff y la distancia bottleneck. Se empieza con la demostración de la estabilidad para la distancia Hausdorff haciendo uso del \emph{Lema de la caja} que relaciona las multiplicidades totales en rectángulos entre los diagramas de persistencia. Tras ello se continua con la demostración del teorema principal, que demuestra la estabilidad para la distancia bottleneck. Aquí se hace uso del resultado anterior para poder demostrar la estabilidad para la distancia bottleneck en unas condiciones sencillas, que se pueden generalizar haciendo uso de la aproximación de las funciones tame en espacios triangulables a través de funciones PL.
+
+En la Sección \ref{sec:impl} se observa cómo se pueden implementar tanto la distancia Hausdorff de la manera más sencilla posible y como se puede obtener la distancia bottleneck transformando el cálculo en un problema de búsqueda de emparejamientos mínimos en un grafo bipartido, haciendo uso de un algoritmo similar al Método Húngaro.
+
+Por último se ilustra el teorema a partir de unos casos de prueba implementados en Python, donde se ha comprobado que la perturbación en los diagramas de persistencia está acotada por las perturbaciones en los datos (o funciones) originales.
+
+Las aplicaciones de la TDA son cada día más amplias y la homología persistente y los diagramas de persistencia son granes herramientas para el estudio de las características cualitativas de los datos y el conocimiento de sus propiedades topológicas. Es por esto que el resultado del \emph{Teorema de estabilidad} es de tal importancia, ya que sin la robustez que nos garantiza dicho teorema, muchas de estas aplicaciones de la homología persistente no serían aptas para casos donde los datos puedan tener perturbaciones, ya sean procedentes a mediciones o bien por otro tipo fuente. 

@@ -247,7 +247,7 @@ S/(S \cap T) \cong (S+T)/T\,.
 \end{theorem}
 
 \begin{proof}[Demostración del Lema \ref{eq:lemaCaja} (Lema de la caja)]
-Podemos asumir sin perder generalidad que $a$, $b$, $c$ y $d$ no son valores críticos homológicos de $g$ y $a+\epsilon$, $b-\epsilon$, $c+\epsilon$ y $d-\epsilon$ no son valores críticos homológicos de $f$. Además consideraremos que $a + \epsilon < b -\epsilon$ y $c + \epsilon < d - \epsilon$, de forma que $R_\epsilon$ este bien definido.
+Podemos asumir sin perder generalidad que $a$, $b$, $c$ y $d$ no son valores críticos homológicos de $g$ y $a+\epsilon$, $b-\epsilon$, $c+\epsilon$ y $d-\epsilon$ no son valores críticos homológicos de $f$. Además, consideraremos que $a + \epsilon < b -\epsilon$ y $c + \epsilon < d - \epsilon$, de forma que $R_\epsilon$ esté bien definido.
 
 Para el cálculo de las multiplicidades totales dentro de las cajas haremos uso de las dimensiones de los subespacios vectoriales asociados, es decir,
 \begin{equation}\label{eq:Mf-F}
@@ -257,7 +257,7 @@ Para el cálculo de las multiplicidades totales dentro de las cajas haremos uso 
 \text{dim } \tensor*{G}{*_{a\;}^{c\,}_{b}^{d}} = \#(\text{\rm Dgm}(g) \cap R)\,. 
 \end{equation}
 
-Para demostrar que $\text{dim } \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}} \leq \text{dim } \tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}$, buscaremos un epimorfismo entre un subespacio vectorial de $\tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}$ y $ \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}}$. Para la construcción de dicha aplicación haremos uso del diagrama que se muestra en la figura \ref{ref:diagCon1}, que, como veremos, esta bien definido y es conmutativo.
+Para demostrar que $\text{dim } \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}} \leq \text{dim } \tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}$, buscaremos un epimorfismo entre un subespacio vectorial de $\tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}$ y $ \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}}$. Para la construcción de dicha aplicación haremos uso del diagrama que se muestra en la figura \ref{ref:diagCon1}, que, como veremos, está bien definido y es conmutativo.
 
 \begin{figure}[!ht]
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAHEB9YOgXwD1gUXiF6l0mXPkIoATKVlVajFmwBi3OgGoAOjphpsDAgKEBaPQaMnR4kBmx4CReQBYl9Zq0QgNPXfqGWMZgpgDGAVbBNmISjtJErgoeKt6+3ABGFoHWoYJQ2VEhIrH2kk4yyEnu1J6qPn5ZlkHFghHNuSV2DlLOKGQAbClebFw84bx6cEyGMDgwAI4ABACimhO2cb2VA+TD9RyZpsKbZfF9yLtDtalsa8AZE1NMGXBzi0tjj20lSjBQAHN4ERQAAzABOEAAtkh5CAcBAkABGagMOgZGAMAAK5QSPgYMFBOBANxGPlBmkiLRMbSpuVIBQ60VCAF4mJxZKcIdDkdQEUgAMx8ujBNgACwgEAA1iTlGSQOCOSysFzITDEEl4YjEEKQGiMdjcX0FVgAWLiaSDuyBSyKQ9CtS8sB2jlmQyHZ1VTzEHD+RrhaKfBLpbK6mlFTaVaVueqAKx87VwsNsPRBThhPQ0GDgnDcNZ0fhhXgsuAc2X6zE484yPWE4nRtVIeNapBkOUHAHrNoMyY6LM5vOcAtFtmcJHl9GVo01glEr3qtt+3bwkUMcWSmWW8NjpYspZRuwxwUJpDL5M+TN0cFoMVYdOZ7O54CND3M46v4rF0vjhve5t+gB2Lc2EVVxlVlHBV3XENf3VICW39PVJ0NasQNNc1Q1uHxSxtVNsHvPtH0HDJCy6MFG0QeCl1RZCq22NCzQtds0nZMDOwecIewfAdgDWEii1ECheCAA
@@ -280,9 +280,9 @@ Definimos $E_a^c$ como la preimagen, por la restricción de $\psi_c$ a $G_b^c$, 
 
 También definimos $E_a^c = G_a^c \cap E_b^c$. Veremos posteriormente que $E_b^c/E_a^c$ es el subespacio de $\tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}$ del que podremos encontrar un epimorfismo a $ \tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}}$.
 
-Continuando la descripción del diagrama conmutativo tenemos las aplicaciones $r_1$, $r_2$, $r_3$ y $r_4$ que son las inclusiones entre los respectivos espacios vectoriales. Además, $u_1$ es la restricción de $\tensor*{g}{*_{a}^{c\,}_{}^{d}}$ en $E_a^c$ y $u_2$ es la restricción de $\tensor*{g}{*_{b}^{c\,}_{}^{d}}$ en $E_b^c$. También tenemos $s_2=\psi_c\vert_{E_a^c}$ y por (\ref{eq:relCuadrantes}) se cumple que $\psi_c(G_a^c)\subseteq F_{a+\epsilon}^{c+\epsilon}$, lo que garantiza que $s_2$ esta bien definido ya que su imagen esta contenida en $F_{a+\epsilon}^{c+\epsilon}$. Finalmente, $s_1=\varphi_c\vert_{F_{b-\epsilon}^{d-\epsilon}}$ y por (\ref{eq:relCuadrantes}) con $F$ y $G$ intercambiados se cumple que $\varphi_{d-\epsilon}(F_{b-\epsilon^{d-\epsilon}})\subseteq G_{b}^{d}$, lo que garantiza que $s_1$ esta bien definido.
+Continuando la descripción del diagrama conmutativo tenemos las aplicaciones $r_1$, $r_2$, $r_3$ y $r_4$ que son las inclusiones entre los respectivos espacios vectoriales. Además, $u_1$ es la restricción de $\tensor*{g}{*_{a}^{c\,}_{}^{d}}$ en $E_a^c$ y $u_2$ es la restricción de $\tensor*{g}{*_{b}^{c\,}_{}^{d}}$ en $E_b^c$. También tenemos $s_2=\psi_c\vert_{E_a^c}$ y por (\ref{eq:relCuadrantes}) se cumple que $\psi_c(G_a^c)\subseteq F_{a+\epsilon}^{c+\epsilon}$, lo que garantiza que $s_2$ está bien definido ya que su imagen está contenida en $F_{a+\epsilon}^{c+\epsilon}$. Finalmente, $s_1=\varphi_c\vert_{F_{b-\epsilon}^{d-\epsilon}}$ y por (\ref{eq:relCuadrantes}) con $F$ y $G$ intercambiados se cumple que $\varphi_{d-\epsilon}(F_{b-\epsilon^{d-\epsilon}})\subseteq G_{b}^{d}$, lo que garantiza que $s_1$ está bien definido.
 
-Por tanto, el diagrama esta bien definido y es conmutativo (ya que las aplicaciones son inclusiones o bien aplicaciones inducidas por inclusiones).
+Por tanto, el diagrama está bien definido y es conmutativo (ya que las aplicaciones son inclusiones o bien aplicaciones inducidas por inclusiones).
 
 \begin{sloppypar}
 Como se puede observar en la figura \ref{ref:camino1DiagCon}, $u_4 = s_1 \circ u_3 \circ s_3$, lo que implica que $E_b^c = \text{ker } u_4$, ya que $u_3 \circ s_3$ es cero. Además, como se puede observar en la figura \ref{ref:camino2DiagCon}, $r_1 \circ u_1 = u_4 \circ r_4$, lo que implica que $E_a^c=\text{ker } u_1$, ya que $u_4 \circ r_4$ es cero y $r_1$ es inyectivo al ser una inclusión. Expresamos estas relaciones denotando ${E_b^c=\tensor*{E}{*_{b}^{c\,}_{}^{d}} \subseteq \tensor*{G}{*_{b}^{c\,}_{}^{d}}}$ y ${E_a^c=\tensor*{E}{*_{a}^{c\,}_{}^{d}} \subseteq \tensor*{G}{*_{a}^{c\,}_{}^{d}}}$.
@@ -337,7 +337,7 @@ es decir, es un conjunto de clases laterales de elementos en $\tensor*{E}{*_{b}^
 \text{dim }\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}} \leq \text{dim }\tensor*{G}{*_{a\;}^{c\,}_{b}^{d}}\,.
 \end{equation}
 
-Recordemos que $\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}} = \text{ker } u_4 /\text{ker } u_1$ y que $\tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}} = \text{ker } u_3 /\text{ker } u_2$. Además, hemos observado que $s_3(\text{ker }u_4) = s_3(E_b^c) = \text{ker } u_3$. Así pues, para demostrar que $s_3$ induce un epimorfismo entre los cocientes $\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}}$ y  $\tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}}$ sólo quedaría por garantizar que $s_3(\text{ker } u_1)=s_2(\text{ker } u_1)$ esta incluida en $\text{ker } u_2$. Sin embargo, esto se cumple, ya que como se puede observar en la figura \ref{ref:camino3DiagCon}, $u_3 \circ s_3 \circ r_4(\xi) = r_2 \circ u_2 \circ s_2(\xi)=0$ para todo $\xi \in \text{ker } u_1$, y $r_2$ es inyectiva al ser una inclusión.
+Recordemos que $\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}} = \text{ker } u_4 /\text{ker } u_1$ y que $\tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}} = \text{ker } u_3 /\text{ker } u_2$. Además, hemos observado que $s_3(\text{ker }u_4) = s_3(E_b^c) = \text{ker } u_3$. Así pues, para demostrar que $s_3$ induce un epimorfismo entre los cocientes $\tensor*{E}{*_{a\;}^{c\,}_{b}^{d}}$ y  $\tensor*{F}{*_{a+\epsilon\;}^{c+\epsilon\,}_{b-\epsilon}^{d-\epsilon}}$ sólo quedaría por garantizar que $s_3(\text{ker } u_1)=s_2(\text{ker } u_1)$ está incluida en $\text{ker } u_2$. Sin embargo, esto se cumple, ya que como se puede observar en la figura \ref{ref:camino3DiagCon}, $u_3 \circ s_3 \circ r_4(\xi) = r_2 \circ u_2 \circ s_2(\xi)=0$ para todo $\xi \in \text{ker } u_1$, y $r_2$ es inyectiva al ser una inclusión.
 
 \begin{figure}[!ht]
 \[
@@ -380,7 +380,7 @@ Finalmente, obtenemos la desigualdad al concatenar (\ref{eq:Mf-F}), (\ref{eq:F-E
 Como comentábamos previamente, una consecuencia inmediata del \emph{Lema de la caja} es que la distancia Hausdorff entre $\text{Dgm}(f)$ y $\text{Dgm}(g)$ no es mayor que $\epsilon$. Ya que si $R_\epsilon=[x,x] \times [y,y]=(x, y)$ es un punto de $\text{Dgm}(f)$, entonces debe haber un punto de $\text{Dgm}(g)$ a distancia menor o igual que $\epsilon$, porque la multiplicidad total de $\text{Dgm}(g)$ en la caja ${R = [x-\epsilon, x+\epsilon] \times [y-\epsilon, y+\epsilon]}$ es mayor o igual que uno.
 
 \subsection{Estabilidad para la distancia bottleneck}
-Una vez demostrada que la distancia Hausdorff entre dos diagramas de persistencia esta acotada por las distancia infinito de las funciones tame, vamos a probar el resultado para la distancia bottleneck.
+Una vez demostrada que la distancia Hausdorff entre dos diagramas de persistencia está acotada por las distancia infinito de las funciones tame, vamos a probar el resultado para la distancia bottleneck.
 
 \subsubsection*{Estabilidad para la distancia bottleneck en un caso sencillo}
 Empezaremos demostrando la estabilidad para un caso concreto que tiene una demostración sencilla. Dada una función tame $f:\mathbb{X} \to \mathbb{R}$, consideramos la mínima distancia entre dos puntos fuera de la diagonal o bien entre un punto fuera de la diagonal y otro en la diagonal:
@@ -489,7 +489,7 @@ Por definición de $c$, se cumple que $\norm{h_{\lambda_i}-h_{\lambda_{i+1}}}_\i
 =c(\lambda_{i+1} - \lambda_i)\,.
 \end{gather*}
 
-Como consecuencia, $\norm{h_{\lambda_i}-h_{\lambda_{i+1}}}_\infty \leq \max\{\delta(\lambda_{i+1}), \delta(\lambda_{i})\}/2$, lo que implica que $h_{\lambda_i}$ \emph{esta muy cercana a} $h_{\lambda_{i+1}}$ o al revés. Entonces, aplicando el \emph{Lema de la biyección sencilla}, se sigue que $W_\infty(\text{Dgm}(h_{\lambda_i}), \text{Dgm}(h_{\lambda_i})) \leq \norm{h_{\lambda_i}-h_{\lambda_{i+1}}}_\infty\,$, para todo $1\leq i \leq n-1$. Siendo $\lambda_0=0$ y $\lambda_{n+1}=1$, se sigue dando la desigualdad anterior para $i=0$ e $i=n$, ya que $h_0$ \emph{es muy cercana a} $h_1$ y $h_1$ \emph{es muy cercana a} $h_n$.
+Como consecuencia, $\norm{h_{\lambda_i}-h_{\lambda_{i+1}}}_\infty \leq \max\{\delta(\lambda_{i+1}), \delta(\lambda_{i})\}/2$, lo que implica que $h_{\lambda_i}$ \emph{está muy cercana a} $h_{\lambda_{i+1}}$ o al revés. Entonces, aplicando el \emph{Lema de la biyección sencilla}, se sigue que $W_\infty(\text{Dgm}(h_{\lambda_i}), \text{Dgm}(h_{\lambda_i})) \leq \norm{h_{\lambda_i}-h_{\lambda_{i+1}}}_\infty\,$, para todo $1\leq i \leq n-1$. Siendo $\lambda_0=0$ y $\lambda_{n+1}=1$, se sigue dando la desigualdad anterior para $i=0$ e $i=n$, ya que $h_0$ \emph{es muy cercana a} $h_1$ y $h_1$ \emph{es muy cercana a} $h_n$.
 
 Haciendo uso de la \emph{desigualdad triangular de $W_\infty$} obtenemos el resultado,
 \begin{gather*}
@@ -514,7 +514,7 @@ Adicionalmente, necesitaremos recordar un par de nociones de análisis matemáti
 Dados dos espacios métricos $(X, d_X)$ y $(Y,d_Y)$, y $M \subset X$ entonces una función $f:M \to Y$ se llama \emph{uniformemente continua} en $M$ cuando, para cada $\epsilon > 0$, puede encontrarse $\delta>0$ tal que, si $x_1,x_2 \in M$ verifican que $d_X(x_1,x_2)<\delta$, entonces $d_Y(f(x_1),f(x_2))<\epsilon$.
 \end{definition}
 
-\begin{theorem}[Teorema de Heine–Cantor \cite{libroAnalisisMatematico}]
+\begin{theorem}[Teorema de Heine–Cantor {\cite[Theorem~4.19]{libroAnalisisMatematico}}]
 \begin{sloppypar}
 Sean $E$ y $F$ espacios métricos y ${f : E \to F}$ una función continua. Si $E$ es compacto, entonces $f$ es uniformemente continua.
 \end{sloppypar}
@@ -562,7 +562,7 @@ W_\infty(\text{Dgm}(f), \text{Dgm}(g))
 & \phantom{{}\leq W_\infty}+ W_\infty(\text{Dgm}(\hat{g}), \text{Dgm}(g))\\
 &\leq \norm{f-g}_\infty + 4\delta \underset{\delta \to 0}{\longrightarrow} \norm{f-g}_\infty
 \end{align*}
-Como la condición es cierta para todo $\delta > 0$, podemos hacer $\delta$ tan pequeño como queramos. Por tanto queda demostrado el \emph{Teorema de estabilidad}.
+Como la condición es cierta para todo $\delta > 0$, podemos hacer $\delta$ tan pequeño como queramos. Por tanto, queda demostrado el \emph{Teorema de estabilidad}.
 \end{proof}
 
 

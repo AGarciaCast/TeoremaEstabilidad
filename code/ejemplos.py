@@ -331,7 +331,7 @@ def ejemploMapa():
         zoom_start=6,
     )
 
-    elecciones = pd.read_csv(pathIn + "elecciones2019Nov.csv", index_col="id_provincia")
+    elecciones = pd.read_csv(pathIn + "elecciones2019Nov.csv", index_col="idProvincia")
     eleccionesPSOE = elecciones[elecciones["Partido"] == "PSOE"]
     coordenadasWiki = np.array([tuple(elem) for elem in eleccionesPSOE[["Latitud", "Longitud"]].values.tolist()])
     coordenadasRandom = np.array([tuple(elem) for elem in eleccionesPSOE[["LatitudR", "LongitudR"]].values.tolist()])
