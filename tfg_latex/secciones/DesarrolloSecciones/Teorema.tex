@@ -34,14 +34,14 @@ Las biyecciones entre dos diagramas de persistencia generan tres tipos de empare
 	\item Un punto fuera de la diagonal y otro en la diagonal.
 	\item Ambos puntos en la diagonal.
 \end{itemize}
-Se puede observar que los puntos que determinar en mayor escala la distancia bottelneck son los del primer tipo, y los que menor importancia tienen son los del último tipo, ya que completarán el emparejamiento sin afectar en el cálculo de las distancias.
+Se puede observar que los puntos que determinar en mayor escala la distancia bottleneck son los del primer tipo, y los que menor importancia tienen son los del último tipo, ya que completarán el emparejamiento sin afectar en el cálculo de las distancias.
 
 \begin{remark}
 Debido a que la distancia bottleneck satisface una restricción adicional respecto a la distancia Hausdorff, es decir, la biyección entre los puntos; entonces, se cumple $H(X, Y) \leq W_\infty(X, Y)$.
 \end{remark}
 
 \begin{theorem}[Teorema de estabilidad para funciones tame]\label{th:estabilidadTame}
-Sea $\mathbb{X}$ un espacio topológico triangulable y sea $f,g: \mathbb{X} \to \mathbb{R}$ dos funciones tame continuas. Entonces, para cada dimensión $k$, la distancia bottleneck entre los diagramas de persistencia esta acotada por la distancia infinito entre las funciones, es decir,
+Sea $\mathbb{X}$ un espacio topológico triangulable y sea $f,g: \mathbb{X} \to \mathbb{R}$ dos funciones tame continuas. Entonces, para cada dimensión $k$, la distancia bottleneck entre los diagramas de persistencia está acotada por la distancia infinito entre las funciones, es decir,
 \[
 W_\infty(\text{\rm Dgm}(f), \text{\rm Dgm}(g)) \leq \norm{f-g}_\infty\,.
 \]
@@ -57,10 +57,10 @@ Luego, se garantiza que los diagramas de persistencia son estables bajo perturba
 \end{figure}  
 
 \subsection{Estabilidad para la distancia Hausdorff}
-Partiremos de la demostración de la estabilidad con la distancia Hausdorff, que sigue sigue así
+Partiremos de la demostración de la estabilidad con la distancia Hausdorff, que sigue así
 
 \begin{theorem}[Teorema de estabilidad con la distancia Hausdorff para funciones tame]
-Sea $\mathbb{X}$ un espacio topológico triangulable y sea $f,g: \mathbb{X} \to \mathbb{R}$ dos funciones tame continuas. Entonces, para cada dimensión $k$, la distancia Hausdorff entre los diagramas de persistencia esta acotada por la distancia $L_\infty$ entre las funciones, es decir,
+Sea $\mathbb{X}$ un espacio topológico triangulable y sea $f,g: \mathbb{X} \to \mathbb{R}$ dos funciones tame continuas. Entonces, para cada dimensión $k$, la distancia Hausdorff entre los diagramas de persistencia está acotada por la distancia $L_\infty$ entre las funciones, es decir,
 \[
 H(\text{\rm Dgm}(f), \text{\rm Dgm}(g)) \leq \norm{f-g}_\infty\,.
 \]
@@ -74,7 +74,7 @@ Sean $f,g: \mathbb{X} \to \mathbb{R}$ dos funciones tame continuas. Si denotamos
 \end{proposition}
 
 \begin{proof}
-Sea $y \in \mathbb{X}$ tal que $y \in f^{-1}(-\infty,x]=\{x\in \mathbb{X} \mid f(x) \in (-\infty,x]\}$. Como $\norm{f-g}_\infty= \sup_{x\in \mathbb{X}}\ \abs{f(x) - g(x)} = \epsilon$, entonces $\abs{f(y)-g(y)}<\epsilon$ por lo que $g(y)\in (-\infty, x+\epsilon]$, de donde se sique que $y \in g^{-1}(-\infty, x+\epsilon]\,$.
+Sea $y \in \mathbb{X}$ tal que $y \in f^{-1}(-\infty,x]=\{x\in \mathbb{X} \mid f(x) \in (-\infty,x]\}$. Como $\norm{f-g}_\infty= \sup_{x\in \mathbb{X}}\ \abs{f(x) - g(x)} = \epsilon$, entonces $\abs{f(y)-g(y)}<\epsilon$ por lo que $g(y)\in (-\infty, x+\epsilon]$, de donde se sigue que $y \in g^{-1}(-\infty, x+\epsilon]\,$.
 \end{proof}
 
 Denotamos por $\varphi_x:F_x \to G_{x-\epsilon}$ a la aplicación inducida por esta inclusión. La inclusión análoga, $g^{-1}(-\infty,x]\subseteq f^{-1}(-\infty, x+\epsilon]$, induce la aplicación $\psi_x: G_x \to F_{x+\epsilon}$. Sea $b<c$, estas dos aplicaciones dan lugar a los siguientes diagramas conmutativos:
@@ -94,7 +94,7 @@ Del primer diagrama tenemos que $f_{b-\epsilon}^{c+\epsilon}=\psi_{c} \circ g_{b
 Del segundo diagrama, tenemos que $\psi_{c}(G_{b}^{c})=\psi_{c} \circ g_{b}^{c}(G_b)$, ya que $G_{b}^{c}=\text{im } g_{b}^{c} = g_{b}^{c}(G_b)$. A su vez, se cumple que $\psi_{c} \circ g_{b}^{c}(G_b) = f_{b+\epsilon}^{c+\epsilon} \circ \psi_{b}(G_b) \subseteq F_{b+\epsilon}^{c+\epsilon}$ de donde se sigue que ${\psi_{c}(G_{b}^{c}) \subseteq F_{b+\epsilon}^{c+\epsilon}}$.
 \end{sloppypar}
 
-Así pués, se cumple:
+Así pues, se cumple:
 \begin{equation}\label{eq:relCuadrantes}
 F_{b-\epsilon}^{c+\epsilon} \subseteq \psi_{c}(G_{b}^{c}) \subseteq F_{b+\epsilon}^{c+\epsilon}\,.
 \end{equation}
@@ -105,7 +105,7 @@ De manera análoga podemos demostrar que se cumple que
 \]
 intercambiando $F_{x}$ y $G_{y}$ en los diagramas y sustituyendo las aplicaciones inducidas correctamente.
 
-Recordamos que por la \emph{Fórmula de las dimensiones}\cite{AlgebraLineal}, si una aplicación $f: U \to V$ es lineal entonces se cumple que
+Recordamos que por la \emph{Fórmula de las dimensiones} \cite{AlgebraLineal}, si una aplicación $f: U \to V$ es lineal entonces se cumple que
 \begin{equation}\label{ref:FormulaDim}
 \text{\rm dim ker } f + \text{\rm dim im } f = \text{\rm dim } U\,.
 \end{equation}
@@ -192,7 +192,7 @@ En el caso que los puntos $b$ y $c$ sean valores críticos homológicos de $g$ y
 siendo estas nuevas coordenadas distintas de los valores críticos de $f$ y $g$ respectivamente.
 \end{proof}
 
-Este lema nos garantiza que la multiplicidad total de $\text{Dgm}(g)$ en el cuadrante superior izquierda con vértice en el punto $(b, c)$ esta acotada inferiormente por la multiplicidad total de $\text{Dgm}(f)$ en el cuadrante superior izquerda reducida por $\epsilon$. Esto se puede observar en la figura \ref{ref:lemaCuadranteDib}.
+Este lema nos garantiza que la multiplicidad total de $\text{Dgm}(g)$ en el cuadrante superior izquierda con vértice en el punto $(b, c)$ está acotada inferiormente por la multiplicidad total de $\text{Dgm}(f)$ en el cuadrante superior izquierda reducida por $\epsilon$. Esto se puede observar en la figura \ref{ref:lemaCuadranteDib}.
 
 \subsubsection*{Regiones como subespacios vectoriales}
 \begin{sloppypar}
@@ -218,7 +218,7 @@ Además, podemos observar que se cumple $F_w^y \subseteq F_x^y$, ya que todo ele
 \[
 \tensor*{F}{*_{w\;}^{y\,}_{x}^{z}}= \dfrac{\tensor*{F}{*_{x}^{y\,}_{}^{z}}}{\tensor*{F}{*_{w}^{y\,}_{}^{z}}}\,.
 \]
-Al ser un cociente de subespacios vectoriales, su dimensión es la diferencia de los dos núcleos, es decir, $\text{dim } \tensor*{F}{*_{w\;}^{y\,}_{x}^{z}} = \text{dim } \tensor*{F}{*_{x}^{y\,}_{}^{z}}-\text{dim } \tensor*{F}{*_{w}^{y\,}_{}^{z}}\,$, que equivale a la multiplicidad total en del diagrama de persistencia en la caja $[w,x]\times [y,z]$; como se puede observar en la figura \ref{ref:regHausdorff}$\,$(d). Por tanto, este rectángulo contiene las clases de equivalencia que nacen entre $w$ y $x$ y mueren entre $y$ y $z$.
+Al ser un cociente de subespacios vectoriales, su dimensión es la diferencia de los dos núcleos, es decir, $\text{dim } \tensor*{F}{*_{w\;}^{y\,}_{x}^{z}} = \text{dim } \tensor*{F}{*_{x}^{y\,}_{}^{z}}-\text{dim } \tensor*{F}{*_{w}^{y\,}_{}^{z}}\,$, que equivale a la multiplicidad total en del diagrama de persistencia en la caja $[w,x]\times [y,z]$; cómo se puede observar en la figura \ref{ref:regHausdorff}$\,$(d). Por tanto, este rectángulo contiene las clases de equivalencia que nacen entre $w$ y $x$ y mueren entre $y$ y $z$.
 
 \subsubsection*{Relaciones entre cajas encajadas}
 
@@ -430,7 +430,7 @@ Como $g$ \emph{es muy cercana a} $f$ entonces $\epsilon = \norm{f-g}_\infty < \d
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.55\textwidth]{include/figuras/biyeccionFacilFig.png} 
-\caption{Se observa que al ser $g$ \emph{muy cercana a} $f$, entonces $p$ es el único punto de $\text{Dgm}(f) \cap \square_{2\epsilon}$. Fuente: \cite{presentacionEstabilidad}}
+\caption{Se observa que, al ser $g$ \emph{muy cercana a} $f$, entonces $p$ es el único punto de $\text{Dgm}(f) \cap \square_{2\epsilon}$. Fuente: \cite{presentacionEstabilidad}}
 \label{ref:biyeccionFacilFig}
 \end{figure}
 

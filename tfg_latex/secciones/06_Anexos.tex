@@ -14,13 +14,13 @@
 \subsection{CSV datos provincias España}
 \renewcommand\arraystretch{1.5}%
 \begin{longtable}{|r|p{4.5cm}|p{2cm}|}
-\caption{Partidos con mayor número de votos en las elecciones generales del noviembre de 2019 en cada provincia.} \label{tab:ProvinciaPartido}\\\hline
+\caption{Partidos con mayor número de votos en las elecciones generales de noviembre de 2019 en cada provincia.} \label{tab:ProvinciaPartido}\\\hline
 & \bfseries Provincia & \bfseries Partido\\\hline\hline
 \csvreader[late after line=\\\hline , head to column names]{../code/input/elecciones2019Nov.csv}{}%
 {\thecsvrow & \Provincia & \Partido}%
 \end{longtable}%
 \begin{longtable}{|r|p{4.5cm}|p{4.5cm}|p{4.5cm}|}
-\caption{Coodenadas de las provincias obtenidas de su correspondiente página de la Wikipedia} \label{tab:ProvinciaWiki}\\\hline
+\caption{Coordenadas de las provincias obtenidas de su correspondiente página de la Wikipedia} \label{tab:ProvinciaWiki}\\\hline
 & \bfseries Provincia & \bfseries Latitud Wikipedia & \bfseries Longitud Wikipedia\\\hline\hline
 \csvreader[late after line=\\\hline , head to column names]{../code/input/elecciones2019Nov.csv}{}%
 {\thecsvrow & \Provincia & \Latitud & \Longitud}%

@@ -113,7 +113,7 @@ Sea $\sigma$ un símplice. Entonces
 Se sigue directamente de la definición que un punto $x \in \sigma$ pertenece al interior de $\sigma$ si y sólo si todos sus coeficientes $\lambda_i$ de la combinación convexa son positivos. Se sigue que cada punto $x \in \sigma$ pertenece únicamente al interior de la cara generada por los puntos con coeficientes $\lambda_i$ positivos.
 \end{remark}
 
-Una vez que ya conocemos las piezas de nuestra descomposición vamos a ver como tenemos que unirlas y cuáles son las principales propiedades de los complejos resultantes.\\
+Una vez que ya conocemos las piezas de nuestra descomposición vamos a ver cómo tenemos que unirlas y cuáles son las principales propiedades de los complejos resultantes.\\
 Como ya hemos visto al principio de la sección, para que una descomposición sea un complejo sus piezas tienen que ser topológicamente simples y sus intersecciones tienen que ser piezas de dimensión inferior del mismo tipo. La manera natural de hacer esto es pegar unos símplices con otros por sus caras.
 
 \begin{definition}
@@ -626,7 +626,7 @@ Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos. Llamamos \emph{comple
 donde $\textrm{diam } \sigma$ denota el diámetro del subconjunto $\sigma$.
 \end{definition}
 
-En la figura \ref{ref:vr} podemos observar como se generan los diversos complejos de VR a medida que se va aumentando el radio.
+En la figura \ref{ref:vr} podemos observar cómo se generan los diversos complejos de VR a medida que se va aumentando el radio.
 
 \begin{figure}[!ht]
 \centering
@@ -687,7 +687,7 @@ El complejo de Delaunay es un complejo isomorfo al nervio del diagrama de Vorono
 	\centering
 	\includegraphics[width=0.9\textwidth]{include/figuras/delaunay.png} 
 \end{subfigure}
-\caption{A la izquierda tenemos el Diagrama de Voronoi de un conjunto de nueve puntos en el plano, y a la derecha triangulación de Delaunay superpuesta al diagrama de Voronoi. Fuente: \cite{libroEH}}
+\caption{A la izquierda tenemos el Diagrama de Voronoi de un conjunto de nueve puntos en el plano, y a la derecha la triangulación de Delaunay superpuesta al diagrama de Voronoi. Fuente: \cite{libroEH}}
 \label{ref:vor-del}
 \end{figure}
 
@@ -695,7 +695,7 @@ El complejo de Delaunay es un complejo isomorfo al nervio del diagrama de Vorono
 Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos y $r \geq 0$. Para cada $u \in S$ consideramos la región $R_u(r)= \overline{B}_r(u) \cap V_u$, es decir, la intersección de la región de Voronoi de $u$ con la bola cerrada de centro $u$ y radio $r$.
 
 \begin{definition}
-Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos y $r \geq 0$.Se define el \emph{Alfa complejo} de radio $r$ asociado a $S$ como el complejo simplicial abstracto
+Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos y $r \geq 0$. Se define el \emph{Alfa complejo} de radio $r$ asociado a $S$ como el complejo simplicial abstracto
 \[
 \text{Alpha}(r)=\left\{\sigma \in S \mid \bigcap_{u \in \sigma}R_u(r) \neq \emptyset \right\}\,.
 \]
@@ -894,7 +894,7 @@ Dadas dos $p$-cadenas $c = \sum a_i\sigma_i$ y $c' = \sum b_i\sigma_i$, se defin
 \[
 c + c' = \sum (a_i + b_i)\sigma_i\,.
 \]
-Las $p$-cadenas con la operación suma $+$ forman el \emph{grupo de $p$-cadenas} denotado por $(\text{C}_p,+)$, pero como la operación se sobrentiende, se suele nombrar como $\text{C}_p=\text{C}_p(K)$.
+Las $p$-cadenas con la operación suma $+$ forman el \emph{grupo de $p$-cadenas} denotado por $(\text{C}_p,+)$, pero como la operación se sobreentiende, se suele nombrar como $\text{C}_p=\text{C}_p(K)$.
 
 Este grupo es un grupo abeliano, y como en nuestro caso los coeficientes están tomados en el cuerpo $\mathbb{Z}_2$, $\text{C}_p(K)$ es un espacio vectorial sobre $\mathbb{Z}_2$. Fijado $p \in \mathbb{Z}$, una base del espacio vectorial $\text{C}_p(K)$ es el conjunto $\{\sigma_i^p \mid i=1,...,s_p\}$ formado por los símplices de dimensión $p$ de $K$. Como consecuencia $\text{C}_p(K)=\{0\}$, siendo $0 = \sum 0\cdot\sigma_i$, si $p < 0$ ó $p > \text{dim}(K)$.
 
@@ -1114,7 +1114,7 @@ La podremos calcular a partir de los números de Betti:
 $\chi(K) = \sum_{p=0}^{\text{\rm dim } K} (-1)^p \beta_p(K)$.
 \end{theorem}
 
-Por el teorema \ref{ref:teoremaHomomorfismoInducido} sabemos que si los espacios subyacentes de dos complejos simpliciales son homeomorfos, entonces sus grupos de homología son isomorfos, y por tanto tendrán la misma dimensión.
+Por el teorema \ref{ref:teoremaHomomorfismoInducido} sabemos que, si los espacios subyacentes de dos complejos simpliciales son homeomorfos, entonces sus grupos de homología son isomorfos, y por tanto tendrán la misma dimensión.
 \begin{corollary}
 \begin{sloppypar}
 Sean $K$ y $L$ dos complejos simpliciales tales que $\abs{K} \approx \abs{L}$. Entonces, ${\chi(K)=\chi(L)}$.
@@ -1219,7 +1219,7 @@ La persistencia nos dará un emparejamiento de algunos de los puntos críticos p
 	\item Una clase de homología $\alpha$ nacida en $\mathbb{M}_i$ \emph{morirá al entrar en} $\mathbb{M}_j$ si la imagen de la función inducida por $\mathbb{M}_{i-1} \subseteq \mathbb{M}_{j-1}$ no contiene a la imagen de $\alpha$ pero la imagen de la función inducida por $\mathbb{M}_{i-1} \subseteq \mathbb{M}_j$ si. Siguiendo lo que vimos en funciones de una variable, lo que ocurre es que al entrar en $\mathbb{M}_j$ se junta la clase $\alpha$ con una clase que ya existía en $\mathbb{M}_{i-1}$.
 \end{itemize}
 
-Si $\alpha$ nace en $\mathbb{M}_i$ y muere al entrar $\mathbb{M}_j$, entonces emparejaremos sus puntos críticos correspondientes, $x$ e $y$, y diremos que su persistencia es $j-i$ ó $f(y)-f(x)$ según convenga. Esta persistencia es codificada a través de los \emph{diagramas de persistencia}, $\text{Dgm}_p(f)$, representando cada emparejamiento de un punto crítico positivo de índice $p$ con un punto crítico negativo de índice $p+1$ añadiendo el punto $(f(x),f(y))$ al diagrama. Al igual que hicimos en el caso de funciones reales de una variable, añadiremos los puntos de la diagonal en el diagrama de persistencia.
+Si $\alpha$ nace en $\mathbb{M}_i$ y muere al entrar $\mathbb{M}_j$, entonces emparejaremos sus puntos críticos correspondientes, $x$ e $y$, y diremos que su persistencia es $j-i$ o $f(y)-f(x)$ según convenga. Esta persistencia es codificada a través de los \emph{diagramas de persistencia}, $\text{Dgm}_p(f)$, representando cada emparejamiento de un punto crítico positivo de índice $p$ con un punto crítico negativo de índice $p+1$ añadiendo el punto $(f(x),f(y))$ al diagrama. Al igual que hicimos en el caso de funciones reales de una variable, añadiremos los puntos de la diagonal en el diagrama de persistencia.
 
 \subsubsection*{Funciones tame}
 Se puede comprobar que las funciones Morse sobre variedades diferenciables limitarán demasiado para algunas aplicaciones. Es por ello que consideraremos un tipo de función $f: \mathbb{X} \to \mathbb{R}$, donde $f$ y $\mathbb{X}$ cumplen una serie de propiedades menos restrictivas. Empezaremos extendiendo la noción de punto crítico de la siguiente forma:
@@ -1272,7 +1272,7 @@ F_{x}^{y} = \text{im } f_{x}^{y}\,.
 \]
 Los correspondientes \emph{números de Betti persistentes} se definen como los rangos de estos grupos, es decir, $\beta_{x}^{y} = \text{dim } F_{x}^{y}$, para todo $-\infty \leq x \leq y \leq + \infty$. 
 \end{definition}
-Por convención, se establece que $F_{x}^{y}= \{0\}$ cuando $x$ ó $y$ son infinito. El grupo de homología persistente consiste de las clases que han nacido antes de $x$ y siguen vivas en $y$.
+Por convención, se establece que $F_{x}^{y}= \{0\}$ cuando $x$ o $y$ son infinito. El grupo de homología persistente consiste en las clases que han nacido antes de $x$ y siguen vivas en $y$.
 
 
 \begin{remark}
@@ -1375,7 +1375,7 @@ Siguiendo esta notación, se define la multiplicidad como
 \[
 \mu_{i}^{j} = (\beta_{i}^{j-1}-\beta_{i}^{j})-(\beta_{i-1}-\beta_{i-1}^{i})\,.
 \]
-Donde $\beta_{i}^{j-1}$ se puede interpretar como el número de clases de homología que están vivas en $K_i$ y siguen vivas en $K_{j-1}$. Por lo tanto, la primera diferencia de la igualdad se interpreta como el número de clases independientes que están vivas en $K_i$ y mueren en $K_j$, mientras que la segunda diferencia son el número de clases independientes que nacen antes de $K_i$ y mueren en $K_j$. En conclusión, la multiplicidad, $\mu_{i}^{j}$, se interpreta como el número de clases de homología que nacen en $K_i$ y mueren en $K_j$.
+Donde $\beta_{i}^{j-1}$ se puede interpretar como el número de clases de homología que están vivas en $K_i$ y siguen vivas en $K_{j-1}$. Por lo tanto, la primera diferencia de la igualdad se interpreta como el número de clases independientes que están vivas en $K_i$ y mueren en $K_j$, mientras que la segunda diferencia es el número de clases independientes que nacen antes de $K_i$ y mueren en $K_j$. En conclusión, la multiplicidad, $\mu_{i}^{j}$, se interpreta como el número de clases de homología que nacen en $K_i$ y mueren en $K_j$.
 
 \begin{figure}[!ht]
 \centering
