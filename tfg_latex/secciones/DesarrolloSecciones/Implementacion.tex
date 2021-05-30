@@ -206,7 +206,11 @@ W_\infty(X,Y)=\max_{xy \in M_n} c(xy),\text{ siendo } n= \text{card } U = \text{
 Como tenemos $n$ iteraciones en las cuales cada una aplicamos el algoritmo de Dijkstra, entonces la complejidad del cálculo de la distancia bottleneck siguiendo el algoritmo comentado es del orden de $\bigO(n^3)$.
 
 \subsection{Pruebas}
-La implementación del cálculo de las distancias se ha realizado en Python y el código se puede encontrar en el Anexo \ref{codigo_dist}. Para ello he utilizado la librería GUDHI para los cálculos de los alfa complejos \cite{gudhi:AlphaComplex}, complejos de Vietoris-Rips \cite{gudhi:RipsComplex} y la persistencia \cite{gudhi:PersistenceRepresentations}.
+La implementación del cálculo de las distancias se ha realizado en Python y el código se puede encontrar en el Anexo \ref{codigo_dist}. Para ello he utilizado la librería GUDHI para los cálculos de los alfa complejos \cite{gudhi:AlphaComplex}, complejos de Vietoris-Rips \cite{gudhi:RipsComplex} y la persistencia \cite{gudhi:PersistenceRepresentations}. El código también puede ser encontrado en este repositorio de GitHub:
+
+\begin{center}
+\url{https://github.com/AGarciaCast/TeoremaEstabilidad/tree/main/code}
+\end{center}
 
 Para comprobar el resultado del problema estudiaremos la robustez de los diagramas de persistencia para un conjunto finito de puntos y una variación de dicho conjunto dada por un cierto ruido. Obtendremos filtraciones de alfa complejos para ambos conjuntos de puntos, y calcularemos la distancia bottleneck entre sus diagramas de persistencia. Veremos que para el caso de los alfa complejos de nubes de puntos obtenemos el siguiente teorema de estabilidad
 
@@ -351,6 +355,8 @@ De esta forma obtenemos el siguiente diagrama de persistencia y códigos de barr
 
 Además, obtenemos el siguiente diagrama de persistencia y códigos de barras representados en la figura \ref{ref:figMapaRandom}, al estudiar las filtraciones de los complejos de VR con vértices en unas coordenadas aleatorias sobre las provincias donde el PSOE ganó en las elecciones generales del noviembre de 2019.
 
+\newpage
+\vspace*{\fill}
 \begin{figure}[!ht]
 \centering
 \begin{subfigure}[b]{\textwidth}
