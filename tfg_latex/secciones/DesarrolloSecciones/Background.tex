@@ -1,6 +1,6 @@
 
 \section{Conocimientos previos y definiciones}\label{sec:bg}
-En esta sección se introducirán las nociones topológicas básicas para hacer autocontenido este trabajo. Dichas nociones nos darán el contexto y conocimientos necesarios para poder profundizar en el \emph{Teorema de Estabilidad} y ser capaces de abordar su demostración.
+En esta sección se introducirán las nociones topológicas básicas para hacer autocontenido este trabajo. Dichas nociones nos darán el contexto y conocimientos necesarios para poder profundizar en el \emph{Teorema de Estabilidad} y ser capaces de abordar su demostración. Para ello seguiré, principalmente, \cite{libroEH, Hatcher, articuloPersistenciaEH, Cohen-Steiner2007} como referencia.
 
 \subsection{Complejos Simpliciales}
 
@@ -303,7 +303,7 @@ Sean $K$ y $L$ complejos simpliciales y $\varphi:\text{Vert }K \to \text{Vert }L
 
 Una aplicación de vértices $\varphi:\text{Vert }K \to \text{Vert }L$ induce una aplicación, lineal a trozos $f: \abs{K} \to \abs{L}$ dada por
 \[
-f(x) = f\left ( \sum_{i=0}^{n} b_i(x) u_i \right ) =  \sum_{i=0}^{n} b_i(x)u_i
+f(x) = f\left ( \sum_{i=0}^{n} b_i(x) u_i \right ) =  \sum_{i=0}^{n} b_i(x)\varphi(u_i)\,,
 \]
 a la que llamaremos \emph{aplicación simplicial} asociada a $\varphi$. Para enfatizar que es una aplicación lineal en cada símplice del complejo, se suele notar la aplicación de la siguiente forma $f: K \to L$. 
 
@@ -611,7 +611,7 @@ Sea $S\subset \mathbb{R}^d$ un conjunto finito de puntos. Llamaremos \emph{compl
 
 El complejo de \v{C}ech es isomorfo al nervio de la colección de las bolas cerradas de radio $r$ centrada en los puntos de $S$. En la figura \ref{ref:cech} podemos observar un ejemplo de complejo de \v{C}ech.
 
-Podemos comprobar \cite{libroEH} que para valores de $r$ lo suficientemente grandes, $\text{\v{C}ech}(r)$ es un símplice de dimensión $\text{card}(S)-1$, por lo que el complejo de \v{C}ech es poco eficiente desde el punto de vista computacional.\\
+Podemos comprobar {\cite[Chapter~3]{libroEH}} que para valores de $r$ lo suficientemente grandes, $\text{\v{C}ech}(r)$ es un símplice de dimensión $\text{card}(S)-1$, por lo que el complejo de \v{C}ech es poco eficiente desde el punto de vista computacional.\\
 Además, en general, el complejo de \v{C}ech de un conjunto de puntos $S \subset \mathbb{R}^d$ no posee una realización geométrica en $\mathbb{R}^d$.
 
 
@@ -642,7 +642,7 @@ Esta observación garantiza que $\sigma \in \text{VR}(r)$ si y sólo si todas su
 
 Por otro lado, el complejo de Vietoris-Rips no es el nervio de ningún recubrimiento. Sin embargo, el siguiente resultado garantiza que el complejo de VR aproxima al complejo de \v{C}ech.
 
-\begin{lemma}[Lema de Vietoris-Rips \cite{libroEH}]
+\begin{lemma}[Lema de Vietoris-Rips {\cite[Chapter~3]{libroEH}}]
 \label{ref:lemaVR}
 Sea $S \subset \mathbb{R}^d$ un conjunto finito de puntos y sea $r \geq 0$. Entonces,
 \[
@@ -728,7 +728,7 @@ Sea $K$ un complejo simplicial y $p$ un número entero no negativo. Una \emph{$p
 \[
 c = \sum a_i\sigma_i
 \]
-con $\sigma_i$ es un $p$-símplice para cada $i$ y $a_i$ son los \emph{coeficientes}. Estos coeficientes pueden tomarse de cualquier anillo conmutativo, sin embargo, nosotros usaremos con coeficientes en el cuerpo de dos elementos, es decir, $a_i \in \mathbb{Z}_2$. 
+con $\sigma_i$ es un $p$-símplice para cada $i$ y $a_i$ son los \emph{coeficientes}. Estos coeficientes pueden tomarse de cualquier anillo conmutativo, sin embargo, nosotros usaremos coeficientes en el cuerpo de dos elementos, es decir, $a_i \in \mathbb{Z}_2$. 
 
 \begin{exmp}
 Escribiremos los símplices como la lista de sus vértices, $\sigma = [u_0, u_1, ..., u_p]$.
@@ -1034,10 +1034,10 @@ Dado un complejo simplicial $K$ se define su \emph{grupo de homología $p$-dimen
 \[
 \text{H}_p(K)=\dfrac{\text{Z}_p}{\text{B}_p}\,.
 \]
-El \emph{número de Betti $p$-dimensional $\beta_p(K)$} como la dimensión de $\text{H}_p(K)$. 
+El \emph{número de Betti $p$-dimensional $\beta_p(K)$} se define como la dimensión de $\text{H}_p(K)$. 
 \end{definition}
 
-Luego los elementos $z \in \text{H}_P = \text{H}_p(K)$ son de la forma $z = c + \text{B}_p$ con $c \in \text{Z}_p$, donde $c + \text{B}_p$ es la \emph{clase lateral} de $\text{B}_p$ en $\text{Z}_p$. Dos ciclos $c_1, c_2 \in \text{Z}_p$ representan la misma \emph{clase de homología} $z \in \text{H}_p$ si y sólo si $z= c_1 + \text{B}_p = c_2 + \text{B}_p$; lo que equivale a que $(c_1-c_2) \in \text{B}_p$.
+Luego los elementos $z \in \text{H}_p = \text{H}_p(K)$ son de la forma $z = c + \text{B}_p$ con $c \in \text{Z}_p$, donde $c + \text{B}_p$ es la \emph{clase lateral} de $\text{B}_p$ en $\text{Z}_p$. Dos ciclos $c_1, c_2 \in \text{Z}_p$ representan la misma \emph{clase de homología} $z \in \text{H}_p$ si y sólo si $z= c_1 + \text{B}_p = c_2 + \text{B}_p$; lo que equivale a que $(c_1-c_2) \in \text{B}_p$.
 
 \begin{definition}
 Diremos que dos ciclos $c_1, c_2 \in \text{Z}_p$ son \emph{homólogos} si existe $b \in \text{B}_p$ tal que 
@@ -1078,7 +1078,7 @@ Utilizando aproximaciones simpliciales podemos ver que aplicaciones continuas en
 
 \begin{definition}
 \begin{sloppypar}
-Sea $K$ un complejo simplicial y consideremos la aplicación ${\lambda: \text{C}_p(K) \to \text{C}_p(\text{Sd}^n\ K)}$ definida sobre los $p$-símplices como
+Sea $K$ un complejo simplicial y consideremos la aplicación ${\lambda_p: \text{C}_p(K) \to \text{C}_p(\text{Sd}^n\ K)}$ definida sobre los $p$-símplices como
 \[
 \lambda_p(\sigma^p) = \sum_{\tau^p \in \text{Sd}^n \sigma^p} \tau^p\,.
 \]
@@ -1094,7 +1094,7 @@ f_{*} = g_{*} \circ \lambda_{p*}\,.
 Donde $g_{*}$ es el homomorfismo inducido por $g$ y ${\lambda_{p*}: \text{H}_p(K) \to \text{H}_p(\text{Sd}^n\ K)}$ es el isomorfismo inducido por $\lambda_p$.
 \end{sloppypar}
 
-\begin{theorem}\label{ref:teoremaHomomorfismoInducido}
+\begin{theorem}[\cite{Hatcher}]\label{ref:teoremaHomomorfismoInducido}
 Sean $K$ y $L$ dos complejos simpliciales y $f: \abs{K} \to \abs{L}$ un homeomorfismo. Entonces $f_{*}: \text{\rm H}_p(K) \to \text{\rm H}_p(L)$ es un isomorfismo para todo $p$.
 \end{theorem}
 
@@ -1122,7 +1122,7 @@ Sean $K$ y $L$ dos complejos simpliciales tales que $\abs{K} \approx \abs{L}$. E
 \end{corollary}
 
 Uno de los valores más importantes que obtenemos al calcular los grupos de homología son sus correspondientes números de Betti, ya que estos nos darán mucha información sobre el espacio subyacente. 
-\begin{theorem}
+\begin{theorem}[{\cite[Proposition~2.7]{Hatcher}}]
 Sea $K$ un complejo simplicial. Entonces $\beta_0(K)$ coincide con el número de componentes conexas de $\abs{K}$.
 \end{theorem}
 
@@ -1130,7 +1130,7 @@ Sea $K$ un complejo simplicial. Entonces $\beta_0(K)$ coincide con el número de
 $\abs{K}$ es conexo si y sólo si $\beta_0(K)=1$.
 \end{corollary}
 
-El \emph{Teorema de dualidad de Alexander} \cite{libroEH} nos permite interpretar los números de Betti de un poliedro contenido en $\mathbb{R}^3$: 
+El \emph{Teorema de dualidad de Alexander} \cite[Chapter~5]{libroEH} nos permite interpretar los números de Betti de un poliedro contenido en $\mathbb{R}^3$: 
 \begin{itemize}
 	\item $\beta_0(K)$ nos indica el número de componentes conexas.
 	\item $\beta_1(K)$ nos indica el número de túneles.
@@ -1143,7 +1143,7 @@ Hay una gran variedad de teorías de homología en topología. La homología que
 Además, para el \textit{teorema de estabilidad} no nos hará falta hacer uso de la homología singular, ya que se parte de la hipótesis de que el espacio es triangulable.
 
 \subsection{Persistencia}
-Introduciremos el concepto de persistencia primero para funciones de una variable. Después veremos en el caso de funciones morse, luego profundizaremos en el caso de los complejos simpliciales y por último para funciones tame. En esta sección seguiré \cite{articuloPersistenciaEH} como referencia.
+Introduciremos el concepto de persistencia primero para funciones de una variable. Después veremos en el caso de funciones Morse, luego profundizaremos en el caso de los complejos simpliciales y por último para funciones tame. En esta sección seguiré \cite{articuloPersistenciaEH} y \cite{Cohen-Steiner2007} como referencia.
 
 \subsubsection*{Funciones reales de una variable}
 Sea $f: \mathbb{R} \to \mathbb{R}$ una función suave. Recordemos que $x$ es un \emph{punto crítico} y $f(x)$ un \emph{valor crítico de $f$} si $f'(x)=0$. Además, un punto crítico $x$ es \emph{no degenerado} si $f''(x) \neq 0$. Así pues, supongamos que $f$ sólo contiene puntos críticos no degenerados con valores críticos distintos.
@@ -1173,10 +1173,10 @@ Cuando los puntos $x_1$ y $x_2$ se emparejan siguiendo este método, definimos l
 \end{figure}
 
 \subsubsection*{Funciones Morse} 
-Vamos a generalizar lo visto con funciones de una variable en $\mathbb{R}$ a funciones suaves sobre \emph{variedades diferenciables} con ciertas propiedades que explicaremos más adelante. Primero recordaremos que son las variedades diferenciables.
+Vamos a generalizar lo visto con funciones de una variable en $\mathbb{R}$ a funciones suaves sobre \emph{variedades diferenciables} con ciertas propiedades que explicaremos más adelante. Primero recordaremos qué son las variedades diferenciables.
 
 \begin{definition}
-Una \emph{variedad diferenciable} un espacio topológico $\mathbb{M}$ que satisface:
+Una \emph{variedad diferenciable} es un espacio topológico $\mathbb{M}$ que satisface:
 \begin{enumerate}
 	\item $\mathbb{M}$ es Hausdorff ($T_2$).
 	\item $\mathbb{M}$ es segundo numerable, es decir, su topología tiene una base numerable.
@@ -1239,11 +1239,11 @@ Una función $f: \mathbb{X} \to \mathbb{R}$ es \emph{tame} si los grupos de homo
 \end{definition}
 
 \begin{sloppypar}
-En particular, las funciones Morse sobre variedades compactas son funciones tame, ya que la compacidad y el carácter aislado de los puntos críticos garantizan que estas funciones posean un número finito de puntos críticos. Para simplificar la notación, para cada entero $k$ fijo, escribimos ${F_x = \text{H}_k(f^{-1}(-\infty, x])}$, y para $x < y$, denotamos como ${\tensor*{f}{*^{y}_{x}}: F_x \to F_y}$ la aplicación lineal inducida por la inclusión $\mathbb{X}_{x} \subseteq \mathbb{X}_{y}$. Una vez establecida la notación, probaremos el lema \ref{ref:lemaValCritico}, que nos será de gran ayuda para la demostración del \emph{teorema de estabilidad}.
+En particular, las funciones Morse sobre variedades compactas son funciones tame, ya que la compacidad y el carácter aislado de los puntos críticos garantizan que estas funciones posean un número finito de puntos críticos. Para simplificar la notación, para cada entero $k$ fijo, escribimos ${F_x = \text{H}_k(f^{-1}(-\infty, x])}$, y para $x < y$, denotamos como ${\tensor*{f}{*^{y}_{x}}: F_x \to F_y}$ la aplicación lineal inducida por la inclusión $\mathbb{X}_{x} \subseteq \mathbb{X}_{y}$. Una vez establecida la notación, probaremos el lema \ref{ref:lemaValCritico}, que nos será de gran ayuda para la demostración del \emph{Teorema de estabilidad}.
 \end{sloppypar}
 
 \begin{property}
-La familia de aplicaciones $(F_{x}^{y})_{x \leq y}$ satisface las siguientes propiedades:
+La familia de aplicaciones $(f_{x}^{y})_{x \leq y}$ satisface las siguientes propiedades:
 \begin{itemize}
 	\item $f_{x}^{x}= \text{id}_{F_x}$.
 	\item $f_{m}^{y} \circ f_{x}^{m} = f_{x}^{y}$, con $x \leq m \leq y$.
@@ -1339,7 +1339,7 @@ Como se muestra en la figura \ref{ref:multiplicidadDiagrama}, cuando se suman la
 ya que $F_{x}^{y}= \{0\}$ cuando $x$ ó $y$ son infinito, y por lo tanto su dimensión, es decir, su número de Betti persistente, es cero.
 \end{proof}
 
-Este lema nos garantiza que el diagrama de persistencia codifica toda la información sobre los grupos de homología persistente \cite{libroEH}.
+Este lema nos garantiza que el diagrama de persistencia codifica toda la información sobre los grupos de homología persistente \cite[Chapter~7]{libroEH}.
 
 \subsubsection*{Persistencia en complejos simpliciales}
 Veremos que podemos particularizar la persistencia vista para funciones tame a complejos simpliciales. Para ello utilizaremos las \emph{filtraciones} de un complejo simplicial como conjuntos de subnivel y haremos uso de la \emph{homología simplicial} como teoría de homología.
@@ -1364,7 +1364,7 @@ De esta forma, al igual que vimos con las funciones Morse, una clase de homolog�
 Introduciremos los grupos de homología persistente, reduciendo la notación de la siguiente forma: $F_i = F_{b_i}$, $F_{i}^{j}=F_{b_i}^{b_j}$ y $\beta_{i}^{j}=\beta_{b_i}^{b_j}$. Así podemos redefinir la noción de nacimiento y muerte de una clase de homología como sigue
 \begin{itemize}
 	\item Una clase $\gamma \in F_i$ \emph{nace} en $K_i$ si $\gamma \notin F_{i-1}^{i}$.
-	\item Una clase $\gamma \in F_i$ nacida en $K_i$ \emph{muere} al entrar en $K_j$ si $f_{i}^{j-1}(\gamma)\notin F_{i-1}^{j-1}$, pero $f_{i}^{j}(\gamma)\notin F_{i-1}^{j}$. 
+	\item Una clase $\gamma \in F_i$ nacida en $K_i$ \emph{muere} al entrar en $K_j$ si $f_{i}^{j-1}(\gamma)\notin F_{i-1}^{j-1}$, pero $f_{i}^{j}(\gamma)\in F_{i-1}^{j}$. 
 \end{itemize} 
 
 \begin{definition}
@@ -1373,7 +1373,7 @@ Sea $\gamma$ una clase de homología que nace en $K_i$ y muere al entrar en $K_j
 
 Siguiendo esta notación, se define la multiplicidad como
 \[
-\mu_{i}^{j} = (\beta_{i}^{j-1}-\beta_{i}^{j})-(\beta_{i-1}-\beta_{i-1}^{i})\,.
+\mu_{i}^{j} = (\beta_{i}^{j-1}-\beta_{i}^{j})-(\beta_{i-1}^{j-1}-\beta_{i-1}^{j})\,.
 \]
 Donde $\beta_{i}^{j-1}$ se puede interpretar como el número de clases de homología que están vivas en $K_i$ y siguen vivas en $K_{j-1}$. Por lo tanto, la primera diferencia de la igualdad se interpreta como el número de clases independientes que están vivas en $K_i$ y mueren en $K_j$, mientras que la segunda diferencia es el número de clases independientes que nacen antes de $K_i$ y mueren en $K_j$. En conclusión, la multiplicidad, $\mu_{i}^{j}$, se interpreta como el número de clases de homología que nacen en $K_i$ y mueren en $K_j$.
 
@@ -1422,7 +1422,7 @@ $K_i$ tiene el mismo tipo de homotopía que el subnivel ${\abs{K}_t=f^{-1}(-\inf
 
 \begin{property}[{\cite[Chapter~6]{libroEH}}]
 \begin{sloppypar}
-La la variación de la homología en los conjuntos de subnivel ${\abs{K}_t=f^{-1}(-\infty, t]}$ es la misma que la homología de la filtración por las estrellas inferiores de $f$.
+La variación de la homología en los conjuntos de subnivel ${\abs{K}_t=f^{-1}(-\infty, t]}$ es la misma que la homología de la filtración por las estrellas inferiores de $f$.
 \end{sloppypar}
 \end{property}
 

@@ -21,7 +21,7 @@ H(A,B) = \max\{\check{H}(A,B), \check{H}(B,A)\}\,.
 Sea $A=\{x_1, x_2, ...,x_m\}$ y $B=\{y_1, y_2, ...,y_m\}$ los dos conjuntos de puntos en $\mathbb{R}^k$ y sea $\norm{x-y}_\infty$ la distancia infinito entre $x$ e $y$. Por lo tanto, podemos calcular de manera sencilla la distancia Hausdorff directa entre $A$ y $B$ siguiendo los pasos del algoritmo \ref{ref:HausdorffDirect}.
 
 \begin{algorithm}[!ht]
-\caption{Cálculo de la distancia Hausdorff directa}\label{ref:HausdorffDirect}
+\caption{Cálculo de la distancia Hausdorff directa {\cite[NAIVEHDD]{ArticuloHausdorff}}}\label{ref:HausdorffDirect}
 \begin{algorithmic}[1]
 \Require Dos conjuntos finitos de puntos $A$ y $B$
 \Ensure Distancia Hausdorff directa entre $A$ y $B$
@@ -46,7 +46,7 @@ Obviamente, la complejidad del algoritmo \ref{ref:HausdorffDirect} es del orden 
 
 Sin embargo, existen implementaciones del cálculo de la distancia Hausdorff que tienen complejidad del orden de $\bigO(m)$ en el mejor de los casos y $\bigO(n*m)$ en el peor de los casos \cite{ArticuloHausdorff}.
 \subsection{Cálculo de la distancia bottleneck}
-En esta sección veremos los algoritmos propuestos en \cite{libroEH}, donde el cálculo de la distancia bottleneck entre dos diagramas de persistencia se reduce a la obtención de un emparejamiento óptimo en un grafo bipartido.
+En esta sección veremos el algoritmo propuesto en \cite[Chapter~8]{libroEH}, donde el cálculo de la distancia bottleneck entre dos diagramas de persistencia se reduce a la obtención de un emparejamiento óptimo en un grafo bipartido.
 
 \subsubsection*{Obtención de la distancia a partir de emparejamientos}
 Empezaremos viendo cómo podemos obtener la distancia bottleneck entre diagramas de persistencia a partir de emparejamientos de un grafo bipartido.
@@ -127,11 +127,11 @@ Un \emph{camino de $M_i$-aumento} es un camino dirigido desde $s$ hasta $t$ el c
 
 Claramente, si tenemos un camino de $M_i$-aumento con $k$ vértices no contenidos en $M_i$ y $k-1$ vértices en $M_i$, entonces podemos mejorar el emparejamiento sustituyendo los $k$ vértices que no estaban en $M_i$ por los $k-1$ vértices que si estaban en $M_i$. Cuando hacemos esta mejora, decimos que hemos \emph{aumentado} el emparejamiento usando el camino. 
 
-\begin{lemma}[Lema de Berge]
+\begin{lemma}[Lema de Berge {\cite{berge}}]
 $M_i$ es un emparejamiento máximo de $G(\epsilon)$ si y sólo si $G(\epsilon)$ no contiene caminos de $M_i$-aumento.
 \end{lemma}
 
-Luego, para obtener un emparejamiento máximo de $G(\epsilon)$ seguiremos los siguientes pasos:
+Luego, para obtener un emparejamiento máximo de $G(\epsilon)$ seguiremos los pasos que se muestran en el Algoritmo \ref{ref:algEmpMax}.
 
 \begin{algorithm}[!ht]
 \caption{Obtención de emparejamientos máximos}\label{ref:algEmpMax}
@@ -150,10 +150,10 @@ Luego, para obtener un emparejamiento máximo de $G(\epsilon)$ seguiremos los si
 
 Este algoritmo terminará como mucho en $n$ iteraciones, siendo $n= \text{card } U = \text{card } V$, ya que en cada iteración se aumenta el tamaño del emparejamiento en uno. Podemos hacer uso de la \emph{búsqueda en anchura} y la \emph{búsqueda en profundidad} para encontrar caminos de $M_i$-aumento en un tiempo proporcional al número de aristas en $A_\epsilon$. Por lo que la complejidad del algoritmo es del orden de $\bigO(n^3)$.
 
-Se puede obtener una complejidad del orden de $\bigO(n^{5/2})$ implementando el algoritmo que se muestra en \cite{libroEH}. Este hace uso de la \emph{búsqueda en anchura} para etiquetar los vértices con su distancia a $s$ y después usa la \emph{búsqueda en profundidad} para construir un conjunto maximal de múltiples caminos de $M_i$-aumento.  
+Se puede obtener una complejidad del orden de $\bigO(n^{5/2})$ implementando el algoritmo que se muestra en \cite[Chapter~8]{libroEH}. Este hace uso de la \emph{búsqueda en anchura} para etiquetar los vértices con su distancia a $s$ y después usa la \emph{búsqueda en profundidad} para construir un conjunto maximal de múltiples caminos de $M_i$-aumento.  
 
 \subsubsection*{Emparejamientos de coste mínimo en grafos bipartidos}
-Para calcular el menor $\epsilon$ tal que $G(\epsilon)$ tiene un emparejamiento perfecto, seguiremos una variante del método húngaro, el cual se utiliza para resolver problemas de asignación \cite{metodoHungaro}. 
+Para calcular el menor $\epsilon$ tal que $G(\epsilon)$ tiene un emparejamiento perfecto, seguiremos una variante del método Húngaro, el cual se utiliza para resolver problemas de asignación \cite{metodoHungaro}. 
 
 \begin{property}[{\cite[Chapter~8]{libroEH}}]
 \leavevmode
@@ -178,7 +178,7 @@ Análogo al método Húngaro, iremos añadiendo aristas de coste modificado cero
 
 Sea $M_i$ un emparejamiento máximo en $G_i(0)$ y sea $D_i$ el digrafo asociado al emparejamiento $M_i$ y $G_i$. Si $M_i$ no es un emparejamiento perfecto en $G_i$, entonces no es un emparejamiento máximo en $G_i$, y por lo tanto existirá un camino de $M_i$-aumento en $D_i$.
 
-Por definición $c_i(sy) = c_i(xt) = 0$ para todo $x \in U$ e $y \in V$. Se denota como \emph{coste total} de un camino de $M_i$-aumento como la suma de los costes modificados de sus aristas. Obtendremos el camino de $M_i$-aumento $\pi$ que minimiza el coste total, a través del \emph{algoritmo de Dijkstra} con una complejidad del orden de $\bigO(n^2)$.
+Por definición $c_i(sy) = c_i(xt) = 0$ para todo $x \in U$ e $y \in V$. Se denota como \emph{coste total} de un camino de $M_i$-aumento como la suma de los costes modificados de sus aristas. Obtendremos el camino de $M_i$-aumento $\pi$ que minimiza el coste total, a través del \emph{algoritmo de Dijkstra} \cite{dijkstra1959note} con una complejidad del orden de $\bigO(n^2)$.
 
 Como hacíamos en el algoritmo \ref{ref:algEmpMax}, aumentamos $M_i$ usando $\pi$ para obtener $M_{i+1}$. Vamos a garantizar que podemos cambiar la función de reducción de forma que todas las aristas del emparejamiento $M_{i+1}$ tienen coste modificado cero. Para ello definimos $\gamma_i(x)$ como el coste total mínimo de los caminos desde $s$ hasta $x$.
 
@@ -269,7 +269,7 @@ Por tanto $H(A,B) = \norm{d^A - d^B}_\infty\,.$
 \label{ref:figDistConj}
 \end{figure}
 
-Además, si denotamos al conjunto de subnivel $\widehat{L}_\epsilon=\{x \mid d^A \leq \epsilon\}$, que es la unión de las bolas cerradas centradas en los puntos de $A$ y radio $\epsilon$, como podemos ver en la figura \ref{ref:figDistConj}. Como consecuencia del \emph{Lema del Nervio} $\text{H}_k(\widehat{L}_r) \cong \text{H}_k(\text{\v{C}ech}(r))$, para todo $k$ debido a que el complejo de \v{C}ech tiene el mismo tipo de homotopía que la unión de las bolas cerradas de radio $r$ centradas en los puntos de $A$.
+Además, si denotamos al conjunto de subnivel $\widehat{L}_\epsilon=\{x \mid d^A \leq \epsilon\}$, que es la unión de las bolas cerradas centradas en los puntos de $A$ y radio $\epsilon$, como podemos ver en la figura \ref{ref:figDistConj}. Como consecuencia del \emph{Lema del Nervio} $\text{H}_k(\widehat{L}_r) \cong \text{H}_k(\text{\v{C}ech}(r))$ para todo $k$, debido a que el complejo de \v{C}ech tiene el mismo tipo de homotopía que la unión de las bolas cerradas de radio $r$ centradas en los puntos de $A$.
 
 Y como el complejo de \v{C}ech tiene el mismo tipo de homotopía que el alfa complejo entonces, como consecuencia del corolario \ref{cor:homotopia},
 
@@ -286,7 +286,7 @@ Empezaremos viendo un ejemplo sencillo de la curva de una elipse dada por la sig
 \gamma(t)= (4\sin(t), 9\cos(t)), \text{ con } t\in [0,2\pi]
 \]
 
-De esta curva obtenemos 30 puntos y obtenemos las filtraciones de alfa complejos asociadas a dichos puntos. Además, introducimos una pequeña cantidad de ruido en los puntos a través de una distribución normal $N(2, 0.09)$, y obtenemos sus filtraciones de alfa complejos asociadas. Una vez obtenidas las filtraciones obtendremos los diagramas de persistencia correspondientes como se muestra en la figura \ref{ref:persEj1}.
+De esta curva obtenemos 30 puntos y las filtraciones de alfa complejos asociadas a dichos puntos. Además, introducimos una pequeña cantidad de ruido en los puntos a través de una distribución normal $N(2, 0.09)$, y obtenemos sus filtraciones de alfa complejos asociadas. Por último, conseguiremos los diagramas de persistencia correspondientes como se muestra en la figura \ref{ref:persEj1}.
 
 \begin{figure}[!ht]
 \centering
@@ -309,7 +309,7 @@ Continuaremos viendo un ejemplo un poco más elaborado. Tomaremos la curva de un
 \alpha(t)= (10\cos(2t)\cos(t), 10\cos(2t)\cos(t)), \text{ con } t\in [0,2\pi]
 \]
 
-De esta curva obtenemos 50 puntos y obtenemos las filtraciones de alfa complejos asociadas a dichos puntos. En este caso introducimos una cantidad de ruido en los puntos superior respecto al anterior ejemplo. Estas perturbaciones se generan a través de una distribución normal $N(2, 0.25)$. Nuevamente, obtenemos sus filtraciones de alfa complejos asociadas a estos puntos. Una vez obtenidas las filtraciones obtendremos los diagramas de persistencia correspondientes como se muestra en la figura \ref{ref:persEj2}.
+De esta curva obtenemos 50 puntos y las filtraciones de alfa complejos asociadas a dichos puntos. En este caso introducimos una cantidad de ruido en los puntos superior respecto al anterior ejemplo. Estas perturbaciones se generan a través de una distribución normal $N(2, 0.25)$. Nuevamente, obtenemos sus filtraciones de alfa complejos asociadas a estos puntos. Por último, conseguiremos los diagramas de persistencia correspondientes como se muestra en la figura \ref{ref:persEj2}.
 
 \begin{figure}[!ht]
 \centering
@@ -324,20 +324,22 @@ Cabe destacar que, para el conjunto de datos inicial, estas cuatro clases mueren
 
 Estas diferencias comentadas se pueden ver en el cálculo de la distancia bottleneck, ya que se observa que en la dimensión 1 tenemos una distancia superior que en el ejemplo anterior. Sin embargo, se observa que la distancia bottleneck es inferior a la distancia Hausdorff entre los conjuntos de puntos, dando lugar a la robustez que nos garantiza el \emph{Teorema de estabilidad}.
 
+\begin{minipage}{\linewidth}
 \consola{Ejemplo2}
+\end{minipage}
 
 \begin{remark}
 En los ejemplos se indica la distancia bottleneck calculada tanto por mí implementación como la implementación de la librería GUDHI \cite{gudhi:BottleneckDistance} para poder garantizar que está bien calculada, ya que se ha observado que mi implementación obtiene erróneamente el resultado en algunas ocasiones. Esto se debe a que como hemos visto en los dos últimos ejemplos. los puntos de los diagramas se encuentran muy cercanos los unos a los otros en algunas ocasiones, lo que ocasiona en distancias de orden inferior a la precisión del tipo \textit{float}. Esto causa que se arrastren errores de número máquina a lo largo del proceso, ocasionando que se calculen erróneamente las distancias con el algoritmo de Dijkstra y por tanto que se obtenga un emparejamiento que no sea mínimo. 
 \end{remark}
 
 \subsubsection{Ejemplo 3: Elecciones generales noviembre 2019}
-Por último, veremos un caso más práctico. Para ello simulamos el procedimiento descrito en \cite{votosArticulo}, donde se estudia cómo se puede hacer uso de la homología persistente para poder determinar si hay distritos electorales donde se ha votado diferente respecto al resto de distritos que lo rodean. Este tipo de estudio nos permitiría poder observar a gran escala si los votos condados en los condados son uniformes, o bien hay zonas donde se vota diferente.
+Por último, veremos un caso más práctico. Para ello simulamos el procedimiento descrito en \cite{votosArticulo}, donde se estudia cómo se puede hacer uso de la homología persistente para poder determinar si hay distritos electorales donde se ha votado diferente respecto al resto de distritos que lo rodean. Este tipo de estudio nos permitiría poder observar a gran escala si los votos en los condados son uniformes, o bien hay zonas donde se vota diferente.
 
 Como se comenta en \cite{votosArticulo}, este trabajo es especialmente adecuado para la homología persistente, ya que identificaremos condados con ``distritos isla'' como agujeros. Para ello a cada distrito se le asigna una coordenada y en el caso de Estados Unidos se le asigna un color representando el partido ganador (rojo republicano y azul demócrata). En dicho artículo se plantean diversos complejos simpliciales y sus ventajas e inconvenientes para este tipo de tarea.
 
 Así pues, he recreado este estudio para el caso de las elecciones generales de noviembre de 2019, donde he marcado a cada provincia del color del partido que obtuvo más votos en dicha región (datos en la tabla \ref{tab:ProvinciaPartido} del anexo). Nuestro interés desde el punto de vista de la estabilidad es poder garantizar que los resultados obtenidos en \cite{votosArticulo} son robustos independientemente de la coordenada elegida como representante de cada distrito/provincia.
 
-Una vez obtenido el mapa toca decidir qué coordenadas se toman para cada una de las provincias. Como coordenadas ``canónicas'' he usado las coordenadas que aparecen en la página de la Wikipedia de cada una de las provincias. Y como datos perturbados he elegido unas coordenadas arbitrarias de cada una de las provincias. Estas coordenadas se pueden ver en la tabla \ref{tab:ProvinciaWiki} y \ref{tab:ProvinciaRand} del anexo.
+Una vez obtenido el mapa toca decidir qué coordenadas se toman para cada una de las provincias. Como coordenadas ``canónicas'' he usado las coordenadas que aparecen en la página de la Wikipedia de cada una de las provincias. Y como datos perturbados he elegido unas coordenadas arbitrarias de cada una de las provincias. Estas coordenadas se pueden ver en las tablas \ref{tab:ProvinciaWiki} y \ref{tab:ProvinciaRand} del anexo.
 
 Cabe destacar que en este ejemplo no se han utilizado filtraciones de alfa complejos para obtener los diagramas de persistencia, sino que se han utilizado filtraciones de complejos de Vietoris-Rips. Esto se debe a que los alfa complejos requieren que los puntos se encuentren en posición general para obtener el complejo de Delaunay, lo cual podría no ocurrir al elegir puntos aleatorios.
 
@@ -394,9 +396,9 @@ Además, obtenemos el siguiente diagrama de persistencia y códigos de barras re
 \label{ref:figMapaRandom}
 \end{figure}
 
-Como hemos podido observar en las figuras \ref{ref:persMapaWiki} y \ref{ref:persMapaRandom}, los diagramas de persistencia son muy cercanos. Esto se observa también al calcular las distancias bottleneck. Cabe destacar que los diagramas de persistencia nos dan a pensar que nuestro mapa (restringido a las provincias que ganó el PSOE) sólo tiene dos componentes conexas, la zona peninsular (península y baleares) y las islas canarias, sin embargo, sería más correcto si pudiéramos obtener 3 componentes conexas  bien identificables como mínimo. Siguiendo el estudio de las componentes conexas también se muestran unas clases que sobreviven un poco más que el resto, las cuales hacen referencia a Pontevedra y Barcelona, las cuales no se encuentran conectadas con el bloque central.
+Como hemos podido observar en las figuras \ref{ref:persMapaWiki} y \ref{ref:persMapaRandom}, los diagramas de persistencia son muy cercanos. Esto se observa también al calcular las distancias bottleneck. Cabe destacar que los diagramas de persistencia nos dan a pensar que nuestro mapa (restringido a las provincias que ganó el PSOE) sólo tiene dos componentes conexas, la zona peninsular (península y baleares) y las islas canarias, sin embargo, sería más correcto si pudiéramos obtener 3 componentes conexas  bien identificables como mínimo. Siguiendo el estudio de las componentes conexas también se muestran unas clases que sobreviven un poco más que el resto, las cuales hacen referencia a Pontevedra y Barcelona, que no se encuentran conectadas con el bloque central.
 
-Desde el punto de vista de los agujeros podemos observar que en ambos casos se muestra a Teruel como agujero, sin embargo en el caso de los puntos obtenidos de las coordenadas de Wikipedia la clase de homología de dimensión 1 que más tiempo sobrevive realmente no representa ninguna isla de voto, simplemente es producto del complejo de Vietoris-Rips, lo que nos indica (al igual que se observa en \cite{votosArticulo}) que este tipo de complejo simplicial no sea el más apropiado para esta tarea.
+Desde el punto de vista de los agujeros podemos observar que en ambos casos se muestra a Teruel como agujero, sin embargo en el caso de los puntos obtenidos de las coordenadas de Wikipedia la clase de homología de dimensión 1 que más tiempo sobrevive realmente no representa ninguna isla de voto, simplemente es producto del complejo de Vietoris-Rips, lo que nos indica (al igual que se observa en \cite{votosArticulo}) que este tipo de complejo simplicial no es el más apropiado para esta tarea.
 
 Desde el punto de vista de la estabilidad podemos observar que la distancia bottleneck es inferior a la distancia Hausdorff entre los conjuntos de puntos, dando lugar a la robustez que nos garantiza el \emph{Teorema de estabilidad}.
 
